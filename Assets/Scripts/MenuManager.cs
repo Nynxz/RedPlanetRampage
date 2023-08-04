@@ -23,6 +23,8 @@ public class MenuManager : MonoBehaviour
     private void PlayButtonClicked() {
         Debug.Log("Start Game");
         SceneManager.LoadScene("LabHub");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void HighscoreButtonClicked() {
