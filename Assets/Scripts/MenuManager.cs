@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -21,6 +22,7 @@ public class MenuManager : MonoBehaviour
 
     private void PlayButtonClicked() {
         Debug.Log("Start Game");
+        SceneManager.LoadScene("LabHub");
     }
 
     private void HighscoreButtonClicked() {
