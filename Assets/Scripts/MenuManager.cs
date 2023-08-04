@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
 
-    [SerializeField] Button playButton;
-    [SerializeField] Button highscoreButton;
-    [SerializeField] Button settingsButton;
-    [SerializeField] Button exitButton;
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button highscoreButton;
+    [SerializeField] private Button settingsButton;
+    [SerializeField] private Button exitButton;
 
     void Start()
     {
