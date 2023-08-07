@@ -39,8 +39,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-
-
     private void OnDrawGizmos() {
 
         // Interaction Probe

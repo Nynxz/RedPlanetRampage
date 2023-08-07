@@ -46,7 +46,7 @@ namespace StarterAssets
 		}
 
 		public void OnInteract(InputValue value) {
-			InteractInput(value.isPressed);
+			interact = value.isPressed;
 		}
 #endif
 
