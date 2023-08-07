@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -10,12 +11,13 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform cameraRoot;
+    [SerializeField] private LayerMask interactMask;
 
-    [SerializeField]    [Range(0f, 1f)] private float shootCooldown;
-    private float currentShoot;
-    // Testing Weapons
+    [SerializeField]    [Range(0f, 5f)] private float interactRange;
 
-    private bool toShoot = false;
+
+
+
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -23,23 +25,29 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0)) {
-            toShoot = true;
+        RaycastHit hit;
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (Physics.Raycast(cameraRoot.position, cameraRoot.forward, out hit, interactRange, interactMask)) {
+                Debug.Log("Got Hit");
+                
+                if (hit.collider.TryGetComponent(out Interactable interactable)) {
+                    interactable.interact(gameObject);
+                }
+            }
         }
-        if(currentShoot > 0) {
-            currentShoot -= Time.deltaTime;
-        }
-    }
-    private void LateUpdate() {
-        if(toShoot && currentShoot <= 0) {
-            Shoot();
-            toShoot = false;
-            currentShoot = shootCooldown;
-        }
+/*        if (Input.GetKeyDown(KeyCode.V)) {
+            if (Time.timeScale == 1f) {
+                Time.timeScale = 0.1f;
+            } else {
+                Time.timeScale = 1f;
+            }
+        }*/
     }
 
-    private void Shoot() {
-        GameObject b = Instantiate(bullet, cameraRoot.position, cameraRoot.rotation);
-        b.GetComponent<BulletTest>().SetForce(cameraRoot.forward);
+
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(cameraRoot.position, cameraRoot.position + cameraRoot.forward * interactRange);
     }
 }
