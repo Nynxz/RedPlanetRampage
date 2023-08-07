@@ -9,9 +9,17 @@ public class GameManager : MonoBehaviour
     // Singleton Instance
     public static GameManager Instance;
 
+    [SerializeField] public Transform playerTransform;
+
     // Inspector Fields
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI ammoText;
+
+
+    [SerializeField] public Canvas UICanvas;
+    [SerializeField] public GameObject hitmarkerRegular;
+    [SerializeField] public GameObject hitmarkerHeadshot;
 
     // Player Variables
     private int currentMoney = 0;
@@ -22,6 +30,12 @@ public class GameManager : MonoBehaviour
     private readonly string scorePrefix = "Score: ";
 
     // Player Variable Update Events
+    public class UpdateAmmoArgs {
+        public int currentInMag;
+        public int maximumInMag;
+        public int ammoLeft;
+    }
+
     public event EventHandler<UpdateMoneyEventArgs> UpdateMoney;
     public class UpdateMoneyEventArgs : EventArgs {
         public int moneyAmount;
@@ -55,9 +69,14 @@ public class GameManager : MonoBehaviour
     private void SetScoreText(object sender, UpdateScoreEventArgs e) {
         scoreText.text = scorePrefix + e.scoreAmount.ToString();
     }
+    public void SetAmmoText(UpdateAmmoArgs e) {
+        ammoText.text = e.currentInMag.ToString() + "/" + e.maximumInMag.ToString() + " | " + e.ammoLeft.ToString();
+    }
+    public void SetAmmoText(string text) {
+        ammoText.text = text;
+    }
 
     // These are the functions you want to use to update the score and money
-
 
     public void AddMoney(int amount) {
         currentMoney += amount;
@@ -88,18 +107,5 @@ public class GameManager : MonoBehaviour
         UpdateScore?.Invoke(this, new UpdateScoreEventArgs() {
             scoreAmount = currentScore
         });
-    }
-
-
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            AddMoney(1);
-            AddScore(1);
-        }
-        if (Input.GetKeyDown(KeyCode.W)) {
-            RemoveMoney(1);
-            RemoveScore(1);
-        }
     }
 }
