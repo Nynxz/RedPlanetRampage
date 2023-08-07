@@ -1,16 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletTest : MonoBehaviour
 {
 
     private Rigidbody rb;
-    [SerializeField] private float speed;
     [SerializeField] private int lifeTime;
     [SerializeField] private LayerMask enemyLayerMask;
 
     private Vector3 lastPos;
+    private float damage;
+    private float headshotMultiplier = 2.5f;
+
+    public void Setup(Vector3 forceDir, float speed, float damage) {
+        SetForce(forceDir, speed);
+        SetDamage(damage);
+    }
+
+
     private void Awake() {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(AutoRemove());
@@ -21,17 +31,35 @@ public class BulletTest : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetForce(Vector3 dir) {
+    private void SetDamage(float damage) {
+        this.damage = damage;
+    }
+    public void SetForce(Vector3 dir, float speed) {
         rb.AddForce(dir * speed);
     }
 
     // https://www.youtube.com/watch?v=Rqs81nnUlBY
     private void Update() {
-        if(Physics.Linecast(lastPos, transform.position, enemyLayerMask)) {
+        if (Physics.Raycast(lastPos, (transform.position - lastPos).normalized, out RaycastHit hit, Vector3.Distance(transform.position, lastPos), enemyLayerMask)) {
             Destroy(gameObject);
-            Debug.Log("Hit Enemy");
-            GameManager.Instance.AddScore(10);
-        }
+
+            EnemyTest enemy = hit.collider.GetComponentInParent<EnemyTest>();
+            bool hitHead = hit.collider.TryGetComponent(out HeadHitbox headHitBox);
+            if (enemy) {
+                if(hitHead) {
+                    enemy.Damage(damage * headshotMultiplier);
+                    Instantiate(GameManager.Instance.hitmarkerHeadshot, GameManager.Instance.UICanvas.transform, false);
+                    GameManager.Instance.AddScore(10);
+                }
+                else {
+                    enemy.Damage(damage);
+                    Instantiate(GameManager.Instance.hitmarkerRegular, GameManager.Instance.UICanvas.transform, false);
+                    GameManager.Instance.AddScore(5);
+                }
+                
+            }
+        };
+
     }
 
     private void LateUpdate() {
