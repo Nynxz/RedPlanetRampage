@@ -1350,6 +1350,8 @@ GameObject:
   - component: {fileID: 1283535062}
   - component: {fileID: 1283535063}
   - component: {fileID: 1283535064}
+  - component: {fileID: 1283535065}
+  - component: {fileID: 1283535066}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1385,12 +1387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1192445974}
-  moneyText: {fileID: 2097863109}
-  scoreText: {fileID: 1659931189}
-  ammoText: {fileID: 1663069819}
-  UICanvas: {fileID: 1923339050}
-  hitmarkerRegular: {fileID: 2229884354276016353, guid: 0402e2a2a04d19d439fe429079fa17bb, type: 3}
-  hitmarkerHeadshot: {fileID: 5890679173389704620, guid: ea43fa2484414914e9d0a1b3e947e446, type: 3}
 --- !u!114 &1283535064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1416,6 +1412,36 @@ MonoBehaviour:
   maxEnemies: 10
   spawnDelay: 1
   enabled: 0
+--- !u!114 &1283535065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283535061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd51d1005311f8a489ddd32982074f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UICanvas: {fileID: 1923339050}
+  moneyText: {fileID: 2097863109}
+  scoreText: {fileID: 1659931189}
+  ammoText: {fileID: 1663069819}
+  hitmarkerRegular: {fileID: 2229884354276016353, guid: 0402e2a2a04d19d439fe429079fa17bb, type: 3}
+  hitmarkerHeadshot: {fileID: 5890679173389704620, guid: ea43fa2484414914e9d0a1b3e947e446, type: 3}
+--- !u!114 &1283535066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283535061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b26a792d50935048b4d69def99e8f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1411233450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,10 +3062,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: m_NotificationBehavior
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
