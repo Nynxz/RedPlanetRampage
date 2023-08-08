@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
 
     private StarterAssetsInputs _input;
 
+
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -26,9 +27,9 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (_input.interact) {
+        if (GameManager.Instance.InputManager.interactInput) {
             RaycastHit hit;
-            _input.interact = false;
+            GameManager.Instance.InputManager.SetInteract(false);
             if (Physics.Raycast(cameraRoot.position, cameraRoot.forward, out hit, interactRange, interactMask)) {
                 Debug.Log("Got Hit");
 
