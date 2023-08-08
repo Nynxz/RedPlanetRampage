@@ -60,12 +60,12 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) {
             Destroy(currentWeaponVisual);
             currentWeaponVisual = null;
-            GameManager.Instance.SetAmmoText("No Weapon");
+            GameManager.Instance.UIManager.SetAmmoText("No Weapon");
         }
         if(Input.GetKeyDown(KeyCode.R)) {
             toShoot = false;
             currentEquippedWeaponSO.Reload();
-            GameManager.Instance.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
+            GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
 
         }
     }
@@ -77,7 +77,7 @@ public class WeaponManager : MonoBehaviour
         currentShootTimer = currentEquippedWeaponSO.weaponSO.weaponShootCooldown;
         currentWeaponVisual = Instantiate(currentEquippedWeaponSO.weaponSO.weaponPrefab, gunRoot);
         muzzleTransform = currentWeaponVisual.transform.Find("Muzzle");
-        GameManager.Instance.SetAmmoText(newWeapon.GetAmmoArgs());
+        GameManager.Instance.UIManager.SetAmmoText(newWeapon.GetAmmoArgs());
     }
 
     private void Shoot() {
@@ -90,14 +90,14 @@ public class WeaponManager : MonoBehaviour
                 GameObject b = Instantiate(currentEquippedWeaponSO.weaponSO.bulletSO.bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
                 BulletTest bullet = b.GetComponent<BulletTest>();
                 bullet.Setup(gunRoot.forward, currentEquippedWeaponSO.weaponSO.bulletSO.bulletSpeed, currentEquippedWeaponSO.weaponSO.bulletSO.bulletDamage);
-                GameManager.Instance.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
+                GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
             }
         }
     }
 
     public void FillAmmo() {
         currentEquippedWeaponSO.FillAmmo();
-        GameManager.Instance.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
+        GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
 
     }
 }
