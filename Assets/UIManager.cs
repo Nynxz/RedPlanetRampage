@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static GameManager;
 
 public class UIManager : MonoBehaviour {
@@ -13,6 +14,10 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI ammoText;
+
+    [Header ("HP Bar")]
+    [SerializeField] private Image hpbarImage;
+    [SerializeField] private TextMeshProUGUI healthAmount;
 
     [Header("Visual Prefabs")]
     [SerializeField] public GameObject hitmarkerRegular;
@@ -37,5 +42,12 @@ public class UIManager : MonoBehaviour {
     }
     public void SetAmmoText(string text) {
         ammoText.text = text;
+    }
+
+    public void SetHPBarFill(float normalizedHealth) {
+        hpbarImage.fillAmount = normalizedHealth;
+    }
+    public void SetHPAmount(int healthAmount) {
+        this.healthAmount.text = healthAmount.ToString();
     }
 }
