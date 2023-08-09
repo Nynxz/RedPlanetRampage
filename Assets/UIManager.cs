@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using static GameManager;
@@ -25,16 +23,16 @@ public class UIManager : MonoBehaviour {
     private readonly string scorePrefix = "Score: ";
 
     void Start() {
-        gameManager = GetComponent<GameManager>();    
+        gameManager = GetComponent<GameManager>();
     }
 
-    public void SetMoneyText(object sender, UpdateMoneyEventArgs e) {
+    public void SetMoneyText(object sender, PlayerManager.UpdateMoneyEventArgs e) {
         moneyText.text = moneyPrefix + e.moneyAmount.ToString();
     }
-    public void SetScoreText(object sender, UpdateScoreEventArgs e) {
+    public void SetScoreText(object sender, PlayerManager.UpdateScoreEventArgs e) {
         scoreText.text = scorePrefix + e.scoreAmount.ToString();
     }
-    public void SetAmmoText(UpdateAmmoArgs e) {
+    public void SetAmmoText(PlayerManager.UpdateAmmoArgs e) {
         SetAmmoText(e.currentInMag.ToString() + "/" + e.maximumInMag.ToString() + " | " + e.ammoLeft.ToString());
     }
     public void SetAmmoText(string text) {
