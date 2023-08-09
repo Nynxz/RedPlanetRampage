@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbf44bc842b8344b8ac771c81c7852b, type: 3}
+  m_Name: SniperBullet
+  m_EditorClassIdentifier: 
+  bulletName: Sniper Bullet
+  bulletDamage: 50
+  bulletSpeed: 200
+  bulletPrefab: {fileID: 5459100373442361604, guid: 428ab21903edb15468649a92149c5983, type: 3}
