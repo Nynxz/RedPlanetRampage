@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] private TextMeshProUGUI interactText;
 
     [Header ("HP Bar")]
     [SerializeField] private Image hpbarImage;
@@ -29,6 +30,8 @@ public class UIManager : MonoBehaviour {
 
     void Start() {
         gameManager = GetComponent<GameManager>();
+
+        interactText.gameObject.SetActive(false); //Disable Interact Text By Default
     }
 
     public void SetMoneyText(object sender, PlayerManager.UpdateMoneyEventArgs e) {
@@ -43,7 +46,14 @@ public class UIManager : MonoBehaviour {
     public void SetAmmoText(string text) {
         ammoText.text = text;
     }
-
+    public void SetHoverText(object sender, PlayerManager.OnHoverEventArgs e) {
+        if (e.hovering && !interactText.gameObject.activeInHierarchy) {
+            interactText.gameObject.SetActive(true);
+            interactText.text = e.hoverText;
+        } else {
+            interactText.gameObject.SetActive(false);
+        }
+    }
     public void SetHPBarFill(float normalizedHealth) {
         hpbarImage.fillAmount = normalizedHealth;
     }
