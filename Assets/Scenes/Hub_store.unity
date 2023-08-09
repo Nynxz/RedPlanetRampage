@@ -3772,6 +3772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2faab972bf72d428de5f2562880f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadManagersDebug: 1
   sceneList:
   - fromScene: {fileID: 102900000, guid: a30b778dfef736e48b86dd8e415ee8d8, type: 3}
     entrancePoint: {fileID: 1212177652}
