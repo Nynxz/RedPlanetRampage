@@ -18,7 +18,7 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private WeaponSO[] testWeapons;
 
-
+    private int currentWeaponIndex = 0;
 
     private void Start() {
         foreach(WeaponSO newWeapon in testWeapons) {
@@ -28,10 +28,11 @@ public class WeaponManager : MonoBehaviour
         currentWeaponVisual = null;
     }
 
-    private void EquipWeapon(WeaponSO weapon) {
+    public void EquipWeapon(WeaponSO weapon) {
         EquippedSO newEquip = ScriptableObject.CreateInstance<EquippedSO>();
         newEquip.weaponSO = weapon;
         newEquip.Setup();
+        newEquip.name = weapon.weaponData.weaponName;
         inventory.Add(newEquip);
         Debug.Log(inventory.Count);
     }
@@ -39,7 +40,7 @@ public class WeaponManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && currentShootTimer <= 0) {
+        if (GameManager.Instance.InputManager.shootInput && currentShootTimer <= 0 && currentWeaponIndex >= 0) {
             Shoot();
         }
         if (currentShootTimer > 0) {
@@ -55,7 +56,11 @@ public class WeaponManager : MonoBehaviour
             ChangeWeapon(inventory[1]);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            ChangeWeapon(inventory[2]);
+            currentWeaponIndex++;
+            if (currentWeaponIndex >= inventory.Count) {
+                currentWeaponIndex = 0;
+            }
+            ChangeWeapon(inventory[currentWeaponIndex]);
         }
         if (Input.GetKeyDown(KeyCode.Q)) {
             Destroy(currentWeaponVisual);
@@ -74,8 +79,8 @@ public class WeaponManager : MonoBehaviour
         Destroy(currentWeaponVisual);
         toShoot = false;
         currentEquippedWeaponSO = newWeapon;
-        currentShootTimer = currentEquippedWeaponSO.weaponSO.weaponShootCooldown;
-        currentWeaponVisual = Instantiate(currentEquippedWeaponSO.weaponSO.weaponPrefab, gunRoot);
+        currentShootTimer = currentEquippedWeaponSO.weaponSO.weaponData.weaponShootCooldown;
+        currentWeaponVisual = Instantiate(currentEquippedWeaponSO.weaponSO.weaponData.weaponPrefab, gunRoot);
         muzzleTransform = currentWeaponVisual.transform.Find("Muzzle");
         GameManager.Instance.UIManager.SetAmmoText(newWeapon.GetAmmoArgs());
     }
@@ -84,12 +89,12 @@ public class WeaponManager : MonoBehaviour
         toShoot = false;
         
         if (currentWeaponVisual != null) {
-            currentShootTimer = currentEquippedWeaponSO.weaponSO.weaponShootCooldown;
+            currentShootTimer = currentEquippedWeaponSO.weaponSO.weaponData.weaponShootCooldown;
             if (currentEquippedWeaponSO.CanShoot()) {
                 currentEquippedWeaponSO.Shoot();
-                GameObject b = Instantiate(currentEquippedWeaponSO.weaponSO.bulletSO.bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
+                GameObject b = Instantiate(currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
                 BulletTest bullet = b.GetComponent<BulletTest>();
-                bullet.Setup(gunRoot.forward, currentEquippedWeaponSO.weaponSO.bulletSO.bulletSpeed, currentEquippedWeaponSO.weaponSO.bulletSO.bulletDamage);
+                bullet.Setup(gunRoot.forward, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletSpeed, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletDamage);
                 GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
             }
         }
