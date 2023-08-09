@@ -41,8 +41,8 @@ public class EquippedSO : ScriptableObject
         }
     }
 
-    public GameManager.UpdateAmmoArgs GetAmmoArgs() {
-        return new GameManager.UpdateAmmoArgs() {
+    public PlayerManager.UpdateAmmoArgs GetAmmoArgs() {
+        return new PlayerManager.UpdateAmmoArgs() {
             currentInMag = currentAmmoInMag,
             maximumInMag = weaponSO.ammoCount,
             ammoLeft = totalAmmoLeft

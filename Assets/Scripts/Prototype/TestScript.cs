@@ -8,10 +8,10 @@ public class TestScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.UpdateMoney += OnUpdateMoney;    
+        GameManager.Instance.PlayerManager.UpdateMoney += OnUpdateMoney;    
     }
 
-    private void OnUpdateMoney(object sender, GameManager.UpdateMoneyEventArgs e) {
+    private void OnUpdateMoney(object sender, PlayerManager.UpdateMoneyEventArgs e) {
         Debug.Log("New Money :D");
     }
 

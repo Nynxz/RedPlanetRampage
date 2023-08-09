@@ -254,8 +254,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.6, y: 0, z: 9.85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 541966266071139008}
   - {fileID: 5648072140041460329}
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe2020bac5b46c4589cf2898c414019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 5
   waypoints: []
   enabled: 0
 --- !u!114 &1033077033654751081
@@ -291,6 +291,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   healthBarRect: {fileID: 2804245464858887251}
+  attackDamage: 15
+  attackRange: 1.4
+  attackCooldown: 0.8
 --- !u!195 &-7635570988330689517
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -301,7 +304,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
