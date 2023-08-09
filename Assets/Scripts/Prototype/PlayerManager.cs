@@ -1,10 +1,13 @@
 using StarterAssets;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using static GameManager;
 using static UnityEngine.InputSystem.InputSettings;
 
 public class PlayerManager : MonoBehaviour {
+
+    [SerializeField] private GameObject playerPrefab;
 
     [SerializeField] private Player player;
     private GameObject playerGameObject;
@@ -16,6 +19,8 @@ public class PlayerManager : MonoBehaviour {
     // Player Variables
     private int currentMoney = 0;
     private int currentScore = 0;
+
+    private Interactable currentInteractable;
 
 
     // Player Variable Update Events
@@ -35,27 +40,60 @@ public class PlayerManager : MonoBehaviour {
         public int scoreAmount;
     }
 
+    public event EventHandler<OnHoverEventArgs> OnHover;
+    public class OnHoverEventArgs : EventArgs {
+        public bool hovering;
+        public string hoverText;
+    }
 
+    private void Awake() {
+        playerGameObject = Instantiate(playerPrefab, transform.position, Quaternion.identity);
+        player = playerGameObject.GetComponent<Player>();
+    }
 
     void Start() {
         gameManager = GameManager.Instance;
         UpdateMoney += gameManager.UIManager.SetMoneyText;
         UpdateScore += gameManager.UIManager.SetScoreText;
-        playerGameObject = player.gameObject;
+        OnHover += gameManager.UIManager.SetHoverText;
     }
 
     void Update() {
-        if (gameManager.InputManager.interactInput) {
-            RaycastHit hit;
-            gameManager.InputManager.SetInteract(false);
-            if (Physics.Raycast(player.cameraRoot.position, player.cameraRoot.forward, out hit, player.interactRange, player.interactMask)) {
-                Debug.Log("Got Hit");
-                player.Damage(5);
-                if (hit.collider.TryGetComponent(out Interactable interactable)) {
+        // Raycast forward to see if theres an interactable
+        if (Physics.Raycast(player.cameraRoot.position, player.cameraRoot.forward, out RaycastHit hit, player.interactRange, player.interactMask)) {
+            if (hit.collider.TryGetComponent(out Interactable interactable)) {
+                
+                if (currentInteractable != interactable) {
+                    StartHovering(interactable);
+                }
+
+                if (gameManager.InputManager.interactInput) {
+                    gameManager.InputManager.SetInteract(false);
                     interactable.interact(playerGameObject);
+                    ClearHover();
                 }
             }
         }
+        else if(currentInteractable) {
+            ClearHover();
+        }
+    }
+
+    public void StartHovering(Interactable interactable) {
+        currentInteractable = interactable;
+        OnHover?.Invoke(this, new OnHoverEventArgs() {
+            hovering = true,
+            hoverText = interactable.onHoverText()
+        });
+    }
+
+    public void ClearHover() {
+        Debug.Log("Clearing Hovering");
+        currentInteractable = null;
+        OnHover?.Invoke(this, new OnHoverEventArgs() {
+            hovering = false,
+            hoverText = "You shouldn't be seeing this"
+        });
     }
 
     public void AddMoney(int amount) {
@@ -93,6 +131,7 @@ public class PlayerManager : MonoBehaviour {
 
         // Interaction Probe
         Gizmos.color = Color.green;
+        if(player)
         Gizmos.DrawLine(player.cameraRoot.position, player.cameraRoot.position + player.cameraRoot.forward * player.interactRange);
     }
 }
