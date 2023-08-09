@@ -6,8 +6,12 @@ using static UnityEngine.InputSystem.InputSettings;
 
 public class PlayerManager : MonoBehaviour {
 
-    private GameManager gameManager;
     [SerializeField] private Player player;
+    private GameObject playerGameObject;
+
+    private GameManager gameManager;
+    public Vector3 PlayerPosition => player.transform.position;
+    public Player GetPlayer => player;
 
     // Player Variables
     private int currentMoney = 0;
@@ -37,6 +41,7 @@ public class PlayerManager : MonoBehaviour {
         gameManager = GameManager.Instance;
         UpdateMoney += gameManager.UIManager.SetMoneyText;
         UpdateScore += gameManager.UIManager.SetScoreText;
+        playerGameObject = player.gameObject;
     }
 
     void Update() {
@@ -45,9 +50,9 @@ public class PlayerManager : MonoBehaviour {
             gameManager.InputManager.SetInteract(false);
             if (Physics.Raycast(player.cameraRoot.position, player.cameraRoot.forward, out hit, player.interactRange, player.interactMask)) {
                 Debug.Log("Got Hit");
-
+                player.Damage(5);
                 if (hit.collider.TryGetComponent(out Interactable interactable)) {
-                    interactable.interact(gameObject);
+                    interactable.interact(playerGameObject);
                 }
             }
         }
