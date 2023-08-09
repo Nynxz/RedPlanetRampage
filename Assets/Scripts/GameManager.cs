@@ -28,13 +28,4 @@ public class GameManager : MonoBehaviour {
             PlayerManager = GetComponent<PlayerManager>();
         }
     }
-
-    void Start() {
-        // When these events are 'invoked' call the SetText Method
-
-    }
-
-    // These are the functions you want to use to update the score and money
-
-
 }
