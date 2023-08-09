@@ -3,13 +3,53 @@ using UnityEngine;
 using UnityEngine.UI;
 using static GameManager;
 
+[System.Serializable]
+public class InGameUIVars {
+
+    public GameObject InGameGroup;
+
+    [Header("Text")]
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI interactText;
+
+    [Header("HP Bar")]
+    public Image hpbarImage;
+    public TextMeshProUGUI healthText;
+
+    [Header("Visul Prefabs")]
+    public GameObject hitmarkerRegular;
+    public GameObject hitmarkerHeadshot;
+
+    // String Decorators
+    public readonly string moneyPrefix = "$ ";
+    public readonly string scorePrefix = "Score: ";
+}
+
+[System.Serializable]
+public class ShopUIVars {
+
+    public GameObject ShopGroup;
+    public Button shopCloseButton;
+    public GameObject VerticalShopButtonGroup;
+    public GameObject ShopOptionPrefab;
+}
+
 public class UIManager : MonoBehaviour {
 
     private GameManager gameManager;
 
     [SerializeField] public Canvas UICanvas;
 
+
     // Inspector Fields
+
+    [SerializeField] public InGameUIVars gameUIVars;
+    [SerializeField] public ShopUIVars shopUIVars;
+
+/*    [Header("Ingame -----")]
+    [SerializeField] private GameObject inGameGroup;
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -24,40 +64,62 @@ public class UIManager : MonoBehaviour {
     [SerializeField] public GameObject hitmarkerRegular;
     [SerializeField] public GameObject hitmarkerHeadshot;
 
-    // String Decorators
-    private readonly string moneyPrefix = "$ ";
-    private readonly string scorePrefix = "Score: ";
+    [Header("Shop -----")]
+    [SerializeField] private GameObject shopGroup;
+*/
+
 
     void Start() {
         gameManager = GetComponent<GameManager>();
 
-        interactText.gameObject.SetActive(false); //Disable Interact Text By Default
+        gameUIVars.interactText.gameObject.SetActive(false); //Disable Interact Text By Default
+
+        shopUIVars.shopCloseButton.onClick.AddListener(CloseShop);
+    }
+
+    private void CloseShop() {
+        shopUIVars.ShopGroup.gameObject.SetActive(false);
+        gameUIVars.InGameGroup.gameObject.SetActive(true);
+
+        GameManager.Instance.InputManager.EnableInput();
+        Cursor.visible = false;
+
+        GameManager.Instance.InputManager.OptionsPressed -= CloseShop;
+    }
+    public void OpenShop() {
+        shopUIVars.ShopGroup.gameObject.SetActive(true);
+        gameUIVars.InGameGroup.gameObject.SetActive(false);
+
+        GameManager.Instance.InputManager.DisableInput();
+        Cursor.visible = true;
+
+        GameManager.Instance.InputManager.OptionsPressed += CloseShop;
     }
 
     public void SetMoneyText(object sender, PlayerManager.UpdateMoneyEventArgs e) {
-        moneyText.text = moneyPrefix + e.moneyAmount.ToString();
+        gameUIVars.moneyText.text = gameUIVars.moneyPrefix + e.moneyAmount.ToString();
     }
     public void SetScoreText(object sender, PlayerManager.UpdateScoreEventArgs e) {
-        scoreText.text = scorePrefix + e.scoreAmount.ToString();
+        gameUIVars.scoreText.text = gameUIVars.scorePrefix + e.scoreAmount.ToString();
     }
     public void SetAmmoText(PlayerManager.UpdateAmmoArgs e) {
         SetAmmoText(e.currentInMag.ToString() + "/" + e.maximumInMag.ToString() + " | " + e.ammoLeft.ToString());
     }
     public void SetAmmoText(string text) {
-        ammoText.text = text;
+        gameUIVars.ammoText.text = text;
     }
     public void SetHoverText(object sender, PlayerManager.OnHoverEventArgs e) {
-        if (e.hovering && !interactText.gameObject.activeInHierarchy) {
-            interactText.gameObject.SetActive(true);
-            interactText.text = e.hoverText;
+        if (e.hovering && !gameUIVars.interactText.gameObject.activeInHierarchy) {
+            gameUIVars.interactText.gameObject.SetActive(true);
+            gameUIVars.interactText.text = e.hoverText;
         } else {
-            interactText.gameObject.SetActive(false);
+            gameUIVars.interactText.gameObject.SetActive(false);
         }
     }
     public void SetHPBarFill(float normalizedHealth) {
-        hpbarImage.fillAmount = normalizedHealth;
+        gameUIVars.hpbarImage.fillAmount = normalizedHealth;
     }
     public void SetHPAmount(int healthAmount) {
-        this.healthAmount.text = healthAmount.ToString();
+        this.gameUIVars.healthText.text = healthAmount.ToString();
     }
 }

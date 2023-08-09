@@ -136,7 +136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9183664295295774612}
+  - {fileID: 3687331248349010557}
   - {fileID: 7586521122227995432}
   m_Father: {fileID: 5648608922891567685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1865cc3062a226441b0c392869548dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraRoot: {fileID: 5361719144747705337}
+  cameraRoot: {fileID: 3687331248349010557}
   interactMask:
     serializedVersion: 2
     m_Bits: 128
@@ -243,8 +243,6 @@ MonoBehaviour:
   inventory: []
   testWeapons:
   - {fileID: 11400000, guid: 3c348e7942548bf4eab90681f0aa7579, type: 2}
-  - {fileID: 11400000, guid: 7c33537301c0376469a2a914969f179c, type: 2}
-  - {fileID: 11400000, guid: b52d3e10e107f254da2bc8f045fbfd7b, type: 2}
 --- !u!143 &9108104918549503057
 CharacterController:
   m_ObjectHideFlags: 0
@@ -374,7 +372,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
---- !u!4 &9183664295295774612 stripped
+--- !u!4 &3687331248349010557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   m_PrefabInstance: {fileID: 5752486788422935967}

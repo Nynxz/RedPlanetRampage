@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public UIManager UIManager { get; private set; }
     public InputManager InputManager { get; private set; }
     public PlayerManager PlayerManager { get; private set; }
+    public ShopManager ShopManager { get; private set; }
 
     public static string previousScene;
     public static string currentScene;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour {
             UIManager = GetComponent<UIManager>();
             InputManager = GetComponent<InputManager>();
             PlayerManager = GetComponent<PlayerManager>();
+            ShopManager = GetComponent<ShopManager>();
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }
     }
