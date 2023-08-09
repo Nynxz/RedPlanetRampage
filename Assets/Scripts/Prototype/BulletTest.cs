@@ -48,11 +48,11 @@ public class BulletTest : MonoBehaviour
             if (enemy) {
                 if(hitHead) {
                     enemy.Damage(damage * headshotMultiplier);
-                    Instantiate(GameManager.Instance.UIManager.hitmarkerHeadshot, GameManager.Instance.UIManager.UICanvas.transform, false);
+                    Instantiate(GameManager.Instance.UIManager.gameUIVars.hitmarkerHeadshot, GameManager.Instance.UIManager.UICanvas.transform, false);
                     GameManager.Instance.PlayerManager.AddScore(10);
                 } else {
                     enemy.Damage(damage);
-                    Instantiate(GameManager.Instance.UIManager.hitmarkerRegular, GameManager.Instance.UIManager.UICanvas.transform, false);
+                    Instantiate(GameManager.Instance.UIManager.gameUIVars.hitmarkerRegular, GameManager.Instance.UIManager.UICanvas.transform, false);
                     GameManager.Instance.PlayerManager.AddScore(5);
                 }
                 
