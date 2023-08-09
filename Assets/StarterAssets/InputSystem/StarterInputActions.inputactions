@@ -1,5 +1,5 @@
 {
-    "name": "StarterAssets",
+    "name": "StarterInputActions",
     "maps": [
         {
             "name": "Player",
@@ -34,9 +34,9 @@
                 },
                 {
                     "name": "Sprint",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -45,6 +45,15 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "b48f5f52-9553-4d51-aa2e-eba6874936e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "44f44d47-dbcf-460d-9767-accede6a0462",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -247,6 +256,45 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4476515b-c1df-4c65-b87e-ec1327246593",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "22d1b024-31ff-4af3-8d7d-ff868ef03ad6",
+            "actions": [
+                {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "d52884e4-d8e5-40c7-a62b-7aa895d3dba7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0e5f7aa8-a3e1-4d9d-862e-43007346016b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Options",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
