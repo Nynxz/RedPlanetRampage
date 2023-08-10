@@ -3383,6 +3383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 505437729}
+  EventSystem: {fileID: 610578454}
   gameUIVars:
     InGameGroup: {fileID: 1603715726}
     moneyText: {fileID: 1574024692}
@@ -3445,6 +3446,7 @@ MonoBehaviour:
     selectedRateOfFire: {fileID: 318139906}
     selectedAmmo: {fileID: 986633697}
     BuyButton: {fileID: 1043406550}
+  currentItemList: []
 --- !u!1 &1912413285
 GameObject:
   m_ObjectHideFlags: 0
