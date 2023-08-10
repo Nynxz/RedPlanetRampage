@@ -243,6 +243,8 @@ MonoBehaviour:
   inventory: []
   testWeapons:
   - {fileID: 11400000, guid: 3c348e7942548bf4eab90681f0aa7579, type: 2}
+  - {fileID: 11400000, guid: b52d3e10e107f254da2bc8f045fbfd7b, type: 2}
+  - {fileID: 11400000, guid: 3b3a2ce5d373b024c842603a000a3c78, type: 2}
 --- !u!143 &9108104918549503057
 CharacterController:
   m_ObjectHideFlags: 0
