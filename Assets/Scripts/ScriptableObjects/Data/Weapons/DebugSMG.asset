@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44b44335d216f5544b4642432fb897cb, type: 3}
-  m_Name: TestSMG
+  m_Name: DebugSMG
   m_EditorClassIdentifier: 
   weaponData:
-    weaponName: Test SMG
-    weaponShootCooldown: 0.06
+    weaponName: Debug SMG
+    weaponShootCooldown: 0.03
     weaponPrefab: {fileID: 6765640387610621756, guid: 3f396d12c82dfca4d862c686ade66248, type: 3}
-    bulletSO: {fileID: 11400000, guid: bd638001764c68c4ca016afb096fb9a7, type: 2}
-    ammoCount: 30
-    magCount: 3
-    reloadTime: 2
+    bulletSO: {fileID: 11400000, guid: 8978a1ddb7af6b6459e0ad3879c4455a, type: 2}
+    ammoCount: 999
+    magCount: 9999
+    reloadTime: 0.1
   weaponShopData:
-    cost: 200
-    description: A Test SMG
+    cost: 0
+    description: FOR DEBUG
     icon: 

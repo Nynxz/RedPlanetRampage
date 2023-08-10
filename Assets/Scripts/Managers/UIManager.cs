@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static GameManager;
 
@@ -41,6 +42,7 @@ public class UIManager : MonoBehaviour {
     private GameManager gameManager;
 
     [SerializeField] public Canvas UICanvas;
+    [SerializeField] public EventSystem EventSystem;
 
 
     // Inspector Fields

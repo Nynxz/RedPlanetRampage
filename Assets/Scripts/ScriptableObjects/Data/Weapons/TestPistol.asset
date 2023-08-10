@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44b44335d216f5544b4642432fb897cb, type: 3}
-  m_Name: TestSniper
+  m_Name: TestPistol
   m_EditorClassIdentifier: 
   weaponData:
-    weaponName: Test Sniper
-    weaponShootCooldown: 3
-    weaponPrefab: {fileID: 6753099293054810322, guid: 360432e1ef503cf41abb979e43488b29, type: 3}
-    bulletSO: {fileID: 11400000, guid: 41ad4862b171d2a4ea178b55075ffdac, type: 2}
-    ammoCount: 5
-    magCount: 8
-    reloadTime: 2
+    weaponName: Test Pistol
+    weaponShootCooldown: 0.4
+    weaponPrefab: {fileID: 6753099293054810322, guid: 9fd4675194ebe874fbc94174b1233ab0, type: 3}
+    bulletSO: {fileID: 11400000, guid: 8978a1ddb7af6b6459e0ad3879c4455a, type: 2}
+    ammoCount: 8
+    magCount: 5
+    reloadTime: 1.5
   weaponShopData:
-    cost: 250
-    description: A Test Sniper
+    cost: 100
+    description: A Test Pistol
     icon: 

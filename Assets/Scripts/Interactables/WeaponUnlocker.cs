@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Used for unlocking weapons in the gameworld
+// TODO: Add Cost
 public class WeaponUnlocker : Interactable {
 
     [SerializeField] private WeaponSO newWeapon;

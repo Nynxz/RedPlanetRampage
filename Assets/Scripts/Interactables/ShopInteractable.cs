@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Used for opening the shop interface in the gameworld
 public class ShopInteractable : Interactable
 {
     public override void interact(GameObject player) {

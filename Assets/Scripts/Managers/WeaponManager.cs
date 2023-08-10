@@ -43,6 +43,7 @@ public class WeaponManager : MonoBehaviour
         if (GameManager.Instance.InputManager.shootInput && currentShootTimer <= 0 && currentWeaponIndex >= 0) {
             Shoot();
         }
+
         if (currentShootTimer > 0) {
             currentShootTimer -= Time.deltaTime;
         }
@@ -74,7 +75,9 @@ public class WeaponManager : MonoBehaviour
 
         }
     }
+    private void LateUpdate() {
 
+    }
     private void ChangeWeapon(EquippedSO newWeapon) {
         Destroy(currentWeaponVisual);
         toShoot = false;
@@ -93,8 +96,8 @@ public class WeaponManager : MonoBehaviour
             if (currentEquippedWeaponSO.CanShoot()) {
                 currentEquippedWeaponSO.Shoot();
                 GameObject b = Instantiate(currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
-                BulletTest bullet = b.GetComponent<BulletTest>();
-                bullet.Setup(gunRoot.forward, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletSpeed, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletDamage);
+                Bullet bullet = b.GetComponent<Bullet>();
+                bullet.Setup(muzzleTransform.forward, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletSpeed, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletDamage);
                 GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
             }
         }

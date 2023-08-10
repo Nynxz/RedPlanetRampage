@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         GameObject.DontDestroyOnLoad(PlayerManager.GetPlayer.gameObject);
         GameObject.DontDestroyOnLoad(UIManager.UICanvas.gameObject);
+        GameObject.DontDestroyOnLoad(UIManager.EventSystem.gameObject);
     }
 
 }
