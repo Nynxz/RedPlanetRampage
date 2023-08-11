@@ -2,16 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBullet : Bullet {
+public class BasicBullet : ProjectileBullet {
     [SerializeField] private bool doDifferent;
 
+    public override void OnEnemyHit(RaycastHit raycastHit) {
+        EnemyTest enemy = raycastHit.collider.GetComponentInParent<EnemyTest>();
+        bool hitHead = raycastHit.collider.TryGetComponent<HeadHitbox>(out _);
 
-    public override void OnEnable() {
-        base.OnEnable();
-        if(doDifferent) {
-            DoGroundHit = () => {
-                Debug.Log("jks different");
-            };
+        float damageToDeal = hitHead ? damage * headshotMultiplier : damage;
+        enemy.Damage(damageToDeal);
+
+        Instantiate(hitHead ? GameManager.Instance.UIManager.gameUIVars.hitmarkerHeadshot : GameManager.Instance.UIManager.gameUIVars.hitmarkerRegular
+            , GameManager.Instance.UIManager.UICanvas.transform, false);
+
+        GameManager.Instance.PlayerManager.AddScore(10);
+        Destroy(gameObject);
+    }
+
+    public override void OnGroundHit() {
+        Destroy(gameObject);
+    }
+
+    public void Update() {
+        if (Physics.Raycast(lastPos, (transform.position - lastPos).normalized, out RaycastHit hitInfo, Vector3.Distance(transform.position, lastPos), enemyAndGroundLayerMask)) {
+            if (groundLayerMask == (groundLayerMask | (1 << hitInfo.collider.gameObject.layer))) { //something something bitwise magic
+                DoGroundHit();
+            } else if (enemyLayerMask == (enemyLayerMask | (1 << hitInfo.collider.gameObject.layer))) {
+                DoEnemyHit(hitInfo);
+            }
         }
     }
 }

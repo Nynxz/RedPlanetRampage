@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class SniperBullet : Bullet {
-    [SerializeField] private bool doDifferent;
+public class SniperBullet : ProjectileBullet {
+
     private List<GameObject> alreadyHit;
 
     // Doesnt destroy itself when it hits an enemy "piercing"
@@ -16,7 +16,24 @@ public class SniperBullet : Bullet {
         DoEnemyHit = OnEnemyHit;
     }
 
-    public override void Update() {
+    public override void OnEnemyHit(RaycastHit hitInfo) {
+        EnemyTest enemy = hitInfo.collider.GetComponentInParent<EnemyTest>();
+        bool hitHead = hitInfo.collider.TryGetComponent<HeadHitbox>(out _);
+
+        float damageToDeal = hitHead ? damage * headshotMultiplier : damage;
+        enemy.Damage(damageToDeal);
+
+        Instantiate(hitHead ? GameManager.Instance.UIManager.gameUIVars.hitmarkerHeadshot : GameManager.Instance.UIManager.gameUIVars.hitmarkerRegular
+            , GameManager.Instance.UIManager.UICanvas.transform, false);
+
+        GameManager.Instance.PlayerManager.AddScore(10);
+    }
+
+    public override void OnGroundHit() {
+        Destroy(gameObject);
+    }
+
+    public void Update() {
         RaycastHit[] hits = Physics.RaycastAll(lastPos, (transform.position - lastPos).normalized, Vector3.Distance(transform.position, lastPos), enemyAndGroundLayerMask);
         if(hits.Length > 0 ) {
             foreach(RaycastHit hitInfo in hits) {
@@ -32,18 +49,5 @@ public class SniperBullet : Bullet {
                 }
             }
         }
-    }
-
-    private void OnEnemyHit(RaycastHit hitInfo) {
-        EnemyTest enemy = hitInfo.collider.GetComponentInParent<EnemyTest>();
-        bool hitHead = hitInfo.collider.TryGetComponent<HeadHitbox>(out _);
-
-        float damageToDeal = hitHead ? damage * headshotMultiplier : damage;
-        enemy.Damage(damageToDeal);
-
-        Instantiate(hitHead ? GameManager.Instance.UIManager.gameUIVars.hitmarkerHeadshot : GameManager.Instance.UIManager.gameUIVars.hitmarkerRegular
-            , GameManager.Instance.UIManager.UICanvas.transform, false);
-
-        GameManager.Instance.PlayerManager.AddScore(10);
     }
 }

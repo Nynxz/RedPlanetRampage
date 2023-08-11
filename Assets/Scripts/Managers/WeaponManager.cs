@@ -96,7 +96,7 @@ public class WeaponManager : MonoBehaviour
             if (currentEquippedWeaponSO.CanShoot()) {
                 currentEquippedWeaponSO.Shoot();
                 GameObject b = Instantiate(currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
-                Bullet bullet = b.GetComponent<Bullet>();
+                ProjectileBullet bullet = b.GetComponent<ProjectileBullet>();
                 bullet.Setup(muzzleTransform.forward, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletSpeed, currentEquippedWeaponSO.weaponSO.weaponData.bulletSO.bulletDamage);
                 GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
             }
