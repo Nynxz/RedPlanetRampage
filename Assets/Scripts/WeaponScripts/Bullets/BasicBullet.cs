@@ -13,7 +13,7 @@ public class BasicBullet : ProjectileBullet {
     }
 
     public override void OnEnemyHit(RaycastHit raycastHit) {
-        EnemyTest enemy = raycastHit.collider.GetComponentInParent<EnemyTest>();
+        IDamageable enemy = raycastHit.collider.GetComponentInParent<IDamageable>();
         bool hitHead = raycastHit.collider.TryGetComponent<HeadHitbox>(out _);
 
         float damageToDeal = hitHead ? damage * headshotMultiplier : damage;

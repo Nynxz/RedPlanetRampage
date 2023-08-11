@@ -17,7 +17,7 @@ public class SniperBullet : ProjectileBullet {
     }
 
     public override void OnEnemyHit(RaycastHit hitInfo) {
-        EnemyTest enemy = hitInfo.collider.GetComponentInParent<EnemyTest>();
+        IDamageable enemy = hitInfo.collider.GetComponentInParent<IDamageable>();
         bool hitHead = hitInfo.collider.TryGetComponent<HeadHitbox>(out _);
 
         float damageToDeal = hitHead ? damage * headshotMultiplier : damage;
