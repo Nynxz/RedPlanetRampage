@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public abstract class ProjectileBullet : Bullet {
 
@@ -14,7 +15,7 @@ public abstract class ProjectileBullet : Bullet {
     protected Action<RaycastHit> DoEnemyHit;
     protected Action DoGroundHit;
 
-    public void Setup(Vector3 forceDir, float speed, float damage) {
+    public virtual void Setup(Vector3 forceDir, float speed, float damage) {
         rb.AddForce(forceDir * speed);
         this.damage = damage;
     }

@@ -5,6 +5,13 @@ using UnityEngine;
 public class BasicBullet : ProjectileBullet {
     [SerializeField] private bool doDifferent;
 
+    public override void Setup(Vector3 forceDir, float speed, float damage) {
+        base.Setup(forceDir, speed, damage);
+        if (OnShootAudio) {
+            GameManager.Instance.AudioManager.PlayAudioClipOnPlayer(OnShootAudio);
+        }
+    }
+
     public override void OnEnemyHit(RaycastHit raycastHit) {
         EnemyTest enemy = raycastHit.collider.GetComponentInParent<EnemyTest>();
         bool hitHead = raycastHit.collider.TryGetComponent<HeadHitbox>(out _);
