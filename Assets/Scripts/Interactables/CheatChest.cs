@@ -9,6 +9,7 @@ public class CheatChest : Interactable {
 
     public override void interact(GameObject player) {
         player.GetComponent<WeaponManager>().FillAmmo();
+        player.GetComponent<Player>().TryHeal(100);
         Debug.Log("Interacting With Cheat Chest!");
     }
 

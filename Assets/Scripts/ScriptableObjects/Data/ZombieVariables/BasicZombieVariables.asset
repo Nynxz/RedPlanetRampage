@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e97ca343e51244fb9af8c42b3976c2, type: 3}
-  m_Name: HealthPickup25
+  m_Script: {fileID: 11500000, guid: b5cd8b603a640384487d522d08b0b0f2, type: 3}
+  m_Name: BasicZombieVariables
   m_EditorClassIdentifier: 
-  itemName: Health Pickup 25
-  itemPrefab: {fileID: 1457643679847270232, guid: 92a396435bad96a47a2546dcf210725a, type: 3}
+  attackDamage: 12
+  awakeRange: 25
+  chaseRange: 20
+  attackRange: 1.6
+  actionCooldown: 0.2
+  attackCooldown: 0

@@ -8,7 +8,7 @@ public class DropTableSO : ScriptableObject
 {
     [System.Serializable]
     public struct Drop {
-        public ItemSO item;
+        public Item item;
         public int chance;
     }
     public List<Drop> drops;
@@ -25,7 +25,7 @@ public class DropTableSO : ScriptableObject
         }
     }
 
-    public ItemSO RandomDrop() {
+    public Item RandomDrop() {
         float roll = Random.Range(0f, cumulativeChance);
         for (int i = 0; i < drops.Count; i++) {
             if (roll <= chancesMap[i]) {
