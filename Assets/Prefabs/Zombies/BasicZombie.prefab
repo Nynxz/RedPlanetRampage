@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   healthBarRect: {fileID: 2804245464858887251}
+  drops: {fileID: 11400000, guid: fe9a10c6ecde8fa49960e3c56f41fd3d, type: 2}
 --- !u!1 &7033539625452155885
 GameObject:
   m_ObjectHideFlags: 0

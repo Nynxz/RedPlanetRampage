@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class Zombie : MonoBehaviour, IDamageable {
 
     [SerializeField] private float startingHealth;
     [SerializeField] private RectTransform healthBarRect;
+    [SerializeField] private DropTableSO drops;
 
     private float currentHealth;
 
@@ -32,8 +34,18 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
     }
 
     public virtual void Die() {
-        Debug.Log("Enemy Died");
+        DropAnItem();
         Destroy(gameObject);
+    }
+
+    private void DropAnItem() {
+        if (drops != null) {
+            ItemSO item = drops.RandomDrop();
+            if (item == null) {
+                return;
+            }
+            item.DropItem(transform.position);
+        }
     }
 
     protected void UpdateHealthVisual() {

@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour {
     public Vector3 PlayerPosition => player.transform.position;
     public Player GetPlayer => player;
 
+
     // Player Variables
     private int currentMoney = 0;
     private int currentScore = 0;

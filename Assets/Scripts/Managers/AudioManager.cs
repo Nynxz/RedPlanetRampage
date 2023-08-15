@@ -9,8 +9,6 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource audioSource { get; private set; }
 
-
-    // Start is called before the first frame update
     void Start() {
         audioSource = GameManager.Instance.PlayerManager.GetPlayer.GetComponent<AudioSource>();
     }
