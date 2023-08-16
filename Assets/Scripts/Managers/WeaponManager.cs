@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
-{
+public class WeaponManager : MonoBehaviour {
     [SerializeField] private Transform gunRoot;
     [SerializeField] private List<EquippedSO> inventory;
 
@@ -20,9 +17,9 @@ public class WeaponManager : MonoBehaviour
 
     private int currentWeaponIndex = 0;
 
-    private void Start() {
-        foreach(WeaponSO newWeapon in testWeapons) {
-            Debug.Log("Equiping " +  newWeapon.name);
+    protected void Start() {
+        foreach (WeaponSO newWeapon in testWeapons) {
+            Debug.Log("Equiping " + newWeapon.name);
             EquipWeapon(newWeapon);
         }
         currentWeaponVisual = null;
@@ -38,8 +35,7 @@ public class WeaponManager : MonoBehaviour
     }
 
 
-    void Update()
-    {
+    protected void Update() {
         if (GameManager.Instance.InputManager.shootInput && currentShootTimer <= 0 && currentWeaponIndex >= 0) {
             Shoot();
         }
@@ -68,14 +64,14 @@ public class WeaponManager : MonoBehaviour
             currentWeaponVisual = null;
             GameManager.Instance.UIManager.SetAmmoText("No Weapon");
         }
-        if(Input.GetKeyDown(KeyCode.R)) {
+        if (Input.GetKeyDown(KeyCode.R)) {
             toShoot = false;
             currentEquippedWeaponSO.Reload();
             GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
 
         }
     }
-    private void LateUpdate() {
+    protected void LateUpdate() {
 
     }
     private void ChangeWeapon(EquippedSO newWeapon) {
@@ -90,7 +86,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Shoot() {
         toShoot = false;
-        
+
         if (currentWeaponVisual != null) {
             currentShootTimer = currentEquippedWeaponSO.weaponSO.weaponData.weaponShootCooldown;
             if (currentEquippedWeaponSO.CanShoot()) {

@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "Data/DropTable")]
-public class DropTableSO : ScriptableObject
-{
+public class DropTableSO : ScriptableObject {
+
     [System.Serializable]
     public struct Drop {
         public Item item;
@@ -16,7 +15,7 @@ public class DropTableSO : ScriptableObject
     private float cumulativeChance = 0f;
     float[] chancesMap;
 
-    public void OnEnable() {
+    protected void OnEnable() {
         cumulativeChance = 0f;
         chancesMap = new float[drops.Count];
         for (int i = 0; i < drops.Count; i++) {

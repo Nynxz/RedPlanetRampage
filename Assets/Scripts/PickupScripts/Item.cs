@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Item : MonoBehaviour {
     protected abstract bool TryOnPickup(Player player);
     [SerializeField] private AudioClip onPickupSound;
 
-    public void OnTriggerEnter(Collider collider) {
+    protected void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.TryGetComponent(out Player player)) {
             if (TryOnPickup(player)) {
                 PlayPickupSound();

@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
  * An abstract class for gameobjects in the world that are interactable
  */
-public abstract class Interactable : MonoBehaviour
-{
+public abstract class Interactable : MonoBehaviour {
 
     // What to do when the player 'interacts' with the gameobject
     public abstract void interact(GameObject player);

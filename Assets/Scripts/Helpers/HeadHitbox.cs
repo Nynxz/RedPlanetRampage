@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadHitbox : MonoBehaviour
-{
+// Used as a tag with Bullet detection, (TryGetComponent)
+public class HeadHitbox : MonoBehaviour {
 
 }

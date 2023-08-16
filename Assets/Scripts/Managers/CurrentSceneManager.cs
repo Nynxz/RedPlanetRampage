@@ -1,25 +1,26 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CurrentSceneManager : MonoBehaviour
-{
+// Script supposed to be placed in each scene, used for setting entrances of the scene and for startup settings
+public class CurrentSceneManager : MonoBehaviour {
 
-
+    // Used for force loading the manager scene without needing to start the game through main menu
     [SerializeField] private bool loadManagersDebug = false;
 
+    // Struct used for creating a list of entrances, 'when I come from scene X, go to position Y'
     [System.Serializable]
     public struct SceneEntrances {
         public SceneAsset fromScene;
         public Transform entrancePoint;
     }
 
+    // The list of entrances from other scenes
     [SerializeField] List<SceneEntrances> sceneList = new List<SceneEntrances>();
 
 
-    private void Awake() {
+    protected void Awake() {
         if (loadManagersDebug && !GameManager.Instance) {
             SceneManager.LoadScene("ManagerScene", LoadSceneMode.Additive);
             Cursor.visible = false;
@@ -31,13 +32,13 @@ public class CurrentSceneManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start() {
+    protected void Start() {
         Debug.Log("Starting");
         PositionPlayer();
     }
 
     private void PositionPlayer() {
-        foreach(SceneEntrances scene in sceneList) {
+        foreach (SceneEntrances scene in sceneList) {
             if (scene.fromScene.name == GameManager.previousScene) {
                 Debug.Log("Trying to position to point from: " + scene.fromScene + scene.entrancePoint.position);
                 Debug.Log(GameManager.previousScene + " --> " + GameManager.currentScene);
@@ -52,9 +53,4 @@ public class CurrentSceneManager : MonoBehaviour
         Debug.Log("Could Not Find an Entrance, player will be placed at last scenes position");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

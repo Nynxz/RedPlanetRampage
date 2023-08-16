@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletTest : MonoBehaviour
-{
+public class BulletTest : MonoBehaviour {
 
     private Rigidbody rb;
     [SerializeField] private int lifeTime;
@@ -44,7 +41,7 @@ public class BulletTest : MonoBehaviour
     }
 
     // https://www.youtube.com/watch?v=Rqs81nnUlBY
-     private void Update() {
+    private void Update() {
         // TODO: Issue, what if multiple enemies are in the raycast line
         if (!destroyOnEnemyHit) {
             RaycastHit[] hits = Physics.RaycastAll(lastPos, (transform.position - lastPos).normalized, Vector3.Distance(transform.position, lastPos), enemyLayerMask);
@@ -78,8 +75,7 @@ public class BulletTest : MonoBehaviour
                 Debug.Log(alreadyHit.Count);
 
             }
-        } 
-        else if (Physics.Raycast(lastPos, (transform.position - lastPos).normalized, out RaycastHit hit, Vector3.Distance(transform.position, lastPos), enemyLayerMask)) {
+        } else if (Physics.Raycast(lastPos, (transform.position - lastPos).normalized, out RaycastHit hit, Vector3.Distance(transform.position, lastPos), enemyLayerMask)) {
             Destroy(gameObject);
 
             EnemyTest enemy = hit.collider.GetComponentInParent<EnemyTest>();

@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HitmarkerAutofade : MonoBehaviour
-{
+// Used to fade the alpha of an image to 0, then destroy the gameobject this script is attached to
+public class HitmarkerAutofade : MonoBehaviour {
+
     private Image image;
 
-    private void Awake() {
+    protected void Awake() {
         image = GetComponent<Image>();
     }
-    void Update()
-    {
+    protected void Update() {
         image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - Time.deltaTime);
-        if(image.color.a <= 0) {
+        if (image.color.a <= 0) {
             Destroy(gameObject);
         }
     }

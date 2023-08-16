@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public abstract class ProjectileBullet : Bullet {
 
@@ -20,7 +18,7 @@ public abstract class ProjectileBullet : Bullet {
         this.damage = damage;
     }
 
-    public virtual void OnEnable() {
+    protected virtual void OnEnable() {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(AutoRemove(gameObject, maxLifeTime));
 
@@ -30,7 +28,7 @@ public abstract class ProjectileBullet : Bullet {
         DoEnemyHit = OnEnemyHit;
     }
 
-    public virtual void LateUpdate() {
+    protected virtual void LateUpdate() {
         lastPos = transform.position;
     }
 

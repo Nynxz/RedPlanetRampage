@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // https://youtu.be/ALSTea0HXZI  example of scriptable objects for weapons, there are many
@@ -29,8 +27,7 @@ public class WeaponShopData {
 // The raw weapon data, these are not modified at runtime, we put this data into an EquippedSO
 [CreateAssetMenu(menuName = "Data/Weapon")]
 [System.Serializable]
-public class WeaponSO : ScriptableObject
-{
+public class WeaponSO : ScriptableObject {
     public WeaponData weaponData;
     public WeaponShopData weaponShopData;
 

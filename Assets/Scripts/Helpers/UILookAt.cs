@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class UILookAt : MonoBehaviour
-{
+// Rotates the gameobject to face the camera, used for healthbars currently
+public class UILookAt : MonoBehaviour {
     //https://www.youtube.com/watch?v=ccqiNWsYJnI
-    private void LateUpdate() {
+    protected void LateUpdate() {
         transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
     }
 }

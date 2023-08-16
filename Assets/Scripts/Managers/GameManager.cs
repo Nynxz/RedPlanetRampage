@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,8 +21,8 @@ public class GameManager : MonoBehaviour {
     public static string currentScene;
 
 
-    private void Awake() {
-        GameObject.DontDestroyOnLoad(this);
+    protected void Awake() {
+        DontDestroyOnLoad(this);
 
         // Set Singleton Instance to First Created Instance
         if (Instance != null) {
@@ -39,6 +38,11 @@ public class GameManager : MonoBehaviour {
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }
     }
+    protected void Start() {
+        DontDestroyOnLoad(PlayerManager.GetPlayer.gameObject);
+        DontDestroyOnLoad(UIManager.UICanvas.gameObject);
+        DontDestroyOnLoad(UIManager.EventSystem.gameObject);
+    }
 
     private void SceneManager_activeSceneChanged(Scene current, Scene next) {
         if (current.name == null) {
@@ -52,11 +56,4 @@ public class GameManager : MonoBehaviour {
         }
         Debug.Log(previousScene + " --> " + currentScene);
     }
-
-    private void Start() {
-        GameObject.DontDestroyOnLoad(PlayerManager.GetPlayer.gameObject);
-        GameObject.DontDestroyOnLoad(UIManager.UICanvas.gameObject);
-        GameObject.DontDestroyOnLoad(UIManager.EventSystem.gameObject);
-    }
-
 }

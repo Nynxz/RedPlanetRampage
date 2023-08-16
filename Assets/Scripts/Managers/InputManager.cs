@@ -1,14 +1,10 @@
-using StarterAssets;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour {
 
     private StarterInputActions inputActions;
-    
+
     public Vector2 moveInput { get; private set; }
     public Vector2 lookInput { get; private set; }
     public bool jumpInput { get; private set; }
@@ -25,7 +21,7 @@ public class InputManager : MonoBehaviour {
 
     public Action OptionsPressed;
 
-    void Start() {
+    protected void Start() {
 
         inputActions = new StarterInputActions();
         inputActions.Enable();
@@ -49,7 +45,7 @@ public class InputManager : MonoBehaviour {
         inputActions.Player.Shoot.canceled += (ctx) => { shootInput = false; };
 
         inputActions.Menu.Options.started += (ctx) => { optionsInput = true; OptionsPressed?.Invoke(); };
-        inputActions.Menu.Options.canceled += (ctx) => { optionsInput = false;  };
+        inputActions.Menu.Options.canceled += (ctx) => { optionsInput = false; };
     }
 
     public void DisableInput() {
@@ -62,7 +58,7 @@ public class InputManager : MonoBehaviour {
 
     }
 
-    private void OnApplicationFocus(bool hasFocus) {
+    protected void OnApplicationFocus(bool hasFocus) {
         SetCursorState(cursorLocked);
     }
     private void SetCursorState(bool newState) {

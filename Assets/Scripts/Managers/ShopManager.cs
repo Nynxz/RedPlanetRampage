@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -16,8 +15,7 @@ public class ShopUI {
     public Button BuyButton;
 }
 
-public class ShopManager : MonoBehaviour
-{
+public class ShopManager : MonoBehaviour {
     public ShopSO startingShopSO;
 
     [SerializeField] private ShopUI shopUI;
@@ -30,7 +28,7 @@ public class ShopManager : MonoBehaviour
 
 
 
-    private void Start() {
+    protected void Start() {
         currentItemList = new List<GameObject>();
         currentShopSO = ScriptableObject.CreateInstance<ShopSO>();
         currentShopSO.weaponsForSale = Instantiate(startingShopSO).weaponsForSale;
@@ -62,7 +60,7 @@ public class ShopManager : MonoBehaviour
 
     private void TryBuySelectedItem() {
         Debug.Log("Buying?");
-        if(selectedItem != null) {
+        if (selectedItem != null) {
             GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().EquipWeapon(selectedItem);
         }
     }

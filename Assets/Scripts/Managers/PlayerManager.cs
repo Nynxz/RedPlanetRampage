@@ -1,9 +1,5 @@
-using StarterAssets;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using static GameManager;
-using static UnityEngine.InputSystem.InputSettings;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -47,23 +43,23 @@ public class PlayerManager : MonoBehaviour {
         public string hoverText;
     }
 
-    private void Awake() {
+    protected void Awake() {
         playerGameObject = Instantiate(playerPrefab, transform.position, Quaternion.identity);
         player = playerGameObject.GetComponent<Player>();
     }
 
-    void Start() {
+    protected void Start() {
         gameManager = GameManager.Instance;
         UpdateMoney += gameManager.UIManager.SetMoneyText;
         UpdateScore += gameManager.UIManager.SetScoreText;
         OnHover += gameManager.UIManager.SetHoverText;
     }
 
-    void Update() {
+    protected void Update() {
         // Raycast forward to see if theres an interactable
         if (Physics.Raycast(player.cameraRoot.position, player.cameraRoot.forward, out RaycastHit hit, player.interactRange, player.interactMask)) {
             if (hit.collider.TryGetComponent(out Interactable interactable)) {
-                
+
                 if (currentInteractable != interactable) {
                     StartHovering(interactable);
                 }
@@ -74,8 +70,7 @@ public class PlayerManager : MonoBehaviour {
                     ClearHover();
                 }
             }
-        }
-        else if(currentInteractable) {
+        } else if (currentInteractable) {
             ClearHover();
         }
     }
@@ -128,11 +123,11 @@ public class PlayerManager : MonoBehaviour {
         });
     }
 
-    private void OnDrawGizmos() {
+    protected void OnDrawGizmos() {
 
         // Interaction Probe
         Gizmos.color = Color.green;
-        if(player)
-        Gizmos.DrawLine(player.cameraRoot.position, player.cameraRoot.position + player.cameraRoot.forward * player.interactRange);
+        if (player)
+            Gizmos.DrawLine(player.cameraRoot.position, player.cameraRoot.position + player.cameraRoot.forward * player.interactRange);
     }
 }

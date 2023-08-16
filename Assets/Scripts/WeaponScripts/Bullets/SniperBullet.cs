@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class SniperBullet : ProjectileBullet {
@@ -9,7 +7,7 @@ public class SniperBullet : ProjectileBullet {
 
     // Doesnt destroy itself when it hits an enemy "piercing"
 
-    public override void OnEnable() {
+    protected override void OnEnable() {
         base.OnEnable();
 
         alreadyHit = new List<GameObject>();
@@ -33,10 +31,10 @@ public class SniperBullet : ProjectileBullet {
         Destroy(gameObject);
     }
 
-    public void Update() {
+    protected void Update() {
         RaycastHit[] hits = Physics.RaycastAll(lastPos, (transform.position - lastPos).normalized, Vector3.Distance(transform.position, lastPos), enemyAndGroundLayerMask);
-        if(hits.Length > 0 ) {
-            foreach(RaycastHit hitInfo in hits) {
+        if (hits.Length > 0) {
+            foreach (RaycastHit hitInfo in hits) {
                 if (groundLayerMask == (groundLayerMask | (1 << hitInfo.collider.gameObject.layer))) {
                     DoGroundHit();
                 } else if (enemyLayerMask == (enemyLayerMask | (1 << hitInfo.collider.gameObject.layer))) {

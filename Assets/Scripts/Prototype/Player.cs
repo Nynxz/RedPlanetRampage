@@ -43,15 +43,15 @@ public class Player : MonoBehaviour {
     public bool TryHeal(float amount) {
         if (currentHealth >= startingHealth) return false; // Cannot Heal, already max
 
-        if(amount + currentHealth >= startingHealth) { //If healing the amount would take us over starting, take us to starting
+        if (amount + currentHealth >= startingHealth) { //If healing the amount would take us over starting, take us to starting
             currentHealth = startingHealth;
         } else { // Else heal the amount
             currentHealth += amount;
         }
 
         GameManager.Instance.UIManager.SetHPBarFill(GetHealthNormalized());
-        GameManager.Instance.UIManager.SetHPAmount((int)currentHealth); 
-        
+        GameManager.Instance.UIManager.SetHPAmount((int)currentHealth);
+
         return true;
 
     }

@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyTest : MonoBehaviour
-{
+public class EnemyTest : MonoBehaviour {
     [SerializeField] private float startingHealth;
     [SerializeField] private RectTransform healthBarRect;
 
@@ -26,17 +23,17 @@ public class EnemyTest : MonoBehaviour
 
     private void Update() {
         agent.SetDestination(GameManager.Instance.PlayerManager.PlayerPosition);
-        if(Vector3.Distance(transform.position, GameManager.Instance.PlayerManager.PlayerPosition) <= attackRange) {
+        if (Vector3.Distance(transform.position, GameManager.Instance.PlayerManager.PlayerPosition) <= attackRange) {
             Attack();
         }
 
-        if(currentAttackCooldown <= attackCooldown) {
+        if (currentAttackCooldown <= attackCooldown) {
             currentAttackCooldown += Time.deltaTime;
         }
     }
 
     public void Attack() {
-        if(currentAttackCooldown >= attackCooldown) {
+        if (currentAttackCooldown >= attackCooldown) {
             currentAttackCooldown = 0;
             GameManager.Instance.PlayerManager.GetPlayer.Damage(attackDamage);
             Debug.Log("Attacking player for " + attackDamage + " damage");

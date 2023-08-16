@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static GameManager;
 
 [System.Serializable]
 public class InGameUIVars {
@@ -50,28 +49,28 @@ public class UIManager : MonoBehaviour {
     [SerializeField] public InGameUIVars gameUIVars;
     [SerializeField] public ShopUIVars shopUIVars;
 
-/*    [Header("Ingame -----")]
-    [SerializeField] private GameObject inGameGroup;
-    [Header("Text")]
-    [SerializeField] private TextMeshProUGUI moneyText;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI ammoText;
-    [SerializeField] private TextMeshProUGUI interactText;
+    /*    [Header("Ingame -----")]
+        [SerializeField] private GameObject inGameGroup;
+        [Header("Text")]
+        [SerializeField] private TextMeshProUGUI moneyText;
+        [SerializeField] private TextMeshProUGUI scoreText;
+        [SerializeField] private TextMeshProUGUI ammoText;
+        [SerializeField] private TextMeshProUGUI interactText;
 
-    [Header ("HP Bar")]
-    [SerializeField] private Image hpbarImage;
-    [SerializeField] private TextMeshProUGUI healthAmount;
+        [Header ("HP Bar")]
+        [SerializeField] private Image hpbarImage;
+        [SerializeField] private TextMeshProUGUI healthAmount;
 
-    [Header("Visual Prefabs")]
-    [SerializeField] public GameObject hitmarkerRegular;
-    [SerializeField] public GameObject hitmarkerHeadshot;
+        [Header("Visual Prefabs")]
+        [SerializeField] public GameObject hitmarkerRegular;
+        [SerializeField] public GameObject hitmarkerHeadshot;
 
-    [Header("Shop -----")]
-    [SerializeField] private GameObject shopGroup;
-*/
+        [Header("Shop -----")]
+        [SerializeField] private GameObject shopGroup;
+    */
 
 
-    void Start() {
+    protected void Start() {
         gameManager = GetComponent<GameManager>();
 
         gameUIVars.interactText.gameObject.SetActive(false); //Disable Interact Text By Default

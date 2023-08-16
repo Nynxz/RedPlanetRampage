@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
-{
+public class EnemySpawner : MonoBehaviour {
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private List<Transform> spawnPoints;
@@ -21,9 +19,9 @@ public class EnemySpawner : MonoBehaviour
         currentDelay -= Time.deltaTime;
         if (currentDelay <= 0) {
             currentDelay = spawnDelay;
-            Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Count-1)]);
+            Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Count - 1)]);
         }
-        
+
     }
 
     private void OnDrawGizmos() {

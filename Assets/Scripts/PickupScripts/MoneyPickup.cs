@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyPickup : Item
-{
+public class MoneyPickup : Item {
     [SerializeField] private int moneyAmount;
     protected override bool TryOnPickup(Player player) {
         GameManager.Instance.PlayerManager.AddMoney(moneyAmount);

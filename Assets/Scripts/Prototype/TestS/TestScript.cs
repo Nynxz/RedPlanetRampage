@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TestScript : MonoBehaviour
-{
+public class TestScript : MonoBehaviour {
 
     // Start is called before the first frame update
-    void Start()
-    {
-        GameManager.Instance.PlayerManager.UpdateMoney += OnUpdateMoney;    
+    void Start() {
+        GameManager.Instance.PlayerManager.UpdateMoney += OnUpdateMoney;
     }
 
     private void OnUpdateMoney(object sender, PlayerManager.UpdateMoneyEventArgs e) {

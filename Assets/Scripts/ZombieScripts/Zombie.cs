@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -39,7 +37,7 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
     }
 
 
-    public void Update() {
+    protected void Update() {
         if (currentCooldown >= actionCooldown) {
             currentCooldown = 0;
         }
@@ -60,11 +58,11 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
     }
 
     protected virtual void DoAsleep() {
-        if(distanceToPlayer < zombieVariables.awakeRange && !stayAsleep) {
+        if (distanceToPlayer < zombieVariables.awakeRange && !stayAsleep) {
             ZombieAnimationController animController = GetComponentInChildren<ZombieAnimationController>();
             if (animController != null && animController.isStanding) {
                 state = ZombieState.Wandering;
-            } else if(animController == null) {
+            } else if (animController == null) {
                 state = ZombieState.Wandering;
             }
         }
@@ -90,7 +88,7 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
             navAgent.enabled = true;
 
             state = ZombieState.Chasing;
-        } else if(currentCooldown >= actionCooldown) {
+        } else if (currentCooldown >= actionCooldown) {
             GameManager.Instance.PlayerManager.GetPlayer.Damage(zombieVariables.attackDamage);
         }
     }
@@ -135,7 +133,7 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
         healthBarRect.localScale = new Vector3(normalizedHealth, 1f, 1f);
     }
 
-    public void OnDrawGizmos() {
+    protected void OnDrawGizmos() {
         if (!drawGizmos) return;
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, zombieVariables.awakeRange);

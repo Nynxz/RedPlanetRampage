@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // A scriptable object for converting the weaponSO "Data" into a weapon the player actually uses
 // We do not create instances manually of this usually, as these are generated at runtime,
 // eg: when the player buys a weapon
 // each EquippedSO has its own ammo currently, this allows you to have two of the same weapon with different ammo counts
-public class EquippedSO : ScriptableObject
-{
+public class EquippedSO : ScriptableObject {
     public WeaponSO weaponSO;
     private int currentAmmoInMag;
     private int totalAmmoLeft;
@@ -39,9 +36,9 @@ public class EquippedSO : ScriptableObject
 
     // Reload the mag, taking ammo from ammoCount if available 
     public void Reload() {
-        if(totalAmmoLeft <= 0) {
+        if (totalAmmoLeft <= 0) {
             Debug.Log("No Ammo Left");
-        }else if (weaponSO.weaponData.ammoCount - currentAmmoInMag <= totalAmmoLeft) {
+        } else if (weaponSO.weaponData.ammoCount - currentAmmoInMag <= totalAmmoLeft) {
             totalAmmoLeft -= weaponSO.weaponData.ammoCount - currentAmmoInMag;
             currentAmmoInMag = weaponSO.weaponData.ammoCount;
         } else { // Reload as much as we can
