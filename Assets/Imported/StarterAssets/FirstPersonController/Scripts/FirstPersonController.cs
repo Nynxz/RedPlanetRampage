@@ -68,6 +68,8 @@ namespace StarterAssets {
 
         private InputManager inputManager;
 
+        private Player player;
+
 
         private void Awake() {
             // get a reference to our main camera
@@ -77,7 +79,7 @@ namespace StarterAssets {
         }
 
         private void Start() {
-
+            player = GetComponent<Player>();
             inputManager = GameManager.Instance.InputManager;
             _controller = GetComponent<CharacterController>();
 
@@ -124,7 +126,7 @@ namespace StarterAssets {
 
         private void Move() {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = inputManager.sprintInput ? SprintSpeed : MoveSpeed;
+            float targetSpeed = inputManager.sprintInput ? SprintSpeed * player.playerStats.SprintSpeedModifier : MoveSpeed * player.playerStats.MoveSpeedModifier;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 

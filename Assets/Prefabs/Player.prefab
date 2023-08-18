@@ -205,6 +205,7 @@ MonoBehaviour:
     m_Bits: 128
   interactRange: 2
   startingHealth: 100
+  startingStats: {fileID: 11400000, guid: eb5747db0d5a9ec4785e6a06058761cc, type: 2}
 --- !u!114 &3062337082453638257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunRoot: {fileID: 7586521122227995432}
   inventory: []
+  playerInventory: {fileID: 11400000, guid: 510706637802847488e1c060eb3d921c, type: 2}
   testWeapons:
   - {fileID: 11400000, guid: 3c348e7942548bf4eab90681f0aa7579, type: 2}
   - {fileID: 11400000, guid: b52d3e10e107f254da2bc8f045fbfd7b, type: 2}

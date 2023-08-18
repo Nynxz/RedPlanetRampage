@@ -7,9 +7,9 @@ public class Player : MonoBehaviour {
     [SerializeField] public Transform cameraRoot;
     [SerializeField] public LayerMask interactMask;
     [SerializeField] public float interactRange;
-
-
     [SerializeField] public float startingHealth;
+    [SerializeField] private PlayerStatsSO startingStats; // Not Used Except at start
+    public PlayerStatsSO playerStats { get; private set; }
     private float currentHealth;
 
 
@@ -18,11 +18,7 @@ public class Player : MonoBehaviour {
         currentHealth = startingHealth;
         GameManager.Instance.UIManager.SetHPBarFill(GetHealthNormalized());
         GameManager.Instance.UIManager.SetHPAmount((int)currentHealth);
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        playerStats = Instantiate(startingStats); // Create a clone
     }
 
 
