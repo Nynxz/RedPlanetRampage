@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class CurrentSceneManager : MonoBehaviour {
 
     // Used for force loading the manager scene without needing to start the game through main menu
-    [SerializeField] private bool loadManagersDebug = false;
+    //[SerializeField] private bool loadManagersDebug = false;
 
     // Struct used for creating a list of entrances, 'when I come from scene X, go to position Y'
     [System.Serializable]
@@ -21,7 +21,7 @@ public class CurrentSceneManager : MonoBehaviour {
 
 
     protected void Awake() {
-        if (loadManagersDebug && !GameManager.Instance) {
+        if (!GameManager.Instance) {
             SceneManager.LoadScene("ManagerScene", LoadSceneMode.Additive);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;

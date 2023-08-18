@@ -43,31 +43,9 @@ public class UIManager : MonoBehaviour {
     [SerializeField] public Canvas UICanvas;
     [SerializeField] public EventSystem EventSystem;
 
-
     // Inspector Fields
-
     [SerializeField] public InGameUIVars gameUIVars;
     [SerializeField] public ShopUIVars shopUIVars;
-
-    /*    [Header("Ingame -----")]
-        [SerializeField] private GameObject inGameGroup;
-        [Header("Text")]
-        [SerializeField] private TextMeshProUGUI moneyText;
-        [SerializeField] private TextMeshProUGUI scoreText;
-        [SerializeField] private TextMeshProUGUI ammoText;
-        [SerializeField] private TextMeshProUGUI interactText;
-
-        [Header ("HP Bar")]
-        [SerializeField] private Image hpbarImage;
-        [SerializeField] private TextMeshProUGUI healthAmount;
-
-        [Header("Visual Prefabs")]
-        [SerializeField] public GameObject hitmarkerRegular;
-        [SerializeField] public GameObject hitmarkerHeadshot;
-
-        [Header("Shop -----")]
-        [SerializeField] private GameObject shopGroup;
-    */
 
 
     protected void Start() {
