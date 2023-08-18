@@ -61,7 +61,7 @@ public class ShopManager : MonoBehaviour {
     private void TryBuySelectedItem() {
         Debug.Log("Buying?");
         if (selectedItem != null) {
-            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().EquipWeapon(selectedItem);
+            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().AddWeaponToInventory(selectedItem);
         }
     }
 

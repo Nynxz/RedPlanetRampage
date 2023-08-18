@@ -10,16 +10,19 @@ public class InputManager : MonoBehaviour {
     public bool jumpInput { get; private set; }
     public bool sprintInput { get; private set; }
     public bool interactInput { get; private set; }
-    public bool shootInput { get; private set; }
     public bool optionsInput { get; private set; }
 
     private bool cursorLocked = true;
 
 
+    // Event Implementations of Inputs
+    public event Action OnShoot;
+    public event Action OptionsPressed;
+
+
     public void SetJump(bool val) => jumpInput = val;
     public void SetInteract(bool val) => interactInput = val;
 
-    public Action OptionsPressed;
 
     protected void Start() {
 
@@ -41,11 +44,12 @@ public class InputManager : MonoBehaviour {
         inputActions.Player.Interact.started += (ctx) => { interactInput = true; };
         inputActions.Player.Interact.canceled += (ctx) => { interactInput = false; };
 
-        inputActions.Player.Shoot.started += (ctx) => { shootInput = true; };
-        inputActions.Player.Shoot.canceled += (ctx) => { shootInput = false; };
-
         inputActions.Menu.Options.started += (ctx) => { optionsInput = true; OptionsPressed?.Invoke(); };
         inputActions.Menu.Options.canceled += (ctx) => { optionsInput = false; };
+
+
+        inputActions.Menu.Options.performed += (ctx) => OptionsPressed?.Invoke();
+        inputActions.Player.Shoot.performed += (ctx) => OnShoot?.Invoke();
     }
 
     public void DisableInput() {

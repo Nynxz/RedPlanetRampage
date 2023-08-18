@@ -1,9 +1,16 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class WeaponManager : MonoBehaviour {
+
+
+
     [SerializeField] private Transform gunRoot;
     [SerializeField] private List<EquippedSO> inventory;
+    [SerializeField] private PlayerInventorySO playerInventory;
 
     private EquippedSO currentEquippedWeaponSO;
     private GameObject currentWeaponVisual;
@@ -20,25 +27,28 @@ public class WeaponManager : MonoBehaviour {
     protected void Start() {
         foreach (WeaponSO newWeapon in testWeapons) {
             Debug.Log("Equiping " + newWeapon.name);
-            EquipWeapon(newWeapon);
+            AddWeaponToInventory(newWeapon);
         }
         currentWeaponVisual = null;
+
+
+        GameManager.Instance.InputManager.OnShoot += TryShoot;
     }
 
-    public void EquipWeapon(WeaponSO weapon) {
-        EquippedSO newEquip = ScriptableObject.CreateInstance<EquippedSO>();
-        newEquip.weaponSO = weapon;
-        newEquip.Setup();
-        newEquip.name = weapon.weaponData.weaponName;
-        inventory.Add(newEquip);
+    private void TryShoot() {
+        // TODO: Check if weapon is equipped
+        if(currentShootTimer <= 0) {
+            Shoot();
+        }
+    }
+
+    public void AddWeaponToInventory(WeaponSO weapon) {
+        inventory.Add(CreateEquippedSOFromWeaponSO(weapon));
         Debug.Log(inventory.Count);
     }
 
 
     protected void Update() {
-        if (GameManager.Instance.InputManager.shootInput && currentShootTimer <= 0 && currentWeaponIndex >= 0) {
-            Shoot();
-        }
 
         if (currentShootTimer > 0) {
             currentShootTimer -= Time.deltaTime;
@@ -46,12 +56,13 @@ public class WeaponManager : MonoBehaviour {
 
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            ChangeWeapon(inventory[0]);
+            ChangeWeapon(playerInventory.weapons.weaponOne);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            ChangeWeapon(inventory[1]);
+            ChangeWeapon(playerInventory.weapons.weaponTwo);
         }
+
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
             currentWeaponIndex++;
             if (currentWeaponIndex >= inventory.Count) {
@@ -71,10 +82,10 @@ public class WeaponManager : MonoBehaviour {
 
         }
     }
-    protected void LateUpdate() {
 
-    }
     private void ChangeWeapon(EquippedSO newWeapon) {
+        if (newWeapon == null) return;
+        
         Destroy(currentWeaponVisual);
         toShoot = false;
         currentEquippedWeaponSO = newWeapon;
@@ -103,5 +114,14 @@ public class WeaponManager : MonoBehaviour {
         currentEquippedWeaponSO.FillAmmo();
         GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
 
+    }
+
+
+    public static EquippedSO CreateEquippedSOFromWeaponSO(WeaponSO weapon) {
+        EquippedSO equippedSO = ScriptableObject.CreateInstance<EquippedSO>();
+        equippedSO.weaponSO = weapon;
+        equippedSO.Setup();
+        equippedSO.name = weapon.weaponData.weaponName;
+        return equippedSO;
     }
 }
