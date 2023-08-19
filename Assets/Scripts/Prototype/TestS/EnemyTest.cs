@@ -35,7 +35,7 @@ public class EnemyTest : MonoBehaviour {
     public void Attack() {
         if (currentAttackCooldown >= attackCooldown) {
             currentAttackCooldown = 0;
-            GameManager.Instance.PlayerManager.GetPlayer.Damage(attackDamage);
+            GameManager.Instance.PlayerManager.Player.Damage(attackDamage);
             Debug.Log("Attacking player for " + attackDamage + " damage");
         }
     }

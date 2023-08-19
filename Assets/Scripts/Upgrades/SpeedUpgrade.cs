@@ -18,17 +18,17 @@ public class SpeedUpgrade : UpgradeAbilitySO {
 
     public override void Equip() {
         if(speedType == SpeedType.Move) {
-            GameManager.Instance.PlayerManager.GetPlayer.playerStats.MoveSpeedModifier *= ModifierAmount;
+            GameManager.Instance.PlayerManager.Player.playerStats.MoveSpeedModifier *= ModifierAmount;
         } else if ( speedType == SpeedType.Sprint) {
-            GameManager.Instance.PlayerManager.GetPlayer.playerStats.SprintSpeedModifier *= ModifierAmount;
+            GameManager.Instance.PlayerManager.Player.playerStats.SprintSpeedModifier *= ModifierAmount;
         }
     }
 
     public override void Unequip() { // In Reality.. We Probably Wont Use this as modifiers are created anew each Equip
         if (speedType == SpeedType.Move) {
-            GameManager.Instance.PlayerManager.GetPlayer.playerStats.MoveSpeedModifier /= ModifierAmount;
+            GameManager.Instance.PlayerManager.Player.playerStats.MoveSpeedModifier /= ModifierAmount;
         } else if (speedType == SpeedType.Sprint) {
-            GameManager.Instance.PlayerManager.GetPlayer.playerStats.SprintSpeedModifier /= ModifierAmount;
+            GameManager.Instance.PlayerManager.Player.playerStats.SprintSpeedModifier /= ModifierAmount;
         }
     }
 }

@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour {
     public AudioSource audioSource { get; private set; }
 
     protected void Start() {
-        audioSource = GameManager.Instance.PlayerManager.GetPlayer.GetComponent<AudioSource>();
+        audioSource = GameManager.Instance.PlayerManager.Player.GetComponent<AudioSource>();
     }
 
     public void PlayAudioClipOnPlayer(AudioClip audioClip) {

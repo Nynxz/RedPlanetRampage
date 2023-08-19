@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour {
     public Vector2 lookInput { get; private set; }
     public bool jumpInput { get; private set; }
     public bool sprintInput { get; private set; }
+    public bool shootInput { get; private set; }
     public bool interactInput { get; private set; }
     public bool optionsInput { get; private set; }
 
@@ -17,6 +18,7 @@ public class InputManager : MonoBehaviour {
 
     // Event Implementations of Inputs
     public event Action OnShoot;
+    public event Action OnInteract;
     public event Action OptionsPressed;
 
 
@@ -47,9 +49,11 @@ public class InputManager : MonoBehaviour {
         inputActions.Menu.Options.canceled += (ctx) => { optionsInput = true; };
         inputActions.Menu.Options.canceled += (ctx) => { optionsInput = false; };
 
-
+        inputActions.Player.Interact.performed += (ctx) => OnInteract?.Invoke();
         inputActions.Menu.Options.performed += (ctx) => OptionsPressed?.Invoke();
-        inputActions.Player.Shoot.performed += (ctx) => OnShoot?.Invoke();
+
+        inputActions.Player.Shoot.performed += (ctx) => shootInput = true;
+        inputActions.Player.Shoot.canceled += (ctx) => shootInput = false;
     }
 
     public void DisableInput() {

@@ -1851,6 +1851,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (5)
@@ -1908,6 +1912,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (1)
@@ -2333,6 +2341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (10)
@@ -2691,6 +2703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (7)
@@ -2809,6 +2825,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (2)
@@ -2984,6 +3004,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: bb0bbb9abb370994fa847b202bc52d73, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: bb0bbb9abb370994fa847b202bc52d73, type: 3}
       propertyPath: m_Name
       value: BabyParasite (1)
@@ -3476,6 +3500,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: bb0bbb9abb370994fa847b202bc52d73, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: bb0bbb9abb370994fa847b202bc52d73, type: 3}
       propertyPath: m_Name
       value: BabyParasite
@@ -3852,6 +3880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: bb0bbb9abb370994fa847b202bc52d73, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: bb0bbb9abb370994fa847b202bc52d73, type: 3}
       propertyPath: m_Name
       value: BabyParasite (2)
@@ -3909,6 +3941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: b7d1b42747685f24f8a1b0e77d68de16, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: b7d1b42747685f24f8a1b0e77d68de16, type: 3}
       propertyPath: m_Name
       value: BigParasite
@@ -3976,6 +4012,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (6)
@@ -4229,6 +4269,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant
@@ -4468,6 +4512,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (8)
@@ -4780,6 +4828,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (12)
@@ -5506,6 +5558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (4)
@@ -6040,6 +6096,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (3)
@@ -6189,6 +6249,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (9)
@@ -7053,6 +7117,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672706559}
     m_Modifications:
+    - target: {fileID: 1615959651562068759, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+      propertyPath: stayAsleep
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
       propertyPath: m_Name
       value: Parasite L Starkie@Zombie Stand Up Variant (11)

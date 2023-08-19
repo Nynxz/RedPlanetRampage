@@ -78,10 +78,12 @@ public class UIManager : MonoBehaviour {
 
         shopUIVars.shopCloseButton.onClick.AddListener(CloseShop);
 
-        gameManager.PlayerManager.GetPlayer.OnHealthChanged += Player_OnHealthChanged;
+        gameManager.PlayerManager.Player.OnHealthChanged += Player_OnHealthChanged;
         //SetupInventoryButtons();
         gameManager.InputManager.OptionsPressed += ToggleInventory;
 
+        WeaponManager.OnUpgradeChanged += SetupInventoryUI;
+        WeaponManager.OnUpgradeChanged += SetupInventoryUpgradeList;
     }
 
     private void Player_OnHealthChanged(object sender, Player.OnHealthChangedEventArgs e) {
@@ -130,61 +132,31 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void SetupInventoryButtons() {
-        inventoryUIVars.UpgradeOneGroup.GetComponentInChildren<Button>().onClick.AddListener(() => {
-            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO.upgrades.UpgradeOne.DisableAbilities();
-            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO.upgrades.UpgradeOne = null;
-            SetupInventoryUI(GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO);
-        });
-        inventoryUIVars.UpgradeTwoGroup.GetComponentInChildren<Button>().onClick.AddListener(() => { 
-            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO.upgrades.UpgradeTwo.DisableAbilities(); 
-            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO.upgrades.UpgradeTwo = null; 
-            SetupInventoryUI(GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO);
-        });
-        inventoryUIVars.UpgradeThreeGroup.GetComponentInChildren<Button>().onClick.AddListener(() => { 
-            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO.upgrades.UpgradeThree.DisableAbilities(); 
-            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO.upgrades.UpgradeThree = null; 
-            SetupInventoryUI(GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO);
-        });
-    }
-
-    public void SetupInventoryUpgradeList() {
+    public void SetupInventoryUpgradeList(PlayerInventorySO currentInventory) {
         foreach(Transform listItem in inventoryUIVars.InventoryUpgradeListRoot.transform) {
             Destroy(listItem.gameObject);
         }
-        foreach(UpgradeSO upgradeSO in GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO.upgrades.upgradeStorage) {
+        for(int i = 0; i < currentInventory.upgrades.upgradeStorage.Count; i++) {
             UpgradeUIOption uiOption = Instantiate(inventoryUIVars.InventoryUpgradeUIPrefab, inventoryUIVars.InventoryUpgradeListRoot.transform).GetComponent<UpgradeUIOption>();
-            uiOption.Setup(upgradeSO);
-
+            uiOption.Setup(currentInventory.upgrades.upgradeStorage[i], i);
         }
     }
 
-    public void SelectUpgrade(InventoryUpgradeButton.UpgradeSlotType upgradeSlotType) {
+    public void SelectUpgradeSlot(UpgradeSlotType upgradeSlotType) {
         inventoryUIVars.UpgradeOneGroup.GetComponent<InventoryUpgradeButton>().Deselect();
         inventoryUIVars.UpgradeTwoGroup.GetComponent<InventoryUpgradeButton>().Deselect();
         inventoryUIVars.UpgradeThreeGroup.GetComponent<InventoryUpgradeButton>().Deselect();
 
         switch (upgradeSlotType) {
-            case UpgradeSlotType.One: inventoryUIVars.UpgradeOneGroup.GetComponent<InventoryUpgradeButton>().Select(); break;
-            case UpgradeSlotType.Two: inventoryUIVars.UpgradeTwoGroup.GetComponent<InventoryUpgradeButton>().Select(); ; break;
+            case UpgradeSlotType.One:   inventoryUIVars.UpgradeOneGroup.GetComponent<InventoryUpgradeButton>().Select(); break;
+            case UpgradeSlotType.Two:   inventoryUIVars.UpgradeTwoGroup.GetComponent<InventoryUpgradeButton>().Select(); ; break;
             case UpgradeSlotType.Three: inventoryUIVars.UpgradeThreeGroup.GetComponent<InventoryUpgradeButton>().Select(); ; break;
             default: return;
         }
         currentSelectedUpgradeSlot = upgradeSlotType;
-        //NewUpgradeSelected?.Invoke(this, new NewUpgradeSelectedEventArgs { });
     }
 
-    public void RemoveUpgrade(ref UpgradeSO upgradeSO) {
-        if (upgradeSO != null) {
-            upgradeSO.DisableAbilities();
-        }
-    }
 
-    public void AddUpgrade(ref UpgradeSO upgradeSO) {
-        if (upgradeSO != null) {
-            upgradeSO.EnableAbilities();
-        }
-    }
     public void SetupInventoryUI(PlayerInventorySO currentInventory) {
         if(currentInventory.weapons.weaponOne)
             inventoryUIVars.WeaponOneGroup.GetComponent<Image>().sprite = currentInventory.weapons.weaponOne.weaponSO.weaponShopData.icon;

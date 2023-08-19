@@ -89,7 +89,7 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
 
             state = ZombieState.Chasing;
         } else if (currentCooldown >= actionCooldown) {
-            GameManager.Instance.PlayerManager.GetPlayer.Damage(zombieVariables.attackDamage);
+            GameManager.Instance.PlayerManager.Player.Damage(zombieVariables.attackDamage);
         }
     }
 

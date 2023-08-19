@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Health100
   m_EditorClassIdentifier: 
   UpgradeName: Health +50
-  HealthIncrease: 50
+  HealthIncrease: 100

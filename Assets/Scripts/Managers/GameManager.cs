@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(UIManager))]
 [RequireComponent(typeof(InputManager))]
+[RequireComponent(typeof(PlayerManager))]
+[RequireComponent(typeof(ShopManager))]
+[RequireComponent(typeof(AudioManager))]
 public class GameManager : MonoBehaviour {
 
 
@@ -26,25 +29,27 @@ public class GameManager : MonoBehaviour {
 
         // Set Singleton Instance to First Created Instance
         if (Instance != null) {
-            Debug.LogWarning("Multiple instances of GameManager.cs found, Please only use one.");
+            Debug.LogError("Multiple instances of GameManager.cs found, Please only use one. Maybe managerscene is being loaded twice?");
         } else {
-            Debug.Log("Initing GameManager");
+            Debug.Log("Starting GameManager");
             Instance = this;
             UIManager = GetComponent<UIManager>();
             InputManager = GetComponent<InputManager>();
             PlayerManager = GetComponent<PlayerManager>();
             ShopManager = GetComponent<ShopManager>();
             AudioManager = GetComponent<AudioManager>();
+
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }
     }
     protected void Start() {
-        DontDestroyOnLoad(PlayerManager.GetPlayer.gameObject);
+        DontDestroyOnLoad(PlayerManager.Player.gameObject);
         DontDestroyOnLoad(UIManager.UICanvas.gameObject);
         DontDestroyOnLoad(UIManager.EventSystem.gameObject);
-        GameManager.Instance.PlayerManager.GetPlayer.RefreshPlayerEvents();
-        GameManager.Instance.UIManager.SetupInventoryUI(GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO);
-        GameManager.Instance.UIManager.SetupInventoryUpgradeList();
+
+        Instance.PlayerManager.Player.RefreshPlayerEvents();
+        Instance.UIManager.SetupInventoryUI(GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().PlayerInventorySO);
+        Instance.UIManager.SetupInventoryUpgradeList(GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().PlayerInventorySO);
 
     }
 

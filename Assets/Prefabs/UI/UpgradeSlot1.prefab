@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5110926080688168649}
-  - component: {fileID: 8270289146340225960}
+  - component: {fileID: 5338089787766665723}
   - component: {fileID: 7368818088689453005}
   - component: {fileID: 6060347967599782993}
   m_Layer: 5
@@ -461,7 +461,7 @@ RectTransform:
   m_AnchoredPosition: {x: -242, y: -133}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8270289146340225960
+--- !u!114 &5338089787766665723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3828756790474010234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1dc7cc0b7cad74cb3591eda0047ea7, type: 3}
+  m_Script: {fileID: 11500000, guid: 705556d0a616c5043ba93ad7e8b7d9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeSlotType: 0
