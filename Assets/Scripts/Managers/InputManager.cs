@@ -44,7 +44,7 @@ public class InputManager : MonoBehaviour {
         inputActions.Player.Interact.started += (ctx) => { interactInput = true; };
         inputActions.Player.Interact.canceled += (ctx) => { interactInput = false; };
 
-        inputActions.Menu.Options.started += (ctx) => { optionsInput = true; OptionsPressed?.Invoke(); };
+        inputActions.Menu.Options.canceled += (ctx) => { optionsInput = true; };
         inputActions.Menu.Options.canceled += (ctx) => { optionsInput = false; };
 
 

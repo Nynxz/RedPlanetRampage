@@ -20,7 +20,7 @@ public class WeaponData {
 public class WeaponShopData {
     public int cost;
     public string description;
-    public string icon;
+    public Sprite icon;
 }
 
 

@@ -47,6 +47,7 @@ public class CurrentSceneManager : MonoBehaviour {
                 GameManager.Instance.PlayerManager.GetPlayer.transform.position = scene.entrancePoint.position;
                 GameManager.Instance.PlayerManager.GetPlayer.transform.rotation = scene.entrancePoint.rotation;
                 GameManager.Instance.PlayerManager.GetPlayer.GetComponent<CharacterController>().enabled = true;
+
                 return;
             }
         }

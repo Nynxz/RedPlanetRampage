@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: StartingInventory
   m_EditorClassIdentifier: 
   weapons:
-    weaponOne: {fileID: 11400000, guid: 1ea6067fedc41404fb7390d856329064, type: 2}
+    weaponOne: {fileID: 11400000, guid: 6273d063afc5c8c4b904cf9b215b6960, type: 2}
     weaponTwo: {fileID: 0}
+    equippedStorage: []
   upgrades:
-    UpgradeOne: TODO
-    UpgradeTwo: TODO
-    UpgradeThree: TODO
+    UpgradeOne: {fileID: 11400000, guid: d4353e1c050811741a29bf89dba91fe3, type: 2}
+    UpgradeTwo: {fileID: 11400000, guid: 0bbe3f7c1984eca4e8ba8c2207318d16, type: 2}
+    UpgradeThree: {fileID: 11400000, guid: 0bbe3f7c1984eca4e8ba8c2207318d16, type: 2}
+    upgradeStorage:
+    - {fileID: 11400000, guid: 0317fbe6cb941d74b9a8cfd13ec07ad2, type: 2}
+    - {fileID: 11400000, guid: d4353e1c050811741a29bf89dba91fe3, type: 2}
+    - {fileID: 11400000, guid: d4353e1c050811741a29bf89dba91fe3, type: 2}
+    - {fileID: 11400000, guid: 0317fbe6cb941d74b9a8cfd13ec07ad2, type: 2}

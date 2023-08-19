@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(PlayerManager.GetPlayer.gameObject);
         DontDestroyOnLoad(UIManager.UICanvas.gameObject);
         DontDestroyOnLoad(UIManager.EventSystem.gameObject);
+        GameManager.Instance.PlayerManager.GetPlayer.RefreshPlayerEvents();
+        GameManager.Instance.UIManager.SetupInventoryUI(GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO);
+        GameManager.Instance.UIManager.SetupInventoryUpgradeList();
+
     }
 
     private void SceneManager_activeSceneChanged(Scene current, Scene next) {

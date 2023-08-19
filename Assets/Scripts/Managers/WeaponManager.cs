@@ -11,6 +11,7 @@ public class WeaponManager : MonoBehaviour {
     [SerializeField] private Transform gunRoot;
     [SerializeField] private List<EquippedSO> inventory;
     [SerializeField] private PlayerInventorySO playerInventory;
+    public PlayerInventorySO PlayerInventorySO => playerInventory;
 
     private EquippedSO currentEquippedWeaponSO;
     private GameObject currentWeaponVisual;
@@ -33,6 +34,7 @@ public class WeaponManager : MonoBehaviour {
 
 
         GameManager.Instance.InputManager.OnShoot += TryShoot;
+        playerInventory.EquipInventory();
     }
 
     private void TryShoot() {
@@ -74,6 +76,8 @@ public class WeaponManager : MonoBehaviour {
             Destroy(currentWeaponVisual);
             currentWeaponVisual = null;
             GameManager.Instance.UIManager.SetAmmoText("No Weapon");
+            GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().playerInventory.UnequipU1();
+            GameManager.Instance.UIManager.SetupInventoryUI(GameManager.Instance.PlayerManager.GetPlayer.GetComponent<WeaponManager>().PlayerInventorySO);
         }
         if (Input.GetKeyDown(KeyCode.R)) {
             toShoot = false;
@@ -114,6 +118,15 @@ public class WeaponManager : MonoBehaviour {
         currentEquippedWeaponSO.FillAmmo();
         GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
 
+    }
+
+
+    public void RemoveUpgrade(ref UpgradeSO upgradeSO) {
+        if (upgradeSO != null) {
+            upgradeSO.DisableAbilities();
+            playerInventory.upgrades.upgradeStorage.Add(upgradeSO);
+            upgradeSO = null;
+        }
     }
 
 

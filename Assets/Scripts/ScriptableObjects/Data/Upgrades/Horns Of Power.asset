@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218bdd5ad75b18341b907bb8ebe9133b, type: 3}
+  m_Name: Horns Of Power
+  m_EditorClassIdentifier: 
+  Name: Horns of Power
+  Cost: 30
+  Upgrades:
+  - {fileID: 11400000, guid: 4d0d2dd8caf21b14081c3619c1e5d62b, type: 2}
+  Icon: {fileID: 21300000, guid: 2221902e11931284c93e4db2690a759b, type: 3}
+  IconTint: {r: 0.6886792, g: 0.68419707, b: 0.613964, a: 1}
