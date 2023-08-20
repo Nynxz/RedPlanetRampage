@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +14,7 @@ public class InventoryUpgradeButton : MonoBehaviour {
     [SerializeField] private Image iconImage;
     [SerializeField] private Image selectImage;
     [SerializeField] private TextMeshProUGUI upgradeText;
-    
+
 
     public void SetupButton(UpgradeSO upgradeSO) {
 

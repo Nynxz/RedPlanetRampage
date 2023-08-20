@@ -126,7 +126,7 @@ namespace StarterAssets {
 
         private void Move() {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = inputManager.sprintInput ? SprintSpeed * player.playerStats.SprintSpeedModifier : MoveSpeed * player.playerStats.MoveSpeedModifier;
+            float targetSpeed = inputManager.sprintInput ? SprintSpeed * player.PlayerStats.SprintSpeedModifier : MoveSpeed * player.PlayerStats.MoveSpeedModifier;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 

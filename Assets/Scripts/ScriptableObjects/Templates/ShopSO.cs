@@ -10,5 +10,6 @@ using UnityEngine;
 public class ShopSO : ScriptableObject {
 
     public List<WeaponSO> weaponsForSale;
+    public List<UpgradeSO> upgradesForSale;
 
 }

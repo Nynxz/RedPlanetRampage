@@ -10,7 +10,6 @@ public class PlayerManager : MonoBehaviour {
     public Player Player => player;
 
     private GameObject playerGameObject;
-    private GameManager gameManager;
 
     // Player Variables
     private int currentMoney = 0;
@@ -26,17 +25,17 @@ public class PlayerManager : MonoBehaviour {
         public int ammoLeft;
     }
 
-    public event EventHandler<UpdateMoneyEventArgs> UpdateMoney;
+    public static event EventHandler<UpdateMoneyEventArgs> UpdateMoney;
     public class UpdateMoneyEventArgs : EventArgs {
         public int moneyAmount;
     }
 
-    public event EventHandler<UpdateScoreEventArgs> UpdateScore;
+    public static event EventHandler<UpdateScoreEventArgs> UpdateScore;
     public class UpdateScoreEventArgs : EventArgs {
         public int scoreAmount;
     }
 
-    public event EventHandler<OnHoverEventArgs> OnHover;
+    public static event EventHandler<OnHoverEventArgs> OnHover;
     public class OnHoverEventArgs : EventArgs {
         public bool hovering;
         public string hoverText;
@@ -49,12 +48,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     protected void Start() {
-        gameManager = GameManager.Instance;
-        UpdateMoney += gameManager.UIManager.SetMoneyText;
-        UpdateScore += gameManager.UIManager.SetScoreText;
-        OnHover += gameManager.UIManager.SetHoverText;
-
-        GameManager.Instance.InputManager.OnInteract += TryInteract;
+        InputManager.OnInteract += TryInteract;
     }
 
     protected void Update() {
@@ -65,10 +59,10 @@ public class PlayerManager : MonoBehaviour {
                     StartHovering(interactable);
                 }
             }
-        } else if(currentInteractable) {
+        } else if (currentInteractable) {
             ClearHover();
         }
- 
+
     }
 
     private void TryInteract() {
@@ -107,6 +101,7 @@ public class PlayerManager : MonoBehaviour {
             moneyAmount = currentMoney
         });
     }
+
     public void RemoveMoney(int amount) {
         if (CheckMoneyAmount(amount)) {
             currentMoney -= amount;
@@ -115,6 +110,7 @@ public class PlayerManager : MonoBehaviour {
             });
         }
     }
+
     private bool CheckMoneyAmount(int amount) {
         return amount <= currentMoney;
     }
@@ -125,6 +121,7 @@ public class PlayerManager : MonoBehaviour {
             scoreAmount = currentScore
         });
     }
+
     public void RemoveScore(int amount) {
         currentScore -= amount;
         UpdateScore?.Invoke(this, new UpdateScoreEventArgs() {
@@ -133,7 +130,6 @@ public class PlayerManager : MonoBehaviour {
     }
 
     protected void OnDrawGizmos() {
-
         // Interaction Probe
         Gizmos.color = Color.green;
         if (player)

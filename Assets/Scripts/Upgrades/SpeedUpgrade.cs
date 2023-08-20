@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/UpgradeAbilities/Speed")]
@@ -17,18 +15,18 @@ public class SpeedUpgrade : UpgradeAbilitySO {
     public float ModifierAmount; // 1.2 = 20% Increase // 1 = No Increase
 
     public override void Equip() {
-        if(speedType == SpeedType.Move) {
-            GameManager.Instance.PlayerManager.Player.playerStats.MoveSpeedModifier *= ModifierAmount;
-        } else if ( speedType == SpeedType.Sprint) {
-            GameManager.Instance.PlayerManager.Player.playerStats.SprintSpeedModifier *= ModifierAmount;
+        if (speedType == SpeedType.Move) {
+            GameManager.Instance.PlayerManager.Player.PlayerStats.MoveSpeedModifier *= ModifierAmount;
+        } else if (speedType == SpeedType.Sprint) {
+            GameManager.Instance.PlayerManager.Player.PlayerStats.SprintSpeedModifier *= ModifierAmount;
         }
     }
 
     public override void Unequip() { // In Reality.. We Probably Wont Use this as modifiers are created anew each Equip
         if (speedType == SpeedType.Move) {
-            GameManager.Instance.PlayerManager.Player.playerStats.MoveSpeedModifier /= ModifierAmount;
+            GameManager.Instance.PlayerManager.Player.PlayerStats.MoveSpeedModifier /= ModifierAmount;
         } else if (speedType == SpeedType.Sprint) {
-            GameManager.Instance.PlayerManager.Player.playerStats.SprintSpeedModifier /= ModifierAmount;
+            GameManager.Instance.PlayerManager.Player.PlayerStats.SprintSpeedModifier /= ModifierAmount;
         }
     }
 }

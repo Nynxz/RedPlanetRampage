@@ -63,17 +63,23 @@ public class WeaponManager : MonoBehaviour {
 
         }
     }
- 
+
 
     public void AddWeaponToInventory(WeaponSO weapon) {
         inventory.Add(CreateEquippedSOFromWeaponSO(weapon));
         Debug.Log(inventory.Count);
     }
 
+    public void AddUpgradeToInventory(UpgradeSO upgrade) {
+        playerInventory.upgrades.upgradeStorage.Add(upgrade);
+        OnUpgradeChanged?.Invoke(playerInventory);
+
+    }
+
 
     private void ChangeWeapon(EquippedSO newWeapon) {
         if (newWeapon == null) return;
-        
+
         Destroy(currentWeaponVisual);
         //toShoot = false;
         currentEquippedWeaponSO = newWeapon;

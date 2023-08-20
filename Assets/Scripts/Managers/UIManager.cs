@@ -1,10 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static InventoryUpgradeButton;
-using static PlayerInventorySO;
 
 [System.Serializable]
 public class InGameUIVars {
@@ -35,15 +33,18 @@ public class ShopUIVars {
 
     public GameObject ShopGroup;
     public Button shopCloseButton;
-    public GameObject VerticalShopButtonGroup;
-    public GameObject ShopOptionPrefab;
+    public GameObject VerticalShopButtonGroupWeapons;
+    public GameObject VerticalShopButtonGroupUpgrades;
+    public GameObject ShopOptionPrefabWeapon;
+    public GameObject ShopOptionPrefabUpgrade;
+    public Button ShopTypeSwitchButton;
 }
 
 [System.Serializable]
 public class InventoryUIVars {
 
     public GameObject InventoryGroup;
-    
+
     public GameObject WeaponOneGroup;
     public GameObject WeaponTwoGroup;
     public GameObject UpgradeOneGroup;
@@ -52,6 +53,7 @@ public class InventoryUIVars {
     public GameObject InventoryUpgradeListRoot;
     public GameObject InventoryUpgradeUIPrefab;
 }
+
 public class UIManager : MonoBehaviour {
 
     private GameManager gameManager;
@@ -66,10 +68,7 @@ public class UIManager : MonoBehaviour {
 
     public UpgradeSlotType currentSelectedUpgradeSlot { get; private set; } = UpgradeSlotType.None;
 
-    public static event EventHandler<NewUpgradeSelectedEventArgs> NewUpgradeSelected;
-    public class NewUpgradeSelectedEventArgs : EventArgs {
-        
-    }
+
 
     protected void Start() {
         gameManager = GetComponent<GameManager>();
@@ -78,12 +77,26 @@ public class UIManager : MonoBehaviour {
 
         shopUIVars.shopCloseButton.onClick.AddListener(CloseShop);
 
-        gameManager.PlayerManager.Player.OnHealthChanged += Player_OnHealthChanged;
+        shopUIVars.ShopTypeSwitchButton.onClick.AddListener(() => {
+            ShopManager.CurrentShop currentShop = GameManager.Instance.ShopManager.SwitchBuyMenus();
+            shopUIVars.ShopTypeSwitchButton.GetComponentInChildren<TextMeshProUGUI>().text = currentShop.ToString();
+        });
+        ShopManager.CurrentShop currentShop = GameManager.Instance.ShopManager.SwitchBuyMenus();
+        shopUIVars.ShopTypeSwitchButton.GetComponentInChildren<TextMeshProUGUI>().text = currentShop.ToString();
+
+
+
+        Player.OnHealthChanged += Player_OnHealthChanged;
         //SetupInventoryButtons();
-        gameManager.InputManager.OptionsPressed += ToggleInventory;
+
+        InputManager.OptionsPressed += ToggleInventory;
 
         WeaponManager.OnUpgradeChanged += SetupInventoryUI;
         WeaponManager.OnUpgradeChanged += SetupInventoryUpgradeList;
+
+        PlayerManager.UpdateMoney += SetMoneyText;
+        PlayerManager.UpdateScore += SetScoreText;
+        PlayerManager.OnHover += SetHoverText;
     }
 
     private void Player_OnHealthChanged(object sender, Player.OnHealthChangedEventArgs e) {
@@ -99,7 +112,7 @@ public class UIManager : MonoBehaviour {
         GameManager.Instance.InputManager.EnableInput();
         Cursor.visible = false;
 
-        GameManager.Instance.InputManager.OptionsPressed -= CloseShop;
+        InputManager.OptionsPressed -= CloseShop;
     }
     public void OpenShop() {
         shopUIVars.ShopGroup.gameObject.SetActive(true);
@@ -108,7 +121,7 @@ public class UIManager : MonoBehaviour {
         GameManager.Instance.InputManager.DisableInput();
         Cursor.visible = true;
 
-        GameManager.Instance.InputManager.OptionsPressed += CloseShop;
+        InputManager.OptionsPressed += CloseShop;
     }
 
     public void SetMoneyText(object sender, PlayerManager.UpdateMoneyEventArgs e) {
@@ -133,10 +146,10 @@ public class UIManager : MonoBehaviour {
     }
 
     public void SetupInventoryUpgradeList(PlayerInventorySO currentInventory) {
-        foreach(Transform listItem in inventoryUIVars.InventoryUpgradeListRoot.transform) {
+        foreach (Transform listItem in inventoryUIVars.InventoryUpgradeListRoot.transform) {
             Destroy(listItem.gameObject);
         }
-        for(int i = 0; i < currentInventory.upgrades.upgradeStorage.Count; i++) {
+        for (int i = 0; i < currentInventory.upgrades.upgradeStorage.Count; i++) {
             UpgradeUIOption uiOption = Instantiate(inventoryUIVars.InventoryUpgradeUIPrefab, inventoryUIVars.InventoryUpgradeListRoot.transform).GetComponent<UpgradeUIOption>();
             uiOption.Setup(currentInventory.upgrades.upgradeStorage[i], i);
         }
@@ -148,8 +161,8 @@ public class UIManager : MonoBehaviour {
         inventoryUIVars.UpgradeThreeGroup.GetComponent<InventoryUpgradeButton>().Deselect();
 
         switch (upgradeSlotType) {
-            case UpgradeSlotType.One:   inventoryUIVars.UpgradeOneGroup.GetComponent<InventoryUpgradeButton>().Select(); break;
-            case UpgradeSlotType.Two:   inventoryUIVars.UpgradeTwoGroup.GetComponent<InventoryUpgradeButton>().Select(); ; break;
+            case UpgradeSlotType.One: inventoryUIVars.UpgradeOneGroup.GetComponent<InventoryUpgradeButton>().Select(); break;
+            case UpgradeSlotType.Two: inventoryUIVars.UpgradeTwoGroup.GetComponent<InventoryUpgradeButton>().Select(); ; break;
             case UpgradeSlotType.Three: inventoryUIVars.UpgradeThreeGroup.GetComponent<InventoryUpgradeButton>().Select(); ; break;
             default: return;
         }
@@ -158,9 +171,9 @@ public class UIManager : MonoBehaviour {
 
 
     public void SetupInventoryUI(PlayerInventorySO currentInventory) {
-        if(currentInventory.weapons.weaponOne)
+        if (currentInventory.weapons.weaponOne)
             inventoryUIVars.WeaponOneGroup.GetComponent<Image>().sprite = currentInventory.weapons.weaponOne.weaponSO.weaponShopData.icon;
-        if(currentInventory.weapons.weaponTwo)
+        if (currentInventory.weapons.weaponTwo)
             inventoryUIVars.WeaponTwoGroup.GetComponent<Image>().sprite = currentInventory.weapons.weaponTwo.weaponSO.weaponShopData.icon;
 
         inventoryUIVars.UpgradeOneGroup.GetComponent<InventoryUpgradeButton>().SetupButton(currentInventory.upgrades.UpgradeOne);
@@ -186,7 +199,7 @@ public class UIManager : MonoBehaviour {
         gameUIVars.hpbarImage.fillAmount = normalizedHealth;
     }
     public void SetHPAmount(float healthAmount) {
-        Debug.LogWarning($"hp: {((int)healthAmount)}");
+        Debug.LogWarning($"hp: {(int)healthAmount}");
         this.gameUIVars.healthText.text = ((int)healthAmount).ToString();
     }
 }

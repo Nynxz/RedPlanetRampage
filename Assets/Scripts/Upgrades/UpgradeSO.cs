@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +9,7 @@ public interface IUpgrade {
 
 // Abstract Class
 [CreateAssetMenu(menuName = "Data/Upgrade")]
-public class UpgradeSO: ScriptableObject {
+public class UpgradeSO : ScriptableObject {
     public string Name;
     public float Cost;
     public List<UpgradeAbilitySO> Upgrades;

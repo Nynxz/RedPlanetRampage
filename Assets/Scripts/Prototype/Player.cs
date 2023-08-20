@@ -10,14 +10,14 @@ public class Player : MonoBehaviour {
     [SerializeField] public float interactRange;
     [SerializeField] public float startingHealth;
     [SerializeField] private PlayerStatsSO startingStats; // Not Used Except at start
-    public PlayerStatsSO playerStats { get; private set; }
+    public PlayerStatsSO PlayerStats { get; private set; }
 
 
 
     // Health
     private float currentHealth;
     public enum HealthChangedTypes { Increase, Decrease, None }
-    public event EventHandler<OnHealthChangedEventArgs> OnHealthChanged;
+    public static event EventHandler<OnHealthChangedEventArgs> OnHealthChanged;
     public class OnHealthChangedEventArgs : EventArgs {
         public HealthChangedTypes changeType;
         public float currentHealth;
@@ -31,9 +31,9 @@ public class Player : MonoBehaviour {
 
 
     // Start is called before the first frame update
-    private void Awake() {
-        playerStats = Instantiate(startingStats); // Create a clone
-        currentHealth = playerStats.HealthMaximum;
+    protected void Awake() {
+        PlayerStats = Instantiate(startingStats); // Create a clone
+        currentHealth = PlayerStats.HealthMaximum;
 
     }
     protected void Start() {
@@ -56,14 +56,14 @@ public class Player : MonoBehaviour {
     }
 
     public bool TryHeal(float amount) {
-        if (currentHealth >= playerStats.HealthMaximum) {
-            currentHealth = playerStats.HealthMaximum;
+        if (currentHealth >= PlayerStats.HealthMaximum) {
+            currentHealth = PlayerStats.HealthMaximum;
             OnHealthChanged?.Invoke(this, new OnHealthChangedEventArgs(HealthChangedTypes.None, currentHealth, GetHealthNormalized()));
             return false; // Cannot Heal, already max
         }
 
-        if (amount + currentHealth >= playerStats.HealthMaximum) { //If healing the amount would take us over starting, take us to starting
-            currentHealth = playerStats.HealthMaximum;
+        if (amount + currentHealth >= PlayerStats.HealthMaximum) { //If healing the amount would take us over starting, take us to starting
+            currentHealth = PlayerStats.HealthMaximum;
         } else { // Else heal the amount
             currentHealth += amount;
         }
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour {
     }
 
     public float GetHealthNormalized() {
-        float normalizedHealth = currentHealth / playerStats.HealthMaximum;
+        float normalizedHealth = currentHealth / PlayerStats.HealthMaximum;
         return normalizedHealth;
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 // Used for managing the audio, such as volume and for playing audio clips on the player
 // Referenced through GameManager.Instance  (singleton)
+[RequireComponent(typeof(PlayerManager))]
 public class AudioManager : MonoBehaviour {
 
     //Global Volume
@@ -18,6 +19,10 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayAudioClipOnPlayer(AudioClip audioClip) {
         audioSource.PlayOneShot(audioClip, volume);
+    }
+
+    public void PlayAudioClipAtLocation(AudioClip audioClip, Vector3 location) {
+        AudioSource.PlayClipAtPoint(audioClip, location);
     }
 
 

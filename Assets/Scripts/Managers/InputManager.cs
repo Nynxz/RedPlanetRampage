@@ -18,8 +18,8 @@ public class InputManager : MonoBehaviour {
 
     // Event Implementations of Inputs
     public event Action OnShoot;
-    public event Action OnInteract;
-    public event Action OptionsPressed;
+    public static event Action OnInteract;
+    public static event Action OptionsPressed;
 
 
     public void SetJump(bool val) => jumpInput = val;

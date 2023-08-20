@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopItemVisual : MonoBehaviour {
+public class ShopItemVisualWeapon : MonoBehaviour {
     public WeaponSO weaponSO;
     public TextMeshProUGUI WeaponName;
     public TextMeshProUGUI WeaponCost;
