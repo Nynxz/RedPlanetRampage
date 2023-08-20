@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 6ad1d85cce4c43f46b815a56b17cc85e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shatterSound: {fileID: 8300000, guid: 289c302b5c2b6ae4ea018e25b6e764c1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
