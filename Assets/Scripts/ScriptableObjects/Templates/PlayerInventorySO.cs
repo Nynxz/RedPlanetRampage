@@ -40,5 +40,4 @@ public class PlayerInventorySO : ScriptableObject {
             upgrades.UpgradeThree.EnableAbilities();
     }
 
-    public void UnequipU1() { upgrades.UpgradeOne.DisableAbilities(); upgrades.UpgradeOne = null; }
 }
