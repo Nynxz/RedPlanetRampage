@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4248,6 +4248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneList:
+  - fromScene: {fileID: 102900000, guid: 21be16feb16ff05459cfe52ace077a0a, type: 3}
+    entrancePoint: {fileID: 1403231599}
   - fromScene: {fileID: 102900000, guid: a30b778dfef736e48b86dd8e415ee8d8, type: 3}
     entrancePoint: {fileID: 1212177652}
   - fromScene: {fileID: 102900000, guid: f4bd116bbe6f48d4ca5c72543b7af0e6, type: 3}
@@ -4267,6 +4269,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1403231597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403231599}
+  - component: {fileID: 1403231598}
+  m_Layer: 0
+  m_Name: MainMenuEntrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1403231598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403231597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347afb0b08af931458995a3a8df48063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1403231599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403231597}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -14.38, y: 0, z: -6.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1436789927
 GameObject:
   m_ObjectHideFlags: 0
@@ -5797,6 +5843,7 @@ RectTransform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1391528416}
   - {fileID: 254092621}
   - {fileID: 212745276}
   - {fileID: 356203202}
@@ -5807,7 +5854,7 @@ SceneRoots:
   - {fileID: 1769258873}
   - {fileID: 1212177652}
   - {fileID: 1571741088}
-  - {fileID: 1391528416}
+  - {fileID: 1403231599}
   - {fileID: 447447319}
   - {fileID: 486447974}
   - {fileID: 1703011408}

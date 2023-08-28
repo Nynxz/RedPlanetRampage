@@ -18,9 +18,9 @@ public class MenuManager : MonoBehaviour {
 
     private void PlayButtonClicked() {
         Debug.Log("Start Game");
-        string sceneToLoad = "LabHub";
+        string sceneToLoad = "Hub_store";
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
-        SceneManager.LoadScene("ManagerScene", LoadSceneMode.Additive);
+        //SceneManager.LoadScene("ManagerScene", LoadSceneMode.Additive);
         GameManager.currentScene = sceneToLoad;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
