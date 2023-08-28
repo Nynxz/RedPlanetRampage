@@ -11,6 +11,8 @@ public class ShopUI {
     public TextMeshProUGUI selectedDamageWeapon;
     public TextMeshProUGUI selectedRateOfFireWeapon;
     public TextMeshProUGUI selectedAmmoWeapon;
+    public Image selectedStatsWeaponIcon;
+
 
     public TextMeshProUGUI selectedNameUpgrade;
     public TextMeshProUGUI selectedCostUpgrade;
@@ -59,6 +61,7 @@ public class ShopManager : MonoBehaviour {
         shopUI.selectedNameWeapon.text = $"Name: {e.weaponData.weaponName}";
         shopUI.selectedCostWeapon.text = $"Cost: {e.weaponShopData.cost}";
         shopUI.selectedDamageWeapon.text = $"Damage: {e.weaponData.bulletSO.bulletDamage}";
+        shopUI.selectedStatsWeaponIcon.sprite = e.weaponShopData.icon;
         string rateOfFireString;
         double cooldown = Math.Floor(1 / e.weaponData.weaponShootCooldown);
         if (cooldown == 0) {

@@ -19,7 +19,7 @@ public class WeaponManager : MonoBehaviour {
     private float currentShootTimer;
 
     public event Action OnShoot; // Invoked when a weapon shoots
-    public static event Action<PlayerInventorySO> OnUpgradeChanged;
+    public static event Action<PlayerInventorySO> OnInventoryChanged;
     public event Action OnWeaponChanged;
 
 
@@ -50,11 +50,7 @@ public class WeaponManager : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Q)) {
-            Destroy(currentWeaponVisual);
-            currentWeaponVisual = null;
-            GameManager.Instance.UIManager.SetAmmoText("No Weapon");
-            GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().playerInventory.UnequipU1();
-            GameManager.Instance.UIManager.SetupInventoryUI(GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().PlayerInventorySO);
+            UnequipWeapon();
         }
         if (Input.GetKeyDown(KeyCode.R)) {
             //toShoot = false;
@@ -66,17 +62,21 @@ public class WeaponManager : MonoBehaviour {
 
 
     public void AddWeaponToInventory(WeaponSO weapon) {
-        inventory.Add(CreateEquippedSOFromWeaponSO(weapon));
-        Debug.Log(inventory.Count);
+        playerInventory.weapons.equippedStorage.Add(CreateEquippedSOFromWeaponSO(weapon));
+        OnInventoryChanged?.Invoke(playerInventory);
     }
 
     public void AddUpgradeToInventory(UpgradeSO upgrade) {
         playerInventory.upgrades.upgradeStorage.Add(upgrade);
-        OnUpgradeChanged?.Invoke(playerInventory);
-
+        OnInventoryChanged?.Invoke(playerInventory);
     }
 
-
+    public void UnequipWeapon() {
+        Destroy(currentWeaponVisual);
+        currentWeaponVisual = null;
+        GameManager.Instance.UIManager.SetAmmoText("No Weapon");
+        GameManager.Instance.UIManager.SetupInventoryUI(GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().PlayerInventorySO);
+    }
     private void ChangeWeapon(EquippedSO newWeapon) {
         if (newWeapon == null) return;
 
@@ -90,7 +90,7 @@ public class WeaponManager : MonoBehaviour {
     }
     private void TryShoot() {
         // TODO: Check if weapon is equipped
-        if (currentShootTimer <= 0) {
+        if (currentEquippedWeaponSO && currentShootTimer <= 0) {
             Shoot();
         }
     }
@@ -145,20 +145,25 @@ public class WeaponManager : MonoBehaviour {
             PlayerInventorySO.upgrades.UpgradeThree = null;
         }
 
-        OnUpgradeChanged?.Invoke(playerInventory);
+        OnInventoryChanged?.Invoke(playerInventory);
     }
 
     public void SwapSlotWithUpgradeIndex(InventoryUpgradeButton.UpgradeSlotType upgradeSlotType, int upgradeIndex) {
-        if (upgradeSlotType == InventoryUpgradeButton.UpgradeSlotType.One) {
-            TrySwap(ref PlayerInventorySO.upgrades.UpgradeOne, upgradeIndex);
-        } else if (upgradeSlotType == InventoryUpgradeButton.UpgradeSlotType.Two) {
-            TrySwap(ref PlayerInventorySO.upgrades.UpgradeTwo, upgradeIndex);
-        } else if (upgradeSlotType == InventoryUpgradeButton.UpgradeSlotType.Three) {
-            TrySwap(ref PlayerInventorySO.upgrades.UpgradeThree, upgradeIndex);
+        switch (upgradeSlotType) {
+            case InventoryUpgradeButton.UpgradeSlotType.One: TrySwapUpgrade(ref PlayerInventorySO.upgrades.UpgradeOne, upgradeIndex); break;
+            case InventoryUpgradeButton.UpgradeSlotType.Two: TrySwapUpgrade(ref PlayerInventorySO.upgrades.UpgradeTwo, upgradeIndex); break;
+            case InventoryUpgradeButton.UpgradeSlotType.Three: TrySwapUpgrade(ref PlayerInventorySO.upgrades.UpgradeThree, upgradeIndex); break;
         }
     }
 
-    private void TrySwap(ref UpgradeSO oldUpgrade, int upgradeIndex) {
+    public void SwapSlotWithWeaponIndex(InventoryWeaponButton.WeaponSlotType upgradeSlotType, int weaponIndex) {
+        switch (upgradeSlotType) {
+            case InventoryWeaponButton.WeaponSlotType.One: TrySwapWeapon(ref PlayerInventorySO.weapons.weaponOne, weaponIndex); ChangeWeapon(playerInventory.weapons.weaponOne); break;
+            case InventoryWeaponButton.WeaponSlotType.Two: TrySwapWeapon(ref PlayerInventorySO.weapons.weaponTwo, weaponIndex); ChangeWeapon(playerInventory.weapons.weaponTwo); break;
+        }
+    }
+
+    private void TrySwapUpgrade(ref UpgradeSO oldUpgrade, int upgradeIndex) {
         UpgradeSO toAdd = playerInventory.upgrades.upgradeStorage[upgradeIndex];
         if (oldUpgrade) {
             playerInventory.upgrades.upgradeStorage[upgradeIndex] = oldUpgrade;
@@ -168,7 +173,20 @@ public class WeaponManager : MonoBehaviour {
         DisableUpgrade(oldUpgrade); // Disable Currently Equipped
         oldUpgrade = toAdd; // Set currently equipped to new upgrade
         AddUpgrade(toAdd);
-        OnUpgradeChanged?.Invoke(playerInventory);
+        OnInventoryChanged?.Invoke(playerInventory);
+    }
+
+    private void TrySwapWeapon(ref EquippedSO oldUpgrade, int upgradeIndex) {
+        EquippedSO toAdd = playerInventory.weapons.equippedStorage[upgradeIndex];
+        if (oldUpgrade) {
+            playerInventory.weapons.equippedStorage[upgradeIndex] = oldUpgrade;
+        } else { // else just remove it from the list
+            playerInventory.weapons.equippedStorage.RemoveAt(upgradeIndex);
+        }
+        // todo: unequip/ requip
+        oldUpgrade = toAdd; // Set currently equipped to new upgrade
+        UnequipWeapon();
+        OnInventoryChanged?.Invoke(playerInventory);
     }
 
     public static EquippedSO CreateEquippedSOFromWeaponSO(WeaponSO weapon) {
