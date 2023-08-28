@@ -30,6 +30,10 @@ public class PlayerInventorySO : ScriptableObject {
             weapons.weaponOne.Setup();
         if (weapons.weaponTwo)
             weapons.weaponTwo.Setup();
+
+        foreach(EquippedSO equippedSO in weapons.equippedStorage) {
+            equippedSO.Setup();
+        }
         Debug.Log("Hello World!!");
 
         if (upgrades.UpgradeOne)

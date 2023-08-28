@@ -23,6 +23,12 @@ public class WeaponManager : MonoBehaviour {
     public event Action OnWeaponChanged;
 
 
+    private enum CurrentWeaponSlot {
+        One, Two, None
+    }
+
+    private CurrentWeaponSlot currentWeaponSlot = CurrentWeaponSlot.None;
+
     protected void Start() {
         currentWeaponVisual = null;
         playerInventory.EquipInventory();
@@ -43,13 +49,16 @@ public class WeaponManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             ChangeWeapon(playerInventory.weapons.weaponOne);
+            currentWeaponSlot = CurrentWeaponSlot.One;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             ChangeWeapon(playerInventory.weapons.weaponTwo);
+            currentWeaponSlot = CurrentWeaponSlot.Two;
         }
 
         if (Input.GetKeyDown(KeyCode.Q)) {
+            currentWeaponSlot = CurrentWeaponSlot.None;
             UnequipWeapon();
         }
         if (Input.GetKeyDown(KeyCode.R)) {
@@ -158,8 +167,14 @@ public class WeaponManager : MonoBehaviour {
 
     public void SwapSlotWithWeaponIndex(InventoryWeaponButton.WeaponSlotType upgradeSlotType, int weaponIndex) {
         switch (upgradeSlotType) {
-            case InventoryWeaponButton.WeaponSlotType.One: TrySwapWeapon(ref PlayerInventorySO.weapons.weaponOne, weaponIndex); ChangeWeapon(playerInventory.weapons.weaponOne); break;
-            case InventoryWeaponButton.WeaponSlotType.Two: TrySwapWeapon(ref PlayerInventorySO.weapons.weaponTwo, weaponIndex); ChangeWeapon(playerInventory.weapons.weaponTwo); break;
+            case InventoryWeaponButton.WeaponSlotType.One: TrySwapWeapon(ref PlayerInventorySO.weapons.weaponOne, weaponIndex); break;
+            case InventoryWeaponButton.WeaponSlotType.Two: TrySwapWeapon(ref PlayerInventorySO.weapons.weaponTwo, weaponIndex);  break;
+        }
+        if(upgradeSlotType == InventoryWeaponButton.WeaponSlotType.One && currentWeaponSlot == CurrentWeaponSlot.One) {
+            ChangeWeapon(playerInventory.weapons.weaponOne);
+        }
+        else if (upgradeSlotType == InventoryWeaponButton.WeaponSlotType.Two && currentWeaponSlot == CurrentWeaponSlot.Two) {
+            ChangeWeapon(playerInventory.weapons.weaponTwo);
         }
     }
 
@@ -185,7 +200,7 @@ public class WeaponManager : MonoBehaviour {
         }
         // todo: unequip/ requip
         oldUpgrade = toAdd; // Set currently equipped to new upgrade
-        UnequipWeapon();
+        //UnequipWeapon();
         OnInventoryChanged?.Invoke(playerInventory);
     }
 
