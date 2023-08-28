@@ -9,7 +9,7 @@ public class UpgradeUnlocker : Interactable {
 
     public override void interact(GameObject player) {
         GameManager.Instance.ShopManager.AddNewUpgrade(newUpgrade);
-        Debug.Log("Interacting With New Unlocker!");
+        Debug.Log("Interacting With New Unlocker    !");
     }
 
     public override string onHoverText() {
