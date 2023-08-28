@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static CurrentSceneManager;
 
 // Script supposed to be placed in each scene, used for setting entrances of the scene and for startup settings
 public class CurrentSceneManager : MonoBehaviour {
@@ -48,6 +49,13 @@ public class CurrentSceneManager : MonoBehaviour {
 
                 return;
             }
+        }
+        // Not Position Found - Defaulting to First if there is one - Else 0,0,0
+        if(sceneList.Count > 0) {
+            GameManager.Instance.PlayerManager.Player.GetComponent<CharacterController>().enabled = false;
+            GameManager.Instance.PlayerManager.Player.transform.position = sceneList[0].entrancePoint.position;
+            GameManager.Instance.PlayerManager.Player.transform.rotation = sceneList[0].entrancePoint.rotation;
+            GameManager.Instance.PlayerManager.Player.GetComponent<CharacterController>().enabled = true;
         }
         Debug.LogWarning("Could Not Find an Entrance, player will be placed at last scenes position");
     }
