@@ -221,10 +221,6 @@ MonoBehaviour:
   gunRoot: {fileID: 7586521122227995432}
   inventory: []
   playerInventory: {fileID: 11400000, guid: 510706637802847488e1c060eb3d921c, type: 2}
-  testWeapons:
-  - {fileID: 11400000, guid: 3c348e7942548bf4eab90681f0aa7579, type: 2}
-  - {fileID: 11400000, guid: b52d3e10e107f254da2bc8f045fbfd7b, type: 2}
-  - {fileID: 11400000, guid: 3b3a2ce5d373b024c842603a000a3c78, type: 2}
 --- !u!143 &9108104918549503057
 CharacterController:
   m_ObjectHideFlags: 0
@@ -424,6 +420,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5361719144747705337}
     m_Modifications:
+    - target: {fileID: 3652749927907713128, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.20000005
