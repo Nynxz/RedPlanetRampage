@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour {
 
     private void PlayButtonClicked() {
         Debug.Log("Start Game");
-        string sceneToLoad = "Hub_store";
+        string sceneToLoad = "Hub-H";
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
         //SceneManager.LoadScene("ManagerScene", LoadSceneMode.Additive);
         GameManager.currentScene = sceneToLoad;

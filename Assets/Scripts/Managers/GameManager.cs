@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(ShopManager))]
 [RequireComponent(typeof(AudioManager))]
+[RequireComponent(typeof(MissionManager))]
 public class GameManager : MonoBehaviour {
 
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour {
     public PlayerManager PlayerManager { get; private set; }
     public ShopManager ShopManager { get; private set; }
     public AudioManager AudioManager { get; private set; }
+    public MissionManager MissionManager { get; private set; }
 
     public static string previousScene;
     public static string currentScene;
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour {
             PlayerManager = GetComponent<PlayerManager>();
             ShopManager = GetComponent<ShopManager>();
             AudioManager = GetComponent<AudioManager>();
+            MissionManager = GetComponent<MissionManager>();
 
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }

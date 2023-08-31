@@ -5966,6 +5966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1741537117}
   - component: {fileID: 1741537116}
+  - component: {fileID: 1741537120}
   - component: {fileID: 1741537115}
   - component: {fileID: 1741537114}
   - component: {fileID: 1741537113}
@@ -6116,6 +6117,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: 0.1
+--- !u!114 &1741537120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741537112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcb82992a21b5142949393046439f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnlockedMissions:
+  - {fileID: 11400000, guid: e1af169bff44ea848bbabb802c7fba73, type: 2}
+  CurrentMission: {fileID: 0}
+  CurrentMissionStatus: 0
 --- !u!1 &1757044974
 GameObject:
   m_ObjectHideFlags: 0

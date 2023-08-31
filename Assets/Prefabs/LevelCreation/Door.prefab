@@ -185,7 +185,8 @@ GameObject:
   - component: {fileID: 4603306523345243412}
   - component: {fileID: 570019280699106806}
   - component: {fileID: 4962060855583113185}
-  m_Layer: 0
+  - component: {fileID: 7512760965438826034}
+  m_Layer: 7
   m_Name: DoorEntry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,6 +279,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7512760965438826034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785167396674875695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10782daf29b7004fb12b528b8f1d8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: {fileID: 102900000, guid: 59b79d57f99c5884b9f220172338ab64, type: 3}
+  hoverText: Zombie Farm
 --- !u!1 &6801030737661548109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,7 +3379,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 641
+  m_VersionIndex: 653
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3395,13 +3410,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7762864260751960400}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7052275, y: -0.05151938, z: -0.051519386, w: 0.7052275}
-  m_LocalPosition: {x: -0.379, y: 2.919, z: -0.018}
+  m_LocalRotation: {x: 0.70390266, y: -0.06723794, z: -0.06723793, w: 0.70390284}
+  m_LocalPosition: {x: -0.433, y: 2.835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1667763584067647484}
-  m_LocalEulerAnglesHint: {x: 81.644, y: -90, z: -90}
+  m_LocalEulerAnglesHint: {x: 79.087, y: -90, z: -90}
 --- !u!108 &538845012037602744
 Light:
   m_ObjectHideFlags: 0
@@ -3416,8 +3431,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.93
   m_Range: 10
-  m_SpotAngle: 66.068886
-  m_InnerSpotAngle: 57.870956
+  m_SpotAngle: 132.69174
+  m_InnerSpotAngle: 66.06888
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -3805,7 +3820,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 322
+  m_VersionIndex: 334
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

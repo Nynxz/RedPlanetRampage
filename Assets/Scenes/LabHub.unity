@@ -7345,7 +7345,7 @@ GameObject:
   - component: {fileID: 2144670452}
   - component: {fileID: 2144670451}
   - component: {fileID: 2144670450}
-  - component: {fileID: 2144670449}
+  - component: {fileID: 2144670454}
   m_Layer: 7
   m_Name: SceneDoor
   m_TagString: Untagged
@@ -7353,20 +7353,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2144670449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144670448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c10782daf29b7004fb12b528b8f1d8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 7e7af473615e98549956a254db6c8091, type: 3}
-  hoverText: To The Hub Store
 --- !u!65 &2144670450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7453,6 +7439,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -270, z: 0}
+--- !u!114 &2144670454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144670448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4afbd358442da7a4cae3ecf52af01ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

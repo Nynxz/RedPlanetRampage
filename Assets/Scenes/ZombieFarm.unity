@@ -3224,7 +3224,7 @@ GameObject:
   - component: {fileID: 311548989}
   - component: {fileID: 311548988}
   - component: {fileID: 311548987}
-  - component: {fileID: 311548986}
+  - component: {fileID: 311548991}
   m_Layer: 7
   m_Name: SceneDoor
   m_TagString: Untagged
@@ -3232,20 +3232,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &311548986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311548985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c10782daf29b7004fb12b528b8f1d8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 7e7af473615e98549956a254db6c8091, type: 3}
-  hoverText: To Test Room
 --- !u!65 &311548987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3332,6 +3318,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &311548991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311548985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4afbd358442da7a4cae3ecf52af01ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &315892387
 PrefabInstance:
   m_ObjectHideFlags: 0
