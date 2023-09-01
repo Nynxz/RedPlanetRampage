@@ -3,16 +3,16 @@ using UnityEngine;
 
 // Used for unlocking weapons in the gameworld
 // TODO: Add Cost?
-public class UpgradeUnlocker : Interactable {
+public class UpgradeUnlocker : MonoBehaviour, IInteractable {
 
     [SerializeField] private UpgradeSO newUpgrade;
 
-    public override void interact(GameObject player) {
+    public void interact(GameObject player) {
         GameManager.Instance.ShopManager.AddNewUpgrade(newUpgrade);
         Debug.Log("Interacting With New Unlocker    !");
     }
 
-    public override string onHoverText() {
+    public string onHoverText() {
         return "Unlock: " + newUpgrade.Name;
     }
 }

@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour {
     private int currentMoney = 0;
     private int currentScore = 0;
 
-    private Interactable currentInteractable;
+    private IInteractable currentInteractable;
 
 
     #region EVENTS
@@ -54,20 +54,20 @@ public class PlayerManager : MonoBehaviour {
     protected void Update() {
         // Raycast forward to see if theres an interactable
         if (Physics.Raycast(player.cameraRoot.position, player.cameraRoot.forward, out RaycastHit hit, player.interactRange, player.interactMask)) {
-            if (hit.collider.TryGetComponent(out Interactable interactable)) {
+            if (hit.collider.TryGetComponent(out IInteractable interactable)) {
                 if (currentInteractable != interactable) {
                     StartHovering(interactable);
                 }
             }
-        } else if (currentInteractable) {
+        } else if (currentInteractable != null) {
             ClearHover();
         }
 
     }
 
     private void TryInteract() {
-        if (currentInteractable) {
-            Interactable toInteract = currentInteractable;
+        if (currentInteractable != null) {
+            IInteractable toInteract = currentInteractable;
             currentInteractable = null;
             toInteract.interact(playerGameObject);
         }
@@ -78,7 +78,7 @@ public class PlayerManager : MonoBehaviour {
         return playerGameObject.GetComponent<Player>();
     }
 
-    public void StartHovering(Interactable interactable) {
+    public void StartHovering(IInteractable interactable) {
         OnHover?.Invoke(this, new OnHoverEventArgs() {
             hovering = true,
             hoverText = interactable.onHoverText()

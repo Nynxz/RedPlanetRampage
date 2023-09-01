@@ -3,7 +3,7 @@ using UnityEngine;
     An implemntation of the interactable class,
     used as a debug for testing
  */
-public class MissionLoader : Interactable {
+public class MissionLoader : MonoBehaviour, IInteractable {
 
     public Light doorLight;
     public MeshRenderer lightObject;
@@ -39,11 +39,11 @@ public class MissionLoader : Interactable {
         }
     }
 
-    public override void interact(GameObject player) {
+    public void interact(GameObject player) {
         GameManager.Instance.MissionManager.LoadSetMission();
     }
 
-    public override string onHoverText() {
+    public string onHoverText() {
         if(GameManager.Instance.MissionManager.CurrentMissionStatus == MissionManager.MissionStatus.ToLoad) {
             return "Load " + GameManager.Instance.MissionManager.CurrentMission.MissionData.Name;
         }

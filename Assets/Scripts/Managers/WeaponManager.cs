@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//baseInventory is just data, it is then instantiated to player inventory... either through a new save or loading an inventory
 
 public class WeaponManager : MonoBehaviour {
 
     [SerializeField] private Transform gunRoot;
     [SerializeField] private List<EquippedSO> inventory;
-    [SerializeField] private PlayerInventorySO playerInventory;
+    [SerializeField] private PlayerInventorySO baseInventory;
+    private PlayerInventorySO playerInventory;
     public PlayerInventorySO PlayerInventorySO => playerInventory;
 
     private EquippedSO currentEquippedWeaponSO;
@@ -30,11 +31,22 @@ public class WeaponManager : MonoBehaviour {
     private CurrentWeaponSlot currentWeaponSlot = CurrentWeaponSlot.None;
 
     protected void Start() {
+        SetupBaseInventory();
         currentWeaponVisual = null;
         playerInventory.EquipInventory();
     }
 
+    public void SetupBaseInventory() {
+        playerInventory = Instantiate(baseInventory); // Create a copy
+    }
 
+    public void LoadInventory(PlayerInventorySO inventory) {
+        playerInventory = Instantiate(inventory); // Create a copy
+    }
+
+    public void SaveCurrentInventory() {
+        Debug.Log(JsonUtility.ToJson(playerInventory, true));
+    }
 
     protected void Update() {
 
@@ -65,7 +77,7 @@ public class WeaponManager : MonoBehaviour {
             //toShoot = false;
             currentEquippedWeaponSO.Reload();
             GameManager.Instance.UIManager.SetAmmoText(currentEquippedWeaponSO.GetAmmoArgs());
-
+            SaveCurrentInventory();
         }
     }
 
