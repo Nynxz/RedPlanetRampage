@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunRoot: {fileID: 7586521122227995432}
   inventory: []
-  playerInventory: {fileID: 11400000, guid: 510706637802847488e1c060eb3d921c, type: 2}
+  baseInventory: {fileID: 11400000, guid: 510706637802847488e1c060eb3d921c, type: 2}
 --- !u!143 &9108104918549503057
 CharacterController:
   m_ObjectHideFlags: 0

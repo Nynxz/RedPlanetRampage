@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //baseInventory is just data, it is then instantiated to player inventory... either through a new save or loading an inventory
-
+// This should not be responsible for inventory visuals or updating the inventory with new items
 public class WeaponManager : MonoBehaviour {
 
     [SerializeField] private Transform gunRoot;
@@ -29,11 +29,13 @@ public class WeaponManager : MonoBehaviour {
     }
 
     private CurrentWeaponSlot currentWeaponSlot = CurrentWeaponSlot.None;
-
-    protected void Start() {
+    private void Awake() {
         SetupBaseInventory();
         currentWeaponVisual = null;
         playerInventory.EquipInventory();
+    }
+    protected void Start() {
+
     }
 
     public void SetupBaseInventory() {

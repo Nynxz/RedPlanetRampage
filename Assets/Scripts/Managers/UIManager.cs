@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using static InventoryUpgradeButton;
 using static InventoryWeaponButton;
 
+
+/// <summary>
+/// THIS IS IN THE PROCESS OF BEING REPLACED BY SEPERATE SCRIPTS
+/// </summary>
 [System.Serializable]
 public class InGameUIVars {
 
@@ -31,6 +35,9 @@ public class InGameUIVars {
 
 [System.Serializable]
 public class ShopUIVars {
+    public GameObject NewShopGroup;
+
+
 
     public GameObject ShopGroup;
     public Button shopCloseButton;
@@ -77,9 +84,9 @@ public class UIManager : MonoBehaviour {
     protected void Start() {
         gameManager = GetComponent<GameManager>();
 
+        /*Coverted*/
         gameUIVars.interactText.gameObject.SetActive(false); //Disable Interact Text By Default
 
-        shopUIVars.shopCloseButton.onClick.AddListener(CloseShop);
 
         shopUIVars.ShopTypeSwitchButton.onClick.AddListener(() => {
             ShopManager.CurrentShop currentShop = GameManager.Instance.ShopManager.SwitchBuyMenus();
@@ -90,16 +97,24 @@ public class UIManager : MonoBehaviour {
 
 
 
-        Player.OnHealthChanged += Player_OnHealthChanged;
         //SetupInventoryButtons();
+
+
+        /*Coverted*/
+        Player.OnHealthChanged += Player_OnHealthChanged;
+
+        shopUIVars.shopCloseButton.onClick.AddListener(CloseShop);
 
         InputManager.OptionsPressed += ToggleInventory;
 
         WeaponManager.OnInventoryChanged += SetupInventoryUI;
         WeaponManager.OnInventoryChanged += SetupInventoryUpgradeList;
 
+        /*Coverted*/
         PlayerManager.UpdateMoney += SetMoneyText;
         PlayerManager.UpdateScore += SetScoreText;
+
+        /*Coverted*/
         PlayerManager.OnHover += SetHoverText;
     }
 
@@ -110,7 +125,8 @@ public class UIManager : MonoBehaviour {
     }
 
     private void CloseShop() {
-        shopUIVars.ShopGroup.gameObject.SetActive(false);
+        shopUIVars.NewShopGroup.gameObject.SetActive(false);
+        //shopUIVars.ShopGroup.gameObject.SetActive(false);
         gameUIVars.InGameGroup.gameObject.SetActive(true);
 
         GameManager.Instance.InputManager.EnableInput();
@@ -122,9 +138,10 @@ public class UIManager : MonoBehaviour {
     }
     public void OpenShop() {
         InputManager.OptionsPressed -= ToggleInventory;
-        shopUIVars.ShopGroup.gameObject.SetActive(true);
+        shopUIVars.NewShopGroup.gameObject.SetActive(true);
+        //shopUIVars.ShopGroup.gameObject.SetActive(true);
         gameUIVars.InGameGroup.gameObject.SetActive(false);
-
+        GameManager.Instance.NewShopManager.RefreshShop();
         GameManager.Instance.InputManager.DisableInput();
         Cursor.visible = true;
 
@@ -225,8 +242,6 @@ public class UIManager : MonoBehaviour {
 
         inventoryUIVars.WeaponOneGroup.GetComponent<InventoryWeaponButton>().SetupButton(currentInventory.weapons.weaponOne);
         inventoryUIVars.WeaponTwoGroup.GetComponent<InventoryWeaponButton>().SetupButton(currentInventory.weapons.weaponTwo);
-
-
     }
 
     public void ToggleInventory() {

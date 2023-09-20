@@ -6,6 +6,9 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Player player;
 
+    [SerializeField] private PlayerUnlocksSO debugStartingUnlocks;
+    public PlayerUnlocksSO currentUnlocks { get; private set; }
+
     public Vector3 PlayerPosition => player.transform.position;
     public Player Player => player;
 
@@ -43,12 +46,23 @@ public class PlayerManager : MonoBehaviour {
     #endregion
 
     protected void Awake() {
-        // Spawn the Player
         player = SpawnPlayer();
+
+        currentUnlocks = Instantiate(debugStartingUnlocks); // We would load a json and convert to the correct type
+        foreach (WeaponUnlockS weaponUnlockS in currentUnlocks.weapons) {
+            if (weaponUnlockS.isUnlocked) {
+                Player.GetComponent<WeaponManager>().AddWeaponToInventory(weaponUnlockS.weapon);
+            }
+        }
+        // Spawn the Player
+
     }
 
     protected void Start() {
+        GameManager.Instance.NewShopManager.LoadShop(currentUnlocks);
+
         InputManager.OnInteract += TryInteract;
+
     }
 
     protected void Update() {

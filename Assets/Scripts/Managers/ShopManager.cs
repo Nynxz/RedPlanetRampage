@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// THIS IS IN THE PROCESS OF BEING REPLACED BY SEPERATE SCRIPTS
+/// </summary>
 [System.Serializable]
 public class ShopUI {
     public TextMeshProUGUI selectedNameWeapon;
@@ -110,7 +112,6 @@ public class ShopManager : MonoBehaviour {
                     break; 
             }
         }
-
     }
 
     public void AddNewWeapon(WeaponSO newWeapon) {
@@ -128,6 +129,7 @@ public class ShopManager : MonoBehaviour {
     }
 
     private void RefreshShop() {
+        return;
         UIManager uiManager = GameManager.Instance.UIManager;
         foreach (GameObject item in currentItemList) {
             Destroy(item);
@@ -140,7 +142,7 @@ public class ShopManager : MonoBehaviour {
             currentItemList.Add(shopItem.gameObject);
             shopItem.WeaponName.text = weapon.weaponData.weaponName;
             shopItem.WeaponCost.text = weapon.weaponShopData.cost.ToString();
-            shopItem.weaponSO = weapon;
+            //shopItem.weaponSO = weapon;
             shopItem.name = weapon.weaponData.weaponName;
 
         }

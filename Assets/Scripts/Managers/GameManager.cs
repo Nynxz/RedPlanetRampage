@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
     public AudioManager AudioManager { get; private set; }
     public MissionManager MissionManager { get; private set; }
 
+    public NewShopManager NewShopManager { get; private set; }
+
     public static string previousScene;
     public static string currentScene;
 
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour {
             ShopManager = GetComponent<ShopManager>();
             AudioManager = GetComponent<AudioManager>();
             MissionManager = GetComponent<MissionManager>();
+            NewShopManager = GetComponent<NewShopManager>();
 
             SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }

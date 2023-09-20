@@ -8,7 +8,8 @@ public class WeaponUnlocker : MonoBehaviour, IInteractable {
     [SerializeField] private WeaponSO newWeapon;
 
     public void interact(GameObject player) {
-        GameManager.Instance.ShopManager.AddNewWeapon(newWeapon);
+        GameManager.Instance.PlayerManager.currentUnlocks.UnlockWeapon(newWeapon);
+        //GameManager.Instance.ShopManager.AddNewWeapon(newWeapon);
         Debug.Log("Interacting With New Weapon!");
     }
 
