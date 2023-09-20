@@ -8955,6 +8955,7 @@ GameObject:
   - component: {fileID: 1741537118}
   - component: {fileID: 1741537119}
   - component: {fileID: 1741537122}
+  - component: {fileID: 1741537123}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9148,6 +9149,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopVisualManager: {fileID: 0}
+--- !u!114 &1741537123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741537112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4735dc771cf1347a92342a4083f667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShipParts:
+  - Part: 0
+    Name: Booster
+    isCollected: 0
+    isDeposited: 0
+  - Part: 1
+    Name: Frame
+    isCollected: 0
+    isDeposited: 0
+  - Part: 2
+    Name: Fins
+    isCollected: 0
+    isDeposited: 0
+  - Part: 3
+    Name: Fuel
+    isCollected: 0
+    isDeposited: 0
 --- !u!1 &1757044974
 GameObject:
   m_ObjectHideFlags: 0

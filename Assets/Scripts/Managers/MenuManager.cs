@@ -17,13 +17,11 @@ public class MenuManager : MonoBehaviour {
     }
 
     private void PlayButtonClicked() {
-        Debug.Log("Start Game");
-        string sceneToLoad = "Hub-H";
+        Debug.Log("Start Cine");
+        string sceneToLoad = "StartEndCineScene";
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
         //SceneManager.LoadScene("ManagerScene", LoadSceneMode.Additive);
         GameManager.currentScene = sceneToLoad;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void HighscoreButtonClicked() {

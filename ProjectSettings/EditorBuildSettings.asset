@@ -32,5 +32,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/H-S1.unity
     guid: adc0d8cd17c50e249bb950c8e7cc5de9
+  - enabled: 1
+    path: Assets/Scenes/StartEndCineScene.unity
+    guid: f8591924416454a45a69c7b611e7e7ca
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
