@@ -74,4 +74,19 @@ public class GameManager : MonoBehaviour {
         }
         Debug.Log(previousScene + " --> " + currentScene);
     }
+
+
+    public static void DisableGame() {
+        Time.timeScale = 0f; // Stop time
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        GameManager.Instance.InputManager.DisableInput();
+    }
+
+    public static void EnableGame() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        GameManager.Instance.InputManager.EnableInput();
+        Time.timeScale = 1.0f;
+    }
 }

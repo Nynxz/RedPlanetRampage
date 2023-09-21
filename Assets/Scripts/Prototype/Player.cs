@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private PlayerStatsSO startingStats; // Not Used Except at start
     public PlayerStatsSO PlayerStats { get; private set; }
 
-
+    public static event Action PlayerDiedEvent;
 
     // Health
     private float currentHealth;
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour {
 
         if (currentHealth <= 0) {
             currentHealth = 0;
+            PlayerDiedEvent?.Invoke();
             Debug.Log("U died");
             // Die
         }
@@ -71,6 +72,10 @@ public class Player : MonoBehaviour {
 
         return true;
 
+    }
+
+    public void HealMax() {
+        TryHeal(PlayerStats.HealthMaximum);
     }
 
     public void RefreshPlayerEvents() {

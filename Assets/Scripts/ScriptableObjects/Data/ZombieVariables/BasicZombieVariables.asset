@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicZombieVariables
   m_EditorClassIdentifier: 
   attackDamage: 12
-  awakeRange: 25
-  chaseRange: 20
+  awakeRange: 150
+  chaseRange: 120
   attackRange: 1.6
   actionCooldown: 0.2
   attackCooldown: 0

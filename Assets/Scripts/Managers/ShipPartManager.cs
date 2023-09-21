@@ -17,13 +17,30 @@ public class ShipPartManager : MonoBehaviour {
     }
 
     [SerializeField] private ShipPartInfo[] ShipParts = new ShipPartInfo[4];
+    private Stack<int> PartsNotSafeForRestart = new Stack<int>();
 
     // 4 different ship parts
     // can be 'collected' and deposited
     // 1 in each level
+    private void Start() {
+        MissionLeaver.MissionLeft += MissionLeaver_MissionLeft;
+        Player.PlayerDiedEvent += Player_PlayerDiedEvent;
+    }
+
+    private void Player_PlayerDiedEvent() {
+        // Player has died, clear the parts they collected that level, theyre bad so they dont deserve them.
+        foreach (int part in PartsNotSafeForRestart) {
+            ShipParts[part].isCollected = false;
+        }
+    }
+
+    private void MissionLeaver_MissionLeft() {
+        PartsNotSafeForRestart.Clear(); // Mission was left properly, clear parts
+    }
 
     public void CollectPart(ShipPart shipPart) {
         ShipParts[(int)shipPart].isCollected = true;
+        PartsNotSafeForRestart.Push((int)shipPart);
     }
 
     public void TryDepositParts() {
