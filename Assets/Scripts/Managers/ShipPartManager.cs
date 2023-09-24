@@ -6,10 +6,20 @@ using UnityEngine;
 //Manages the players progress towards collecting the 4 different ship parts to escape
 
 public class ShipPartManager : MonoBehaviour {
+
+    public static event Action<ShipPartsUpdatedEventArgs> ShipPartsUpdatedEvent;
+
+    public class ShipPartsUpdatedEventArgs : EventArgs {
+        public ShipPartInfo[] ShipParts;
+        public ShipPartsUpdatedEventArgs(ShipPartInfo[] shipParts) {
+            ShipParts = shipParts;
+        }
+    }
+
     public enum ShipPart { First, Second, Third, Fourth };
 
     [Serializable]
-    private struct ShipPartInfo {
+    public struct ShipPartInfo {
         public ShipPart Part;
         public string Name;
         public bool isCollected;
@@ -57,5 +67,7 @@ public class ShipPartManager : MonoBehaviour {
         if(allDeposited) {
             Debug.Log("Game Complete");
         }
+
+        ShipPartsUpdatedEvent?.Invoke(new ShipPartsUpdatedEventArgs(ShipParts));
     }
 }

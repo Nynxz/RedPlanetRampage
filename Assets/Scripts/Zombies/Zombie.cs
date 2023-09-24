@@ -1,23 +1,26 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public abstract class Zombie : MonoBehaviour, IDamageable {
+    public static event Action AZombieDiedEvent;
+    public event Action ThisZombieDied;
 
     [SerializeField] private float startingHealth;
     [SerializeField] private RectTransform healthBarRect;
     [SerializeField] private DropTableSO drops;
-    [SerializeField] private ZombieState state;
+    [SerializeField] protected ZombieState state;
     [SerializeField] private bool stayAsleep;
     [SerializeField] private bool drawGizmos = false;
-    [SerializeField] private float actionCooldown;
+    [SerializeField] protected float actionCooldown;
 
-    [SerializeField] private ZombieVariables zombieVariables;
+    [SerializeField] protected ZombieVariables zombieVariables;
 
-    private float currentCooldown;
+    protected float currentCooldown;
 
     private float currentHealth;
-    private NavMeshAgent navAgent;
-    private float distanceToPlayer;
+    protected NavMeshAgent navAgent;
+    protected float distanceToPlayer;
     protected enum ZombieState {
         Asleep,
         Wandering,
@@ -53,8 +56,6 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
                 default: break;
             }
         }
-
-
     }
 
     protected virtual void DoAsleep() {
@@ -67,6 +68,7 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
             }
         }
     }
+
     protected virtual void DoWandering() {
         if (distanceToPlayer < zombieVariables.chaseRange) {
             state = ZombieState.Chasing;
@@ -74,8 +76,12 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
             state = ZombieState.Asleep;
         }
     }
-    protected virtual void DoChasing() {
+    protected virtual void SetDestinationToPlayer() {
         navAgent.SetDestination(GameManager.Instance.PlayerManager.PlayerPosition);
+    }
+
+    protected virtual void DoChasing() {
+        SetDestinationToPlayer();
         if (distanceToPlayer < zombieVariables.attackRange) {
             state = ZombieState.Attacking;
             navAgent.enabled = false;
@@ -83,6 +89,7 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
             state = ZombieState.Wandering;
         }
     }
+
     protected virtual void DoAttacking() {
         if (distanceToPlayer > zombieVariables.attackRange) {
             navAgent.enabled = true;
@@ -92,8 +99,6 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
             GameManager.Instance.PlayerManager.Player.Damage(zombieVariables.attackDamage);
         }
     }
-
-
 
     public virtual void Damage(float amount) {
         currentHealth -= amount;
@@ -113,6 +118,8 @@ public abstract class Zombie : MonoBehaviour, IDamageable {
     }
 
     public virtual void Die() {
+        ThisZombieDied?.Invoke();
+        AZombieDiedEvent?.Invoke();
         DropAnItem();
         Destroy(gameObject);
     }

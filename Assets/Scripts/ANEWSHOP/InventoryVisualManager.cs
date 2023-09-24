@@ -2,10 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryVisualManager : MonoBehaviour {
     [SerializeField] private GameObject InventoryGroup;
+    
+    [SerializeField] private GameObject InventoryPageGroup;
+    [SerializeField] private GameObject StatsPageGroup;
 
+
+    [SerializeField] private Button inventoryButton;
+    [SerializeField] private Button statsButton;
 
     [SerializeField] private GameObject InventoryUpgradeUIPrefab;
     [SerializeField] private GameObject InventoryWeaponUIPrefab;
@@ -26,6 +33,15 @@ public class InventoryVisualManager : MonoBehaviour {
         NewUIManager.EmitInventoryToggle += HandleInventoryToggleEvent;
         WeaponManager.OnInventoryChanged += WeaponManager_OnInventoryChanged;
 
+        inventoryButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() => {
+            this.InventoryPageGroup.SetActive(true);
+            StatsPageGroup.SetActive(false);
+        }));
+
+        statsButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() => {
+            this.InventoryPageGroup.SetActive(false);
+            StatsPageGroup.SetActive(true);
+        }));
     }
 
     private void WeaponManager_OnInventoryChanged(PlayerInventorySO currentInventory) {

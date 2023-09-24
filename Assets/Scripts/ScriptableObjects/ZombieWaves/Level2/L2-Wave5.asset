@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05e38b9a7214fb4c82f5a375e33df64, type: 3}
+  m_Name: L2-Wave5
+  m_EditorClassIdentifier: 
+  zombiesToSpawn:
+  - zombie: {fileID: 8095567426138134049, guid: 7727c3c011dd5ca4db26c284e453bb17, type: 3}
+    count: 10
+  - zombie: {fileID: 6657349883096769728, guid: 24602f1e9f1bb234a94333f600dd34c7, type: 3}
+    count: 5
+  - zombie: {fileID: 100108, guid: 48dbd17620045b741990da6726b15143, type: 3}
+    count: 5
+  - zombie: {fileID: 8095567426138134049, guid: b7d1b42747685f24f8a1b0e77d68de16, type: 3}
+    count: 1
+  zombieIndexLeft: 
+  totalZombies: 21
