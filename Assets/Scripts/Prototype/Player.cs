@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
 
 public class Player : MonoBehaviour {
+    public static event Action<bool> IsSlowedEvent;
 
     [SerializeField] public Transform cameraRoot;
     [SerializeField] public LayerMask interactMask;
@@ -29,6 +31,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private bool isSlowed = false;
+    private float slowTime = 0f;
+    private float originalMoveSpeedMod = 0f;
+    private float originalSprintSpeedMod = 0f;
 
     // Start is called before the first frame update
     protected void Awake() {
@@ -39,7 +45,28 @@ public class Player : MonoBehaviour {
     protected void Start() {
         OnHealthChanged?.Invoke(this, new OnHealthChangedEventArgs(HealthChangedTypes.Increase, currentHealth, GetHealthNormalized()));
     }
+    private void Update() {
+        if (slowTime > 0) {
+            if (!isSlowed) {
+                IsSlowedEvent?.Invoke(true);
+                isSlowed = true;
+                originalMoveSpeedMod = PlayerStats.MoveSpeedModifier;
+                originalSprintSpeedMod = PlayerStats.SprintSpeedModifier;
+                PlayerStats.MoveSpeedModifier *= 0.5f;
+                PlayerStats.SprintSpeedModifier *= 0.5f;
+            }
+            slowTime -= Time.deltaTime;
+        } else {
+            if (isSlowed) {
+                slowTime = 0;
+                isSlowed = false;
+                IsSlowedEvent?.Invoke(false);
+                PlayerStats.MoveSpeedModifier = originalMoveSpeedMod;
+                PlayerStats.SprintSpeedModifier = originalSprintSpeedMod;
+            }
+        }
 
+    }
 
     public void Damage(float damage) {
 
@@ -55,6 +82,11 @@ public class Player : MonoBehaviour {
         }
 
     }
+
+    public void AddSlowDebuff(float seconds) {
+        slowTime += seconds;
+    }
+
 
     public bool TryHeal(float amount) {
         if (currentHealth >= PlayerStats.HealthMaximum) {

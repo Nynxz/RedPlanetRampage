@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6057926198623488330}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1293285550240565544}
-  bulletForce: 10
+  bulletForce: 15
 --- !u!1 &4979921911784855476
 GameObject:
   m_ObjectHideFlags: 0

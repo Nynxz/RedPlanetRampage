@@ -16,6 +16,8 @@ public class ShopItemVisualWeapon : MonoBehaviour, ISelectHandler {
     [SerializeField] private Sprite UnlockedSprite;
 
     public void OnSelect(BaseEventData eventData) {
+        Debug.Log("Selecting");
+
         GameManager.Instance.NewShopManager.SelectWeapon(indexInList);
     }
 

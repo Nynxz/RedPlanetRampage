@@ -21,3 +21,10 @@ MonoBehaviour:
     isUnlocked: 0
   - weapon: {fileID: 11400000, guid: b52d3e10e107f254da2bc8f045fbfd7b, type: 2}
     isUnlocked: 1
+  upgrades:
+  - upgrade: {fileID: 11400000, guid: d4353e1c050811741a29bf89dba91fe3, type: 2}
+    isUnlocked: 0
+  - upgrade: {fileID: 11400000, guid: 0317fbe6cb941d74b9a8cfd13ec07ad2, type: 2}
+    isUnlocked: 0
+  - upgrade: {fileID: 11400000, guid: 0bbe3f7c1984eca4e8ba8c2207318d16, type: 2}
+    isUnlocked: 0
