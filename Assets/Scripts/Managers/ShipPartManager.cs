@@ -6,6 +6,7 @@ using UnityEngine;
 //Manages the players progress towards collecting the 4 different ship parts to escape
 
 public class ShipPartManager : MonoBehaviour {
+    public static event Action GameCompletedEvent;
 
     public static event Action<ShipPartsUpdatedEventArgs> ShipPartsUpdatedEvent;
 
@@ -37,7 +38,7 @@ public class ShipPartManager : MonoBehaviour {
         Player.PlayerDiedEvent += Player_PlayerDiedEvent;
     }
 
-    private void Player_PlayerDiedEvent() {
+    public void Player_PlayerDiedEvent() {
         // Player has died, clear the parts they collected that level, theyre bad so they dont deserve them.
         foreach (int part in PartsNotSafeForRestart) {
             ShipParts[part].isCollected = false;
@@ -66,6 +67,7 @@ public class ShipPartManager : MonoBehaviour {
 
         if(allDeposited) {
             Debug.Log("Game Complete");
+            GameCompletedEvent?.Invoke();
         }
 
         ShipPartsUpdatedEvent?.Invoke(new ShipPartsUpdatedEventArgs(ShipParts));

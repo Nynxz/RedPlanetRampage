@@ -7,6 +7,18 @@ using UnityEngine.UI;
 // On Game Start
 // Load a welcome menu, explaining the situation and goal
 // Once player continues, give them a basic layout of the controls
+/*
+ <TODO>
+Alert... There is an outbreak on mars in one of the Griffith Science Labratorys....
+They have destroyed the escape pod mechanism and you need to find the parts to repair it
+They have been scattered on different floors of the lab
+Continue deep to find the parts and be careful along the way
+Come back to the Hub at any time to purchase ammo, weapons, upgrades and heal from the shop
+Griffith was holding the tougher monsters further into the surface of mars, so be careful as you descend
+
+Come back to the hub once you have all the parts to repair the escape pod
+Good luck!
+ */
 public class IntroductionManager : MonoBehaviour {
     [Serializable]
     private struct PageInfo {
@@ -21,6 +33,7 @@ public class IntroductionManager : MonoBehaviour {
     [SerializeField] private Button confirmButton;
     [SerializeField] private TextMeshProUGUI confirmButtonText;
     [SerializeField] private TextMeshProUGUI infoTextArea;
+    [SerializeField] private Image imageArea;
 
     [SerializeField] private PageInfo introInfo;
     [SerializeField] private PageInfo controlsInfo;
@@ -54,6 +67,13 @@ public class IntroductionManager : MonoBehaviour {
         headerTMP.text = pageInfo.PageHeader;
         confirmButtonText.text = pageInfo.ConfirmButtonText;
         infoTextArea.text = pageInfo.PageText;
+
+        if(pageInfo.PageSprite != null) {
+            imageArea.gameObject.SetActive(true);
+            imageArea.sprite = pageInfo.PageSprite;
+        } else {
+            imageArea.gameObject.SetActive(false);
+        }
     }
 
     private void StartGame() {

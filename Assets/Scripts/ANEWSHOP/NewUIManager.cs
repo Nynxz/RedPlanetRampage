@@ -28,8 +28,6 @@ public class NewUIManager : MonoBehaviour {
         GameManager.DisableGame();
     }
 
-
-
     public static void EmitShopTryOpen() { // Called from interactables
         Debug.Log("trying to open shop");
 

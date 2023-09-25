@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour {
     public static string previousScene;
     public static string currentScene;
 
+    [SerializeField] private List<GameObject> toDestroy;
 
     protected void Awake() {
         DontDestroyOnLoad(this);
@@ -88,5 +91,15 @@ public class GameManager : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Confined;
         GameManager.Instance.InputManager.EnableInput();
         Time.timeScale = 1.0f;
+    }
+
+    public static void EndGame() {
+        Instance.InputManager.DisableInput();
+        // Destroys all Objects
+        foreach (GameObject gameobject in Instance.toDestroy) {
+            Destroy(gameobject);
+        }
+        Destroy(Instance.PlayerManager.Player.gameObject);
+        Destroy(Instance.gameObject);
     }
 }
