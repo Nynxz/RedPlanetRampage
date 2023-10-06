@@ -23,7 +23,7 @@ public class MissionManager : MonoBehaviour {
     public void LoadSetMission() {
         if (CurrentMission == null) return;
         MissionSet?.Invoke(false); // We have left a mission, therefore the mission is no longer set
-        SceneManager.LoadScene(CurrentMission.MissionData.BaseScene.name);
+        SceneManager.LoadScene(CurrentMission.MissionData.BaseSceneName);
         CurrentMissionStatus = MissionStatus.Loaded;
     }
 

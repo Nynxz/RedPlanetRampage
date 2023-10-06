@@ -6,7 +6,12 @@ public class SniperBullet : ProjectileBullet {
     private List<GameObject> alreadyHit;
 
     // Doesnt destroy itself when it hits an enemy "piercing"
-
+    public override void Setup(Vector3 forceDir, float speed, float damage) {
+        base.Setup(forceDir, speed, damage);
+        if (OnShootAudio) {
+            GameManager.Instance.AudioManager.PlayAudioClipOnPlayer(OnShootAudio);
+        }
+    }
     protected override void OnEnable() {
         base.OnEnable();
 

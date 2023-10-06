@@ -14,7 +14,7 @@ public class MissionSO : RewardSO {
     public struct SMissionData {
         public string Name;
         public string Description;
-        public SceneAsset BaseScene;
+        public string BaseSceneName;
     }
 
     public SMissionData MissionData;

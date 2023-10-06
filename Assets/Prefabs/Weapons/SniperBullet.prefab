@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1b053a6abe1dd4fbd08fcd9886e7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLifeTime: 2
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 896
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  doDifferent: 0
+  OnShootAudio: {fileID: 8300000, guid: fecc3e7a0166a104cb810435f6fdf37b, type: 3}
+  maxLifeTime: 3

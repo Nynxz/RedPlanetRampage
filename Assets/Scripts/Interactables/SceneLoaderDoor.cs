@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
  */
 public class SceneLoaderDoor : MonoBehaviour, IInteractable {
 
-    [SerializeField] private SceneAsset scene;
+    [SerializeField] private string scene;
     [SerializeField] private string hoverText;
 
     public void interact(GameObject player) {
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadScene(scene);
     }
 
     public string onHoverText() {

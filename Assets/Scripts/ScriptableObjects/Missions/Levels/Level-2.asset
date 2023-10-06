@@ -18,6 +18,6 @@ MonoBehaviour:
   MissionData:
     Name: Level 2
     Description: Find the second part
-    BaseScene: {fileID: 102900000, guid: a6378ab741ce01944be36e88219b0b4f, type: 3}
+    BaseSceneName: L-2
   Rewards:
   - {fileID: 11400000, guid: 75bf61046a7af154281c7b9a84e438fc, type: 2}

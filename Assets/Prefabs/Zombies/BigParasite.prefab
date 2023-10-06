@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7e4b9129501994685d77351f956fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 400
+  startingHealth: 1500
   healthBarRect: {fileID: 138352177827644724}
   drops: {fileID: 11400000, guid: fe9a10c6ecde8fa49960e3c56f41fd3d, type: 2}
   state: 0
