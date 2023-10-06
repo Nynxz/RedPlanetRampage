@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData:
     weaponName: Test SMG
-    weaponShootCooldown: 0.06
+    weaponShootCooldown: 0.1
     weaponPrefab: {fileID: 6765640387610621756, guid: 3f396d12c82dfca4d862c686ade66248, type: 3}
     bulletSO: {fileID: 11400000, guid: 245ee1f81db2c6946977cb544c7d63f6, type: 2}
     ammoCount: 45
