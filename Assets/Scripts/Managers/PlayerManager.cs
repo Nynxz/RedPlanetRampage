@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour {
     private GameObject playerGameObject;
 
     // Player Variables
-    private int currentMoney = 0;
+    private int currentMoney = 111110;
     private int currentScore = 0;
 
     private IInteractable currentInteractable;

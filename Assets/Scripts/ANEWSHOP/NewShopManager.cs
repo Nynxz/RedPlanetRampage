@@ -7,6 +7,9 @@ using static PlayerInventorySO;
 
 
 public class NewShopManager : MonoBehaviour {
+    static readonly bool DEBUGMODE = true;
+
+
     [SerializeField] private PlayerUnlocksSO CurrentUnlocks;
 
     [SerializeField] private GameObject shopItemPrefab;
@@ -90,7 +93,7 @@ public class NewShopManager : MonoBehaviour {
         Debug.Log(CurrentUnlocks.weapons[index].weapon.weaponData.weaponName);
         Debug.Log(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost);
         Debug.Log(CurrentUnlocks.weapons[index].isUnlocked);
-        if (CurrentUnlocks.weapons[index].isUnlocked && GameManager.Instance.PlayerManager.TryRemoveMoney(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost)) {
+        if (DEBUGMODE || CurrentUnlocks.weapons[index].isUnlocked && GameManager.Instance.PlayerManager.TryRemoveMoney(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost)) {
             GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddWeaponToInventory(CurrentUnlocks.weapons[index].weapon);
         }
 
