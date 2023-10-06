@@ -23,4 +23,4 @@ MonoBehaviour:
   weaponShopData:
     cost: 200
     description: A Test SMG
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: c981a7cc07bbe9b42be2a6a4f81d0d7e, type: 3}
