@@ -18,6 +18,6 @@ MonoBehaviour:
   MissionData:
     Name: Level 1
     Description: Find the first part
-    BaseScene: {fileID: 102900000, guid: 5675be4fe245e7b4b9364d4770a2d95a, type: 3}
+    BaseSceneName: L-1
   Rewards:
   - {fileID: 11400000, guid: 75bf61046a7af154281c7b9a84e438fc, type: 2}

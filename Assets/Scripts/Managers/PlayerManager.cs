@@ -116,13 +116,15 @@ public class PlayerManager : MonoBehaviour {
         });
     }
 
-    public void RemoveMoney(int amount) {
+    public bool TryRemoveMoney(int amount) {
         if (CheckMoneyAmount(amount)) {
             currentMoney -= amount;
             UpdateMoney?.Invoke(this, new UpdateMoneyEventArgs() {
                 moneyAmount = currentMoney
             });
+            return true;
         }
+        return false;
     }
 
     private bool CheckMoneyAmount(int amount) {

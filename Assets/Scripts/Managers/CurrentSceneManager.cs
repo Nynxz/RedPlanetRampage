@@ -13,7 +13,7 @@ public class CurrentSceneManager : MonoBehaviour {
     // Struct used for creating a list of entrances, 'when I come from scene X, go to position Y'
     [System.Serializable]
     public struct SceneEntrances {
-        public SceneAsset fromScene;
+        public string fromScene;
         public Transform entrancePoint;
     }
 
@@ -38,7 +38,7 @@ public class CurrentSceneManager : MonoBehaviour {
 
     private void PositionPlayer() {
         foreach (SceneEntrances sceneEntrance in sceneList) {
-            if (sceneEntrance.fromScene.name == GameManager.previousScene) {
+            if (sceneEntrance.fromScene == GameManager.previousScene) {
                 Debug.Log("Trying to position to point from: " + sceneEntrance.fromScene + sceneEntrance.entrancePoint.position);
                 Debug.Log(GameManager.previousScene + " --> " + GameManager.currentScene);
 

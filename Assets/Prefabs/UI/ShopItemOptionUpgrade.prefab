@@ -83,6 +83,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4140852208657224807, guid: 172ddac1782903a438e9403109f4fa04, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140852208657224807, guid: 172ddac1782903a438e9403109f4fa04, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140852208657224807, guid: 172ddac1782903a438e9403109f4fa04, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9607844
+      objectReference: {fileID: 0}
     - target: {fileID: 4401414474636633267, guid: 172ddac1782903a438e9403109f4fa04, type: 3}
       propertyPath: m_SizeDelta.x
       value: 317.73
@@ -205,7 +217,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5588639271558108961, guid: 172ddac1782903a438e9403109f4fa04, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3425505369515013829, guid: 172ddac1782903a438e9403109f4fa04, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7134748717110432230, guid: 172ddac1782903a438e9403109f4fa04, type: 3}
       insertIndex: -1
@@ -236,6 +249,7 @@ MonoBehaviour:
   UpgradeName: {fileID: 958287382598410671}
   UpgradeCost: {fileID: 3031403725950925409}
   UpgradeIcon: {fileID: 3782626756154091282}
+  indexInList: 0
 --- !u!114 &958287382598410671 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8469183411179347265, guid: 172ddac1782903a438e9403109f4fa04, type: 3}

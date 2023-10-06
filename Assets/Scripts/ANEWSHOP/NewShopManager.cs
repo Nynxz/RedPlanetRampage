@@ -88,7 +88,12 @@ public class NewShopManager : MonoBehaviour {
         // Return Visual If Insufficient Money
         Debug.Log("Trying to buy weapon!");
         Debug.Log(CurrentUnlocks.weapons[index].weapon.weaponData.weaponName);
-        GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddWeaponToInventory(CurrentUnlocks.weapons[index].weapon);
+        Debug.Log(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost);
+        Debug.Log(CurrentUnlocks.weapons[index].isUnlocked);
+        if (CurrentUnlocks.weapons[index].isUnlocked && GameManager.Instance.PlayerManager.TryRemoveMoney(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost)) {
+            GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddWeaponToInventory(CurrentUnlocks.weapons[index].weapon);
+        }
+
     }
     public void TryBuyUpgrade(int index) {
         // TODO

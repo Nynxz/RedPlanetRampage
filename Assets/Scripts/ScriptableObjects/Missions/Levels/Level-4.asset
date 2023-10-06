@@ -18,6 +18,6 @@ MonoBehaviour:
   MissionData:
     Name: Level 4
     Description: Find the fourth part
-    BaseScene: {fileID: 102900000, guid: fdc711d30ae69ea49b3ea6073164f729, type: 3}
+    BaseSceneName: L-4
   Rewards:
   - {fileID: 11400000, guid: 75bf61046a7af154281c7b9a84e438fc, type: 2}
