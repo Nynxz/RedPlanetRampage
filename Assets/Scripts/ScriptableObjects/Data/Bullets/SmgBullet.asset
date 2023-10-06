@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbf44bc842b8344b8ac771c81c7852b, type: 3}
   m_Name: SmgBullet
   m_EditorClassIdentifier: 
-  bulletName: Basic Bullet
-  bulletDamage: 5
+  bulletName: SMG Bullet
+  bulletDamage: 4
   bulletSpeed: 60
-  bulletPrefab: {fileID: 5459100373442361604, guid: 154f749ff82d2744a9294069c2ffcb3c, type: 3}
+  bulletPrefab: {fileID: 5459100373442361604, guid: c870ff4f937113b4f8ecab1ff588d028, type: 3}

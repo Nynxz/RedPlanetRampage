@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8032247695437392539}
   - component: {fileID: 7733786780335130456}
   - component: {fileID: 257249937957688332}
-  - component: {fileID: -4272808747568614034}
+  - component: {fileID: 1896770305516482850}
   m_Layer: 0
-  m_Name: SniperBullet
+  m_Name: SmgBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.04}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,12 +129,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-4272808747568614034
+--- !u!114 &1896770305516482850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5459100373442361604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1b053a6abe1dd4fbd08fcd9886e7ed, type: 3}
+  m_Script: {fileID: 11500000, guid: cc2ef9dfa9e0d4442a832ac65e070c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundLayerMask:
@@ -152,5 +152,6 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  OnShootAudio: {fileID: 8300000, guid: fecc3e7a0166a104cb810435f6fdf37b, type: 3}
-  maxLifeTime: 3
+  OnShootAudio: {fileID: 8300000, guid: 8581f806dddef8046b4942de05b897be, type: 3}
+  maxLifeTime: 2
+  doDifferent: 0

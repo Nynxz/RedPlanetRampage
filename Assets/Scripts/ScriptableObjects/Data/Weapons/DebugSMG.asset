@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData:
     weaponName: Debug SMG
-    weaponShootCooldown: 0.03
+    weaponShootCooldown: 0.06
     weaponPrefab: {fileID: 6765640387610621756, guid: 3f396d12c82dfca4d862c686ade66248, type: 3}
-    bulletSO: {fileID: 11400000, guid: 8978a1ddb7af6b6459e0ad3879c4455a, type: 2}
+    bulletSO: {fileID: 11400000, guid: 245ee1f81db2c6946977cb544c7d63f6, type: 2}
     ammoCount: 999
     magCount: 9999
-    reloadTime: 0.1
+    reloadTime: 3
   weaponShopData:
     cost: 0
     description: FOR DEBUG

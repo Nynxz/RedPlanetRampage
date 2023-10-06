@@ -152,6 +152,6 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  OnShootAudio: {fileID: 8300000, guid: 0011746e9c651154890a6db043ddbabb, type: 3}
+  OnShootAudio: {fileID: 8300000, guid: da9ac25586ace6c4c81d6acd856f7cda, type: 3}
   maxLifeTime: 2
   doDifferent: 0
