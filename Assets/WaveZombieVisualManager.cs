@@ -16,7 +16,6 @@ public class WaveZombieVisualManager : MonoBehaviour
 
     private void WaveZombieSpawner_WaveChangeEvent(WaveZombieSpawner.WaveChangeEventArgs obj) {
         currentWave.text = $"Wave: {obj.currentWave}/5";
-        killedZombies.text = $"Killed: {obj.killedZombiesThisWave}";
-        totalZombies.text = $"Total Zombies: {obj.totalZombiesThisWave}";
+        killedZombies.text = $"Zombies Left In Wave: {obj.totalZombiesThisWave-obj.killedZombiesThisWave}";
     }
 }
