@@ -5,7 +5,7 @@ public class CheatChest : MonoBehaviour, IInteractable {
 
     public void interact(GameObject player) {
         player.GetComponent<WeaponManager>().FillAmmo();
-        player.GetComponent<Player>().TryHeal(100);
+        //player.GetComponent<Player>().TryHeal(100);
         Debug.Log("Interacting With Cheat Chest!");
     }
 
