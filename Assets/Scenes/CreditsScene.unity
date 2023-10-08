@@ -180,16 +180,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Creators\r\n\nAndrew Earls - s5273804\nHenry Lee - s5238766\n\rJayden
-    Lutherborrow - s5282366\n\n\r\nAssets Used\r\n\r\nKenney Assets\r\nhttps://www.kenney.nl/assets/blaster-kit\r\nhttps://www.kenney.nl/assets/space-kit\r\n\r\nEvilLair.Net
-    Textures\r\nhttps://www.evillair.net/v4/gametextures/\r\n\r\nStylized Lava Materials\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/stylized-lava-materials-180943\r\n\r\nUnity
-    Starter Assets\r\nhttps://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-urp-196525\r\n\r\nSpider
-    Green\r\nhttps://assetstore.unity.com/packages/3d/characters/animals/insects/spider-green-11869\r\n\r\nSpaceSkies
-    Free\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/sky/spaceskies-free-80503\r\n\n\rPost
-    Apocalypse Guns Demo - Sound Earth Game Audio (06/10/2023)\r\nhttps://assetstore.unity.com/packages/audio/sound-fx/weapons/post-apocalypse-guns-demo-33515\n\nFootsteps
+  m_text: "Creators\r\n\r\nAndrew Earls - s5273804\r\nHenry Lee - s5238766\r\nJayden
+    Lutherborrow - s5282366\r\n\r\n\r\nAssets Used\r\n\r\nModels & Animations \r\n\r\nMixamo
+    Animations and Models\r\nhttps://www.mixamo.com/#/\r\n\r\nKenney Assets\r\nhttps://www.kenney.nl/assets/blaster-kit\r\nhttps://www.kenney.nl/assets/space-kit\r\n\r\nSpider
+    Green\r\nhttps://assetstore.unity.com/packages/3d/characters/animals/insects/spider-green-11869\r\n\r\nLab
+    Assets\r\nhttps://assetstore.unity.com/packages/3d/props/tools/free-laboratory-pack-123782\r\n\r\nTextures\r\n\r\nEvilLair.Net
+    Textures\r\nhttps://www.evillair.net/v4/gametextures/\r\n\r\nStylized Lava Materials\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/stylized-lava-materials-180943\r\n\r\nSpaceSkies
+    Free\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/sky/spaceskies-free-80503\r\n\r\nAudio\r\n\r\nPost
+    Apocalypse Guns Demo - Sound Earth Game Audio (06/10/2023)\r\nhttps://assetstore.unity.com/packages/audio/sound-fx/weapons/post-apocalypse-guns-demo-33515\r\n\r\nFootsteps
     - Essentials - Nox_Sound (06/10/2023)\r\nhttps://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879
-    \n\nHitmarker PNG:\r\nhttps://www.pngfind.com/freepng/hitmarker/\r\n\nLab Assets\r\nhttps://assetstore.unity.com/packages/3d/props/tools/free-laboratory-pack-123782\r\n\r\nMixamo
-    Animations and Models\r\nhttps://www.mixamo.com/#/"
+    \r\n\r\nRPG Essentials Sound Effects - FREE! - leohpaz\r\nhttps://assetstore.unity.com/packages/audio/sound-fx/rpg-essentials-sound-effects-free-227708
+    \r\n\r\nScripts\r\n\r\nUnity Starter Assets\r\nhttps://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-urp-196525\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.2
+  m_fontSize: 14.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
