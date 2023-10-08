@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/BossFightRoom.unity
     guid: ac09d2156918a7e439d0ce1df4ca7a1e
   - enabled: 1
-    path: Assets/Scenes/LabHub.unity
-    guid: d228655a916d89446907a926ed81cbfb
-  - enabled: 1
     path: Assets/Scenes/Hub-H.unity
     guid: 2d0ed677ba432aa48bc02e9ba1e5b975
   - enabled: 1
