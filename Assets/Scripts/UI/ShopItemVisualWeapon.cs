@@ -19,6 +19,7 @@ public class ShopItemVisualWeapon : MonoBehaviour, ISelectHandler {
         Debug.Log("Selecting");
 
         GameManager.Instance.NewShopManager.SelectWeapon(indexInList);
+        GameManager.Instance.AudioManager.PlaySoundSelect();
     }
 
     public void Setup(WeaponUnlockS wS, int index) {

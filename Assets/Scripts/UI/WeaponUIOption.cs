@@ -20,6 +20,7 @@ public class WeaponUIOption : MonoBehaviour {
             if (GameManager.Instance.UIManager.currentSelectedWeaponSlot != InventoryWeaponButton.WeaponSlotType.None) { // If a slot is selected
 
                 WeaponManager weaponManager = GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>();
+                GameManager.Instance.AudioManager.PlaySoundSelect();
 
                 weaponManager.SwapSlotWithWeaponIndex(GameManager.Instance.UIManager.currentSelectedWeaponSlot, this.indexInList);
             }

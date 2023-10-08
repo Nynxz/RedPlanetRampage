@@ -25,7 +25,9 @@ public class InventoryWeaponButton : MonoBehaviour {
         baseButton.onClick.AddListener(() => {
             Debug.Log("CLicking weapon");
             GameManager.Instance.UIManager.SelectWeaponSlot(weaponSlotType);
+            GameManager.Instance.AudioManager.PlaySoundSelect();
         });
+
 
         if (equippedSO == null) {
             ClearSlotVisual();

@@ -92,6 +92,9 @@ public class NewShopManager : MonoBehaviour {
         Debug.Log(CurrentUnlocks.weapons[index].isUnlocked);
         if (DEBUGMODE || CurrentUnlocks.weapons[index].isUnlocked && GameManager.Instance.PlayerManager.TryRemoveMoney(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost)) {
             GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddWeaponToInventory(CurrentUnlocks.weapons[index].weapon);
+            GameManager.Instance.AudioManager.PlaySoundAllow();
+        } else {
+            GameManager.Instance.AudioManager.PlaySoundDenied();
         }
 
     }
@@ -100,6 +103,11 @@ public class NewShopManager : MonoBehaviour {
         Debug.Log(CurrentUnlocks.upgrades[index].upgrade.Name);
         if (DEBUGMODE || GameManager.Instance.PlayerManager.TryRemoveMoney((int)CurrentUnlocks.upgrades[index].upgrade.Cost)) {
             GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddUpgradeToInventory(CurrentUnlocks.upgrades[index].upgrade);
+            GameManager.Instance.AudioManager.PlaySoundAllow();
+        } else {
+            GameManager.Instance.AudioManager.PlaySoundDenied();
         }
     }
+
+
 }

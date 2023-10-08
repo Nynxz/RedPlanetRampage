@@ -22,6 +22,7 @@ public class ShopItemVisualUpgrade : MonoBehaviour, ISelectHandler {
     public void OnSelect(BaseEventData eventData) {
         Debug.Log("Selecting");
         GameManager.Instance.NewShopManager.SelectUpgrade(indexInList);
+        GameManager.Instance.AudioManager.PlaySoundSelect();
     }
 
     public void Setup(UpgradeUnlockS uS, int index) {

@@ -24,7 +24,11 @@ public class UpgradeUIOption : MonoBehaviour {
                 WeaponManager weaponManager = GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>();
 
                 weaponManager.SwapSlotWithUpgradeIndex(GameManager.Instance.UIManager.currentSelectedUpgradeSlot, this.indexInList);
+
+
+                GameManager.Instance.AudioManager.PlaySoundSelect();
             }
+
         });
     }
 }
