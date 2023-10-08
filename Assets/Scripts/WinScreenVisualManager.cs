@@ -21,7 +21,7 @@ public class WinScreenVisualManager : MonoBehaviour
 
         CreditsButton.onClick.AddListener(() => {
             GameManager.EnableGame();
-            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+            SceneManager.LoadScene("CreditsScene", LoadSceneMode.Single);
             GameManager.EndGame();
         });
 
