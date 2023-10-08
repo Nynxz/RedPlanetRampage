@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Horns Of Power
   m_EditorClassIdentifier: 
   Name: Horns of Power
-  Cost: 30
+  Cost: 300
   Upgrades:
   - {fileID: 11400000, guid: 4d0d2dd8caf21b14081c3619c1e5d62b, type: 2}
   Icon: {fileID: 21300000, guid: 2221902e11931284c93e4db2690a759b, type: 3}
