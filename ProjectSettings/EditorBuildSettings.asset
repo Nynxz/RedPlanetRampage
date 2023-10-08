@@ -12,26 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/ManagerScene.unity
     guid: 9a1f6c6a9d0bf3a49b7ce5591524d244
   - enabled: 1
-    path: Assets/Scenes/Hub_store.unity
-    guid: 7e7af473615e98549956a254db6c8091
-  - enabled: 1
-    path: Assets/Scenes/Chamber1.unity
-    guid: f4bd116bbe6f48d4ca5c72543b7af0e6
-  - enabled: 1
     path: Assets/Scenes/BossFightRoom.unity
     guid: ac09d2156918a7e439d0ce1df4ca7a1e
-  - enabled: 1
-    path: Assets/Scenes/ZombieFarm.unity
-    guid: 59b79d57f99c5884b9f220172338ab64
   - enabled: 1
     path: Assets/Scenes/LabHub.unity
     guid: d228655a916d89446907a926ed81cbfb
   - enabled: 1
     path: Assets/Scenes/Hub-H.unity
     guid: 2d0ed677ba432aa48bc02e9ba1e5b975
-  - enabled: 1
-    path: Assets/Scenes/H-S1.unity
-    guid: adc0d8cd17c50e249bb950c8e7cc5de9
   - enabled: 1
     path: Assets/Scenes/StartEndCineScene.unity
     guid: f8591924416454a45a69c7b611e7e7ca
