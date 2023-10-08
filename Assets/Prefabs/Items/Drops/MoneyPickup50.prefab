@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a451b36e9b1b9d4c878ad5dffc0adfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPickupSound: {fileID: 8300000, guid: 0011746e9c651154890a6db043ddbabb, type: 3}
+  onPickupSound: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
   moneyAmount: 50
 --- !u!65 &3944599492400518148
 BoxCollider:

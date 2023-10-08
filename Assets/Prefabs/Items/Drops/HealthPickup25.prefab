@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1cfc4da77ef9fc45b82e67ad9229a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPickupSound: {fileID: 8300000, guid: 0011746e9c651154890a6db043ddbabb, type: 3}
+  onPickupSound: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
   healAmount: 25
 --- !u!65 &3944599492400518148
 BoxCollider:
