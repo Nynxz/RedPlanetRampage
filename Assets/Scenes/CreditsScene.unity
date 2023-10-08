@@ -180,8 +180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Creators\r\nAndrew Earls - \nHenry Lee - s5238766\n\rJayden Lutherborrow\n\n\r\nAssets
-    Used\r\n\r\nKenney Assets\r\nhttps://www.kenney.nl/assets/blaster-kit\r\nhttps://www.kenney.nl/assets/space-kit\r\n\r\nEvilLair.Net
+  m_text: "Creators\r\n\nAndrew Earls - s5273804\nHenry Lee - s5238766\n\rJayden
+    Lutherborrow - s5282366\n\n\r\nAssets Used\r\n\r\nKenney Assets\r\nhttps://www.kenney.nl/assets/blaster-kit\r\nhttps://www.kenney.nl/assets/space-kit\r\n\r\nEvilLair.Net
     Textures\r\nhttps://www.evillair.net/v4/gametextures/\r\n\r\nStylized Lava Materials\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/stylized-lava-materials-180943\r\n\r\nUnity
     Starter Assets\r\nhttps://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-urp-196525\r\n\r\nSpider
     Green\r\nhttps://assetstore.unity.com/packages/3d/characters/animals/insects/spider-green-11869\r\n\r\nSpaceSkies
@@ -216,11 +216,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 15.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 8.69
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
