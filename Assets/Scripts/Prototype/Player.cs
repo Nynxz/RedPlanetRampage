@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     public AudioSource footstepSound, sprintSound, jumpSound;
 
+    public AudioSource WeaponSoundSource;
+
     [SerializeField] public Transform cameraRoot;
     [SerializeField] public LayerMask interactMask;
     [SerializeField] public float interactRange;

@@ -79,6 +79,8 @@ public class UIManager : MonoBehaviour {
     public UpgradeSlotType currentSelectedUpgradeSlot { get; private set; } = UpgradeSlotType.None;
     public WeaponSlotType  currentSelectedWeaponSlot { get; private set; } = WeaponSlotType.None;
 
+    [SerializeField] private TextMeshProUGUI invHeader;
+
 
 
     protected void Start() {
@@ -116,6 +118,9 @@ public class UIManager : MonoBehaviour {
 
         /*Coverted*/
         PlayerManager.OnHover += SetHoverText;
+
+
+        // Duct tape fixing before final
     }
 
     private void Player_OnHealthChanged(object sender, Player.OnHealthChangedEventArgs e) {
@@ -195,6 +200,7 @@ public class UIManager : MonoBehaviour {
 
         inventoryUIVars.InventoryUpgradeListRoot.SetActive(true);
         inventoryUIVars.InventoryWeaponListRoot.SetActive(false);
+        invHeader.text = "Upgrades";
 
         switch (upgradeSlotType) {
             case UpgradeSlotType.One: inventoryUIVars.UpgradeOneGroup.GetComponent<InventoryUpgradeButton>().Select(); break;
@@ -211,6 +217,7 @@ public class UIManager : MonoBehaviour {
 
         inventoryUIVars.InventoryUpgradeListRoot.SetActive(false);
         inventoryUIVars.InventoryWeaponListRoot.SetActive(true);
+        invHeader.text = "Weapons";
 
         switch (upgradeSlotType) {
             case WeaponSlotType.One: inventoryUIVars.WeaponOneGroup.GetComponent<InventoryWeaponButton>().Select(); break;

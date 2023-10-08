@@ -9,6 +9,7 @@ public class ShopItemVisualUpgrade : MonoBehaviour, ISelectHandler {
     public TextMeshProUGUI UpgradeName;
     public TextMeshProUGUI UpgradeCost;
     public Image UpgradeIcon;
+    public TextMeshProUGUI UpgradeInfo;
     public int indexInList;
 
     private Button button;
@@ -29,5 +30,7 @@ public class ShopItemVisualUpgrade : MonoBehaviour, ISelectHandler {
         UpgradeName.text = uS.upgrade.Name;
         UpgradeCost.text = uS.upgrade.Cost.ToString();
         UpgradeIcon.sprite = uS.upgrade.Icon;
+        UpgradeIcon.color = uS.upgrade.IconTint;
+        UpgradeInfo.text= uS.upgrade.InfoText;
     }
 }

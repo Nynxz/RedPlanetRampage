@@ -15,7 +15,7 @@ public class UpgradeUIOption : MonoBehaviour {
         iconImage.sprite = upgradeSO.Icon;
         iconImage.color = upgradeSO.IconTint;
         upgradeName.text = upgradeSO.name;
-        upgradeInfo.text = "TODO";
+        upgradeInfo.text = upgradeSO.InfoText;
 
         gameObject.GetComponent<Button>().onClick.AddListener(() => {
 

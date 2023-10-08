@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ebb94ff96ed7754989f592623e627ad, type: 2}
   Icon: {fileID: 21300000, guid: 56630747cb36b324285fa136ace9716a, type: 3}
   IconTint: {r: 0.9707701, g: 1, b: 0, a: 1}
+  InfoText: +100 Health, 1.2x Speed

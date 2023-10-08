@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2111660608290309466}
   - component: {fileID: 3944599492400518148}
   m_Layer: 0
-  m_Name: MoneyPickup20
+  m_Name: MoneyPickup50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPickupSound: {fileID: 8300000, guid: 0011746e9c651154890a6db043ddbabb, type: 3}
-  moneyAmount: 20
+  moneyAmount: 50
 --- !u!65 &3944599492400518148
 BoxCollider:
   m_ObjectHideFlags: 0

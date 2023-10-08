@@ -22,7 +22,6 @@ public class NewUIManager : MonoBehaviour {
         InputManager.OptionsPressed += EmitInventoryToggle;
         Player.PlayerDiedEvent += Player_PlayerDiedEvent;
     }
-
     private void Player_PlayerDiedEvent() {
         DeathScreen.OpenDeathScreen();
         GameManager.DisableGame();

@@ -10,6 +10,6 @@ public class CheatChest : MonoBehaviour, IInteractable {
     }
 
     public string onHoverText() {
-        return "Cheat Chest";
+        return "Free Ammo!";
     }
 }

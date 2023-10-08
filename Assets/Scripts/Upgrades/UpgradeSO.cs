@@ -15,6 +15,7 @@ public class UpgradeSO : ScriptableObject {
     public List<UpgradeAbilitySO> Upgrades;
     public Sprite Icon;
     public Color IconTint;
+    public string InfoText;
 
     public void EnableAbilities() {
         foreach (UpgradeAbilitySO upgradeAbility in Upgrades) {
