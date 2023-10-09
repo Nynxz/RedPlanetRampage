@@ -23,6 +23,8 @@ public class InventoryUpgradeButton : MonoBehaviour {
 
         baseButton.onClick.AddListener(() => {
             GameManager.Instance.UIManager.SelectUpgradeSlot(upgradeSlotType);
+            GameManager.Instance.AudioManager.PlaySoundSelect();
+
         });
 
         if (upgradeSO == null) {

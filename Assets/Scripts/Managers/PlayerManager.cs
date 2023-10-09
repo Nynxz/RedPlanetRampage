@@ -15,11 +15,25 @@ public class PlayerManager : MonoBehaviour {
     private GameObject playerGameObject;
 
     // Player Variables
-    private int currentMoney = 111110;
+    private int currentMoney = 0;
     private int currentScore = 0;
+    private int currentKillCount = 0;
 
     private IInteractable currentInteractable;
 
+
+    public static event Action<InfoUpdatedEventArgs> InfoUpdatedEvent;
+
+    public class InfoUpdatedEventArgs : EventArgs {
+        public int points { get; private set; }
+        public int money { get; private set; }
+        public int zombieKills { get; private set; }
+        public InfoUpdatedEventArgs(int points, int money, int kills) {
+            this.points = points;
+            this.money = money;
+            this.zombieKills = kills;
+        }
+    }
 
     #region EVENTS
     public class UpdateAmmoArgs {
@@ -63,6 +77,13 @@ public class PlayerManager : MonoBehaviour {
 
         InputManager.OnInteract += TryInteract;
 
+        Zombie.AZombieDiedEvent += Zombie_AZombieDiedEvent;
+
+    }
+
+    private void Zombie_AZombieDiedEvent() {
+        currentKillCount++;
+        InfoUpdatedEvent?.Invoke(new InfoUpdatedEventArgs(currentScore, currentMoney, currentKillCount));
     }
 
     protected void Update() {
@@ -114,6 +135,7 @@ public class PlayerManager : MonoBehaviour {
         UpdateMoney?.Invoke(this, new UpdateMoneyEventArgs() {
             moneyAmount = currentMoney
         });
+        InfoUpdatedEvent?.Invoke(new InfoUpdatedEventArgs(currentScore, currentMoney, currentKillCount));
     }
 
     public bool TryRemoveMoney(int amount) {
@@ -122,8 +144,12 @@ public class PlayerManager : MonoBehaviour {
             UpdateMoney?.Invoke(this, new UpdateMoneyEventArgs() {
                 moneyAmount = currentMoney
             });
+            InfoUpdatedEvent?.Invoke(new InfoUpdatedEventArgs(currentScore, currentMoney, currentKillCount));
+
             return true;
         }
+        InfoUpdatedEvent?.Invoke(new InfoUpdatedEventArgs(currentScore, currentMoney, currentKillCount));
+
         return false;
     }
 
@@ -136,6 +162,8 @@ public class PlayerManager : MonoBehaviour {
         UpdateScore?.Invoke(this, new UpdateScoreEventArgs() {
             scoreAmount = currentScore
         });
+        InfoUpdatedEvent?.Invoke(new InfoUpdatedEventArgs(currentScore, currentMoney, currentKillCount));
+
     }
 
     public void RemoveScore(int amount) {
@@ -143,6 +171,11 @@ public class PlayerManager : MonoBehaviour {
         UpdateScore?.Invoke(this, new UpdateScoreEventArgs() {
             scoreAmount = currentScore
         });
+        InfoUpdatedEvent?.Invoke(new InfoUpdatedEventArgs(currentScore, currentMoney, currentKillCount));
+    }
+
+    public InfoUpdatedEventArgs GetGameInfo() {
+        return new InfoUpdatedEventArgs(currentScore, currentMoney, currentKillCount);
     }
 
     protected void OnDrawGizmos() {
@@ -151,4 +184,5 @@ public class PlayerManager : MonoBehaviour {
         if (player)
             Gizmos.DrawLine(player.cameraRoot.position, player.cameraRoot.position + player.cameraRoot.forward * player.interactRange);
     }
+
 }

@@ -7,7 +7,7 @@ using static PlayerInventorySO;
 
 
 public class NewShopManager : MonoBehaviour {
-    static readonly bool DEBUGMODE = true;
+    static readonly bool DEBUGMODE = false;
 
 
     [SerializeField] private PlayerUnlocksSO CurrentUnlocks;
@@ -86,24 +86,28 @@ public class NewShopManager : MonoBehaviour {
     }
 
     public void TryBuyWeapon(int index) {
-        // TODO
-        // Cost Check
-        // Return Visual If Insufficient Money
         Debug.Log("Trying to buy weapon!");
         Debug.Log(CurrentUnlocks.weapons[index].weapon.weaponData.weaponName);
         Debug.Log(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost);
         Debug.Log(CurrentUnlocks.weapons[index].isUnlocked);
         if (DEBUGMODE || CurrentUnlocks.weapons[index].isUnlocked && GameManager.Instance.PlayerManager.TryRemoveMoney(CurrentUnlocks.weapons[index].weapon.weaponShopData.cost)) {
             GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddWeaponToInventory(CurrentUnlocks.weapons[index].weapon);
+            GameManager.Instance.AudioManager.PlaySoundAllow();
+        } else {
+            GameManager.Instance.AudioManager.PlaySoundDenied();
         }
 
     }
     public void TryBuyUpgrade(int index) {
-        // TODO
-        // Cost Check
-        // Return Visual If Insufficient Money
-        Debug.Log("Trying to buy weapon!");
+        Debug.Log("Trying to buy upgrade!");
         Debug.Log(CurrentUnlocks.upgrades[index].upgrade.Name);
-        GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddUpgradeToInventory(CurrentUnlocks.upgrades[index].upgrade);
+        if (DEBUGMODE || GameManager.Instance.PlayerManager.TryRemoveMoney((int)CurrentUnlocks.upgrades[index].upgrade.Cost)) {
+            GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>().AddUpgradeToInventory(CurrentUnlocks.upgrades[index].upgrade);
+            GameManager.Instance.AudioManager.PlaySoundAllow();
+        } else {
+            GameManager.Instance.AudioManager.PlaySoundDenied();
+        }
     }
+
+
 }

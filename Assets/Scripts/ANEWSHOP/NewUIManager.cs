@@ -22,7 +22,6 @@ public class NewUIManager : MonoBehaviour {
         InputManager.OptionsPressed += EmitInventoryToggle;
         Player.PlayerDiedEvent += Player_PlayerDiedEvent;
     }
-
     private void Player_PlayerDiedEvent() {
         DeathScreen.OpenDeathScreen();
         GameManager.DisableGame();
@@ -35,6 +34,8 @@ public class NewUIManager : MonoBehaviour {
         InputManager.OptionsPressed += EmitShopTryClose;
 
         EmitShopToggle?.Invoke(true);
+        GameManager.Instance.AudioManager.PlaySoundSelect();
+
     }
 
     public static void EmitShopTryClose() {
@@ -44,10 +45,14 @@ public class NewUIManager : MonoBehaviour {
         InputManager.OptionsPressed += EmitInventoryToggle;
 
         EmitShopToggle?.Invoke(false);
+        GameManager.Instance.AudioManager.PlaySoundSelect();
+
     }
 
     public static void EmitInventoryTryOpen() {
         Debug.Log("trying to open inventory");
         EmitInventoryToggle?.Invoke();
+        GameManager.Instance.AudioManager.PlaySoundSelect();
+
     }
 }

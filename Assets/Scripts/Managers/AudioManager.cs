@@ -13,8 +13,13 @@ public class AudioManager : MonoBehaviour {
     // Where to play sounds
     public AudioSource audioSource { get; private set; }
 
+
+    [SerializeField] private AudioClip allowSound;
+    [SerializeField] private AudioClip denySound;
+    [SerializeField] private AudioClip selectSound;
+
     protected void Start() {
-        audioSource = GameManager.Instance.PlayerManager.Player.GetComponent<AudioSource>();
+        audioSource = GameManager.Instance.PlayerManager.Player.WeaponSoundSource;
     }
 
     public void PlayAudioClipOnPlayer(AudioClip audioClip) {
@@ -25,5 +30,15 @@ public class AudioManager : MonoBehaviour {
         AudioSource.PlayClipAtPoint(audioClip, location);
     }
 
+    public void PlaySoundAllow() {
+        PlayAudioClipOnPlayer(allowSound);
+    }
 
+    public void PlaySoundDenied() {
+        PlayAudioClipOnPlayer(denySound);
+    }
+
+    public void PlaySoundSelect() {
+        PlayAudioClipOnPlayer(selectSound);
+    }
 }

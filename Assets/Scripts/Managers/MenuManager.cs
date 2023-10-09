@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour {
     protected void Start() {
         playButton.onClick.AddListener(PlayButtonClicked);
         highscoreButton.onClick.AddListener(HighscoreButtonClicked);
-        settingsButton.onClick.AddListener(SettingsButtonClicked);
+        settingsButton.onClick.AddListener(CreditsButtonClicked);
         exitButton.onClick.AddListener(ExitButtonClicked);
     }
 
@@ -28,8 +28,8 @@ public class MenuManager : MonoBehaviour {
         Debug.Log("High Scores");
     }
 
-    private void SettingsButtonClicked() {
-        Debug.Log("Settings Menu");
+    private void CreditsButtonClicked() {
+        SceneManager.LoadScene("CreditsScene");
     }
 
     private void ExitButtonClicked() {

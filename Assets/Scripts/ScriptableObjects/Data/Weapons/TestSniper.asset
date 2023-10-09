@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestSniper
   m_EditorClassIdentifier: 
   weaponData:
-    weaponName: Test Sniper
+    weaponName: Sniper
     weaponShootCooldown: 1.4
     weaponPrefab: {fileID: 6753099293054810322, guid: 360432e1ef503cf41abb979e43488b29, type: 3}
     bulletSO: {fileID: 11400000, guid: 41ad4862b171d2a4ea178b55075ffdac, type: 2}

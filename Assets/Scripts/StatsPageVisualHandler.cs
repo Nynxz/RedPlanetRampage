@@ -14,13 +14,16 @@ public class StatsPageVisualHandler : MonoBehaviour {
     private int currentKillCount = 0;
 
     void Start() {
+        Debug.Log("Hello");
         ShipPartManager.ShipPartsUpdatedEvent += ShipPartManager_ShipPartsUpdatedEvent;
-        Zombie.AZombieDiedEvent += Zombie_AZombieDiedEvent;
+        PlayerManager.InfoUpdatedEvent += PlayerManager_InfoUpdatedEvent;
+        gameObject.SetActive(false);
     }
 
-    private void Zombie_AZombieDiedEvent() {
-        currentKillCount++;
-        zkillCountTMP.text = $"{currentKillCount}";
+
+    private void PlayerManager_InfoUpdatedEvent(PlayerManager.InfoUpdatedEventArgs obj) {
+        Debug.Log("Hello");
+        zkillCountTMP.text = $"{obj.zombieKills}";
     }
 
     private void ShipPartManager_ShipPartsUpdatedEvent(ShipPartManager.ShipPartsUpdatedEventArgs obj) {

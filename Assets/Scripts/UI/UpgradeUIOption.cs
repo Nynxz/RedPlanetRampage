@@ -15,7 +15,7 @@ public class UpgradeUIOption : MonoBehaviour {
         iconImage.sprite = upgradeSO.Icon;
         iconImage.color = upgradeSO.IconTint;
         upgradeName.text = upgradeSO.name;
-        upgradeInfo.text = "TODO";
+        upgradeInfo.text = upgradeSO.InfoText;
 
         gameObject.GetComponent<Button>().onClick.AddListener(() => {
 
@@ -24,7 +24,11 @@ public class UpgradeUIOption : MonoBehaviour {
                 WeaponManager weaponManager = GameManager.Instance.PlayerManager.Player.GetComponent<WeaponManager>();
 
                 weaponManager.SwapSlotWithUpgradeIndex(GameManager.Instance.UIManager.currentSelectedUpgradeSlot, this.indexInList);
+
+
+                GameManager.Instance.AudioManager.PlaySoundSelect();
             }
+
         });
     }
 }

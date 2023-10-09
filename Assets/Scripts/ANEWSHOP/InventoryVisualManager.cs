@@ -36,11 +36,13 @@ public class InventoryVisualManager : MonoBehaviour {
         inventoryButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() => {
             this.InventoryPageGroup.SetActive(true);
             StatsPageGroup.SetActive(false);
+            GameManager.Instance.AudioManager.PlaySoundSelect();
         }));
 
         statsButton.onClick.AddListener((UnityEngine.Events.UnityAction)(() => {
             this.InventoryPageGroup.SetActive(false);
             StatsPageGroup.SetActive(true);
+            GameManager.Instance.AudioManager.PlaySoundSelect();
         }));
     }
 
@@ -65,6 +67,7 @@ public class InventoryVisualManager : MonoBehaviour {
     }
 
     private void HandleInventoryToggleEvent() {
+        GameManager.Instance.AudioManager.PlaySoundSelect();
         if (!InventoryGroup.activeInHierarchy) {
             GameManager.Instance.InputManager.DisableInput();
             Cursor.visible = true;

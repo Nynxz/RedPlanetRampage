@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Boots Of Helping
   m_EditorClassIdentifier: 
   Name: Boots Of Helping
-  Cost: 25
+  Cost: 250
   Upgrades:
   - {fileID: 11400000, guid: 4d0d2dd8caf21b14081c3619c1e5d62b, type: 2}
   - {fileID: 11400000, guid: 2ebb94ff96ed7754989f592623e627ad, type: 2}
   Icon: {fileID: 21300000, guid: 9535a32966149f341934351f09e1bf4d, type: 3}
   IconTint: {r: 0.23910141, g: 1, b: 0, a: 1}
+  InfoText: +50 Health, 1.2x Speed
